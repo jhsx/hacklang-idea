@@ -1,0 +1,73 @@
+// This is a generated file. Not intended for manual editing.
+package io.github.josehsantos.hack.lang.psi.impl;
+
+import java.util.List;
+import org.jetbrains.annotations.*;
+import com.intellij.lang.ASTNode;
+import com.intellij.psi.PsiElement;
+import com.intellij.psi.PsiElementVisitor;
+import com.intellij.psi.util.PsiTreeUtil;
+import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
+import com.intellij.extapi.psi.ASTWrapperPsiElement;
+import io.github.josehsantos.hack.lang.psi.*;
+
+public class HackExprStatementImpl extends ASTWrapperPsiElement implements HackExprStatement {
+
+  public HackExprStatementImpl(ASTNode node) {
+    super(node);
+  }
+
+  public void accept(@NotNull PsiElementVisitor visitor) {
+    if (visitor instanceof HackVisitor) ((HackVisitor)visitor).visitExprStatement(this);
+    else super.accept(visitor);
+  }
+
+  @Override
+  @Nullable
+  public HackAwaitAssignExpr getAwaitAssignExpr() {
+    return findChildByClass(HackAwaitAssignExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackAwaitExpr getAwaitExpr() {
+    return findChildByClass(HackAwaitExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackAwaitListAssignExpr getAwaitListAssignExpr() {
+    return findChildByClass(HackAwaitListAssignExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackQueryAssignExpr getQueryAssignExpr() {
+    return findChildByClass(HackQueryAssignExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackYieldAssignExpr getYieldAssignExpr() {
+    return findChildByClass(HackYieldAssignExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackYieldExpr getYieldExpr() {
+    return findChildByClass(HackYieldExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackYieldListAssignExpr getYieldListAssignExpr() {
+    return findChildByClass(HackYieldListAssignExpr.class);
+  }
+
+}
