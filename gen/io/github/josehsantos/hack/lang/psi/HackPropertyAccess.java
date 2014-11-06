@@ -8,7 +8,10 @@ import com.intellij.psi.PsiElement;
 public interface HackPropertyAccess extends PsiElement {
 
   @Nullable
-  HackPropertyAccessWithoutVariables getPropertyAccessWithoutVariables();
+  HackExpr getExpr();
+
+  @Nullable
+  HackIdent getIdent();
 
   @Nullable
   HackVariableWithoutObjects getVariableWithoutObjects();

@@ -5,18 +5,18 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackForeachStatement extends PsiElement {
+public interface HackForeachStatement extends HackStatement {
 
-  @NotNull
+  @Nullable
   HackExpr getExpr();
 
-  @NotNull
+  @Nullable
   HackForeachOptionalArg getForeachOptionalArg();
 
-  @NotNull
+  @Nullable
   HackForeachStatementBody getForeachStatementBody();
 
-  @NotNull
+  @Nullable
   HackForeachVariable getForeachVariable();
 
 }

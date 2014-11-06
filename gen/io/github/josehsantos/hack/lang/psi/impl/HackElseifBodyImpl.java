@@ -23,15 +23,9 @@ public class HackElseifBodyImpl extends ASTWrapperPsiElement implements HackElse
   }
 
   @Override
-  @NotNull
-  public HackParenthesisExpr getParenthesisExpr() {
-    return findNotNullChildByClass(HackParenthesisExpr.class);
-  }
-
-  @Override
-  @NotNull
-  public HackStatement getStatement() {
-    return findNotNullChildByClass(HackStatement.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
 }

@@ -24,14 +24,8 @@ public class HackTraitListImpl extends ASTWrapperPsiElement implements HackTrait
 
   @Override
   @NotNull
-  public HackFullyQualifiedClassName getFullyQualifiedClassName() {
-    return findNotNullChildByClass(HackFullyQualifiedClassName.class);
-  }
-
-  @Override
-  @Nullable
-  public HackTraitList getTraitList() {
-    return findChildByClass(HackTraitList.class);
+  public List<HackFullyQualifiedClassName> getFullyQualifiedClassNameList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackFullyQualifiedClassName.class);
   }
 
 }

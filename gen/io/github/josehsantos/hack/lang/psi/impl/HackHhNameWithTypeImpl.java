@@ -24,14 +24,62 @@ public class HackHhNameWithTypeImpl extends ASTWrapperPsiElement implements Hack
 
   @Override
   @Nullable
-  public HackHhType getHhType() {
-    return findChildByClass(HackHhType.class);
+  public HackArrayType getArrayType() {
+    return findChildByClass(HackArrayType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackCallableType getCallableType() {
+    return findChildByClass(HackCallableType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhFunctionType getHhFunctionType() {
+    return findChildByClass(HackHhFunctionType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhNullableType getHhNullableType() {
+    return findChildByClass(HackHhNullableType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhShapeType getHhShapeType() {
+    return findChildByClass(HackHhShapeType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhSoftType getHhSoftType() {
+    return findChildByClass(HackHhSoftType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhTupleType getHhTupleType() {
+    return findChildByClass(HackHhTupleType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhXhpType getHhXhpType() {
+    return findChildByClass(HackHhXhpType.class);
   }
 
   @Override
   @NotNull
   public HackIdent getIdent() {
     return findNotNullChildByClass(HackIdent.class);
+  }
+
+  @Override
+  @Nullable
+  public HackIdentType getIdentType() {
+    return findChildByClass(HackIdentType.class);
   }
 
 }

@@ -5,15 +5,39 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackHhTypeAliasStatement extends PsiElement {
+public interface HackHhTypeAliasStatement extends HackStatement {
 
   @NotNull
-  HackHhNameWithTypevar getHhNameWithTypevar();
+  List<HackArrayType> getArrayTypeList();
+
+  @NotNull
+  List<HackCallableType> getCallableTypeList();
+
+  @NotNull
+  List<HackHhFunctionType> getHhFunctionTypeList();
+
+  @NotNull
+  List<HackHhNullableType> getHhNullableTypeList();
+
+  @NotNull
+  List<HackHhShapeType> getHhShapeTypeList();
+
+  @NotNull
+  List<HackHhSoftType> getHhSoftTypeList();
+
+  @NotNull
+  List<HackHhTupleType> getHhTupleTypeList();
 
   @Nullable
-  HackHhOptConstraint getHhOptConstraint();
+  HackHhTypevar getHhTypevar();
 
   @NotNull
-  HackHhType getHhType();
+  List<HackHhXhpType> getHhXhpTypeList();
+
+  @NotNull
+  HackIdent getIdent();
+
+  @NotNull
+  List<HackIdentType> getIdentTypeList();
 
 }

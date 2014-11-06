@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackXhpChildrenDeclExprImpl extends ASTWrapperPsiElement implements HackXhpChildrenDeclExpr {
+public class HackXhpChildrenDeclExprImpl extends HackExprImpl implements HackXhpChildrenDeclExpr {
 
   public HackXhpChildrenDeclExprImpl(ASTNode node) {
     super(node);
@@ -24,20 +23,14 @@ public class HackXhpChildrenDeclExprImpl extends ASTWrapperPsiElement implements
 
   @Override
   @NotNull
-  public List<HackXhpChildrenDeclExpr> getXhpChildrenDeclExprList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpChildrenDeclExpr.class);
+  public List<HackXhpChildrenDeclTag> getXhpChildrenDeclTagList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpChildrenDeclTag.class);
   }
 
   @Override
-  @Nullable
-  public HackXhpChildrenDeclTag getXhpChildrenDeclTag() {
-    return findChildByClass(HackXhpChildrenDeclTag.class);
-  }
-
-  @Override
-  @Nullable
-  public HackXhpChildrenParenExpr getXhpChildrenParenExpr() {
-    return findChildByClass(HackXhpChildrenParenExpr.class);
+  @NotNull
+  public List<HackXhpChildrenParenExpr> getXhpChildrenParenExprList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpChildrenParenExpr.class);
   }
 
 }

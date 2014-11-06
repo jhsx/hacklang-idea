@@ -8,8 +8,8 @@ package io.github.josehsantos.hack.lang.psi;
 import com.intellij.extapi.psi.PsiFileBase;
 import com.intellij.openapi.fileTypes.FileType;
 import com.intellij.psi.FileViewProvider;
-import io.github.josehsantos.hack.ide.HackFileType;
-import io.github.josehsantos.hack.ide.HackLanguage;
+import io.github.josehsantos.hack.HackFileType;
+import io.github.josehsantos.hack.HackLanguage;
 import org.jetbrains.annotations.NotNull;
 
 import javax.swing.*;

@@ -23,9 +23,9 @@ public class HackStaticVarrayLiteralImpl extends ASTWrapperPsiElement implements
   }
 
   @Override
-  @NotNull
-  public HackStaticVarrayInit getStaticVarrayInit() {
-    return findNotNullChildByClass(HackStaticVarrayInit.class);
+  @Nullable
+  public HackStaticArrayPairList getStaticArrayPairList() {
+    return findChildByClass(HackStaticArrayPairList.class);
   }
 
 }

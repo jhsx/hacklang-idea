@@ -24,20 +24,14 @@ public class HackDimmableVariableNoCallsAccessImpl extends ASTWrapperPsiElement 
 
   @Override
   @NotNull
-  public HackArrayAccess getArrayAccess() {
-    return findNotNullChildByClass(HackArrayAccess.class);
+  public List<HackArrayAccess> getArrayAccessList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackArrayAccess.class);
   }
 
   @Override
   @Nullable
-  public HackDimmableVariableNoCalls getDimmableVariableNoCalls() {
-    return findChildByClass(HackDimmableVariableNoCalls.class);
-  }
-
-  @Override
-  @Nullable
-  public HackExprWithParens getExprWithParens() {
-    return findChildByClass(HackExprWithParens.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
 }

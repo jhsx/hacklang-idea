@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackFunctionBody extends PsiElement {
 
   @Nullable
-  HackInnerStatementList getInnerStatementList();
+  HackBlockStatement getBlockStatement();
 
 }

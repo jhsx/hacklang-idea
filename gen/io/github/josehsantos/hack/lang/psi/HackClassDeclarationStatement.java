@@ -5,21 +5,24 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackClassDeclarationStatement extends PsiElement {
+public interface HackClassDeclarationStatement extends HackStatement {
 
-  @NotNull
-  HackClassDeclName getClassDeclName();
-
-  @NotNull
-  HackClassEntryType getClassEntryType();
-
-  @NotNull
+  @Nullable
   HackClassStatementList getClassStatementList();
 
-  @NotNull
+  @Nullable
   HackExtendsFrom getExtendsFrom();
 
-  @NotNull
+  @Nullable
+  HackHhTypevar getHhTypevar();
+
+  @Nullable
+  HackIdent getIdent();
+
+  @Nullable
   HackImplementsList getImplementsList();
+
+  @Nullable
+  HackUserAttributes getUserAttributes();
 
 }

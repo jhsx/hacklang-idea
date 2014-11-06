@@ -8,9 +8,30 @@ import com.intellij.psi.PsiElement;
 public interface HackHhTypeList extends PsiElement {
 
   @NotNull
-  HackHhNonEmptyTypeList getHhNonEmptyTypeList();
+  List<HackArrayType> getArrayTypeList();
 
   @NotNull
-  HackPossibleComma getPossibleComma();
+  List<HackCallableType> getCallableTypeList();
+
+  @NotNull
+  List<HackHhFunctionType> getHhFunctionTypeList();
+
+  @NotNull
+  List<HackHhNullableType> getHhNullableTypeList();
+
+  @NotNull
+  List<HackHhShapeType> getHhShapeTypeList();
+
+  @NotNull
+  List<HackHhSoftType> getHhSoftTypeList();
+
+  @NotNull
+  List<HackHhTupleType> getHhTupleTypeList();
+
+  @NotNull
+  List<HackHhXhpType> getHhXhpTypeList();
+
+  @NotNull
+  List<HackIdentType> getIdentTypeList();
 
 }

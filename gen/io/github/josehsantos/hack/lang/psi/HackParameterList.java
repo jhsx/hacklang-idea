@@ -10,7 +10,4 @@ public interface HackParameterList extends PsiElement {
   @NotNull
   List<HackParameterItem> getParameterItemList();
 
-  @NotNull
-  HackPossibleComma getPossibleComma();
-
 }

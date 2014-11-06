@@ -24,14 +24,8 @@ public class HackXhpChildrenImpl extends ASTWrapperPsiElement implements HackXhp
 
   @Override
   @NotNull
-  public HackXhpChild getXhpChild() {
-    return findNotNullChildByClass(HackXhpChild.class);
-  }
-
-  @Override
-  @NotNull
-  public HackXhpChildren getXhpChildren() {
-    return findNotNullChildByClass(HackXhpChildren.class);
+  public List<HackXhpChild> getXhpChildList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpChild.class);
   }
 
 }

@@ -8,12 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface HackLambdaBody extends PsiElement {
 
   @Nullable
-  HackAwaitExpr getAwaitExpr();
+  HackBlockStatement getBlockStatement();
 
   @Nullable
   HackExpr getExpr();
-
-  @Nullable
-  HackInnerStatementList getInnerStatementList();
 
 }

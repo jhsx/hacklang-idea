@@ -24,14 +24,8 @@ public class HackXhpLabelWsImpl extends ASTWrapperPsiElement implements HackXhpL
 
   @Override
   @NotNull
-  public HackXhpBareword getXhpBareword() {
-    return findNotNullChildByClass(HackXhpBareword.class);
-  }
-
-  @Override
-  @Nullable
-  public HackXhpLabelWs getXhpLabelWs() {
-    return findChildByClass(HackXhpLabelWs.class);
+  public List<HackXhpBareword> getXhpBarewordList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpBareword.class);
   }
 
 }

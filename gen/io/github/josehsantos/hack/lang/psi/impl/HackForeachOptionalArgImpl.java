@@ -23,9 +23,9 @@ public class HackForeachOptionalArgImpl extends ASTWrapperPsiElement implements 
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackForeachVariable getForeachVariable() {
-    return findNotNullChildByClass(HackForeachVariable.class);
+    return findChildByClass(HackForeachVariable.class);
   }
 
 }

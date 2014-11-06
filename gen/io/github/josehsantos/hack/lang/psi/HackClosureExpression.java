@@ -7,22 +7,16 @@ import com.intellij.psi.PsiElement;
 
 public interface HackClosureExpression extends PsiElement {
 
-  @NotNull
-  HackFunctionLoc getFunctionLoc();
-
-  @NotNull
+  @Nullable
   HackHhOptReturnType getHhOptReturnType();
 
-  @NotNull
+  @Nullable
   HackInnerStatementList getInnerStatementList();
 
-  @NotNull
-  HackIsReference getIsReference();
-
-  @NotNull
+  @Nullable
   HackLambdaUseVars getLambdaUseVars();
 
-  @NotNull
+  @Nullable
   HackParameterList getParameterList();
 
 }

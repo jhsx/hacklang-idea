@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackXhpAttributeEnum extends PsiElement {
 
   @NotNull
-  HackCommonScalar getCommonScalar();
-
-  @Nullable
-  HackXhpAttributeEnum getXhpAttributeEnum();
+  List<HackLiteralExpr> getLiteralExprList();
 
 }

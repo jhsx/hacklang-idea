@@ -23,27 +23,15 @@ public class HackReferenceVariableImpl extends ASTWrapperPsiElement implements H
   }
 
   @Override
-  @Nullable
-  public HackCompoundVariable getCompoundVariable() {
-    return findChildByClass(HackCompoundVariable.class);
+  @NotNull
+  public List<HackCompoundVariable> getCompoundVariableList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackCompoundVariable.class);
   }
 
   @Override
-  @Nullable
-  public HackDimOffset getDimOffset() {
-    return findChildByClass(HackDimOffset.class);
-  }
-
-  @Override
-  @Nullable
-  public HackExpr getExpr() {
-    return findChildByClass(HackExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackReferenceVariable getReferenceVariable() {
-    return findChildByClass(HackReferenceVariable.class);
+  @NotNull
+  public List<HackExpr> getExprList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpr.class);
   }
 
 }

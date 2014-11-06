@@ -23,9 +23,9 @@ public class HackCollectionLiteralImpl extends ASTWrapperPsiElement implements H
   }
 
   @Override
-  @NotNull
-  public HackCollectionInit getCollectionInit() {
-    return findNotNullChildByClass(HackCollectionInit.class);
+  @Nullable
+  public HackArrayPairList getArrayPairList() {
+    return findChildByClass(HackArrayPairList.class);
   }
 
   @Override

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackHhShapeType extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackHhShapeMemberList getHhShapeMemberList();
 
 }

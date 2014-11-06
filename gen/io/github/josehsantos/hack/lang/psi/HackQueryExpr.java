@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackQueryExpr extends PsiElement {
+public interface HackQueryExpr extends HackExpr {
 
   @NotNull
   HackQueryBody getQueryBody();

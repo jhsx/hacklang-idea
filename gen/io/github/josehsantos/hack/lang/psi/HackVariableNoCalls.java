@@ -11,7 +11,7 @@ public interface HackVariableNoCalls extends PsiElement {
   HackDimmableVariableNoCallsAccess getDimmableVariableNoCallsAccess();
 
   @Nullable
-  HackExprWithParens getExprWithParens();
+  HackExpr getExpr();
 
   @Nullable
   HackPropertyAccess getPropertyAccess();

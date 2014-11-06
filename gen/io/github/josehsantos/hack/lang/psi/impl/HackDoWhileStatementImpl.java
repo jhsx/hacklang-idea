@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackDoWhileStatementImpl extends ASTWrapperPsiElement implements HackDoWhileStatement {
+public class HackDoWhileStatementImpl extends HackStatementImpl implements HackDoWhileStatement {
 
   public HackDoWhileStatementImpl(ASTNode node) {
     super(node);
@@ -23,15 +22,9 @@ public class HackDoWhileStatementImpl extends ASTWrapperPsiElement implements Ha
   }
 
   @Override
-  @NotNull
-  public HackParenthesisExpr getParenthesisExpr() {
-    return findNotNullChildByClass(HackParenthesisExpr.class);
-  }
-
-  @Override
-  @NotNull
-  public HackStatement getStatement() {
-    return findNotNullChildByClass(HackStatement.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
 }

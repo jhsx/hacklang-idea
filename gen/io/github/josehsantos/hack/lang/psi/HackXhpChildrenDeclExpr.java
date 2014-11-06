@@ -5,15 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackXhpChildrenDeclExpr extends PsiElement {
+public interface HackXhpChildrenDeclExpr extends HackExpr {
 
   @NotNull
-  List<HackXhpChildrenDeclExpr> getXhpChildrenDeclExprList();
+  List<HackXhpChildrenDeclTag> getXhpChildrenDeclTagList();
 
-  @Nullable
-  HackXhpChildrenDeclTag getXhpChildrenDeclTag();
-
-  @Nullable
-  HackXhpChildrenParenExpr getXhpChildrenParenExpr();
+  @NotNull
+  List<HackXhpChildrenParenExpr> getXhpChildrenParenExprList();
 
 }

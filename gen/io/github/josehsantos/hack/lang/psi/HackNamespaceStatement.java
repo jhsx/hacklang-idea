@@ -5,12 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackNamespaceStatement extends PsiElement {
+public interface HackNamespaceStatement extends HackStatement {
 
   @Nullable
   HackNamespaceName getNamespaceName();
-
-  @Nullable
-  HackTopStatementList getTopStatementList();
 
 }

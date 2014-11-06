@@ -23,15 +23,9 @@ public class HackEncapsListImpl extends ASTWrapperPsiElement implements HackEnca
   }
 
   @Override
-  @Nullable
-  public HackEncapsList getEncapsList() {
-    return findChildByClass(HackEncapsList.class);
-  }
-
-  @Override
-  @Nullable
-  public HackEncapsVar getEncapsVar() {
-    return findChildByClass(HackEncapsVar.class);
+  @NotNull
+  public List<HackEncapsVar> getEncapsVarList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackEncapsVar.class);
   }
 
 }

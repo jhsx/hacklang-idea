@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackHhFuncTypeList extends PsiElement {
 
   @Nullable
-  HackHhNonEmptyTypeList getHhNonEmptyTypeList();
-
-  @Nullable
   HackHhTypeList getHhTypeList();
 
 }

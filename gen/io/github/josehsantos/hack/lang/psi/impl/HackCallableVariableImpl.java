@@ -23,9 +23,15 @@ public class HackCallableVariableImpl extends ASTWrapperPsiElement implements Ha
   }
 
   @Override
+  @NotNull
+  public List<HackArrayAccess> getArrayAccessList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackArrayAccess.class);
+  }
+
+  @Override
   @Nullable
-  public HackDimmableVariableAccess getDimmableVariableAccess() {
-    return findChildByClass(HackDimmableVariableAccess.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override

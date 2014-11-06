@@ -23,15 +23,15 @@ public class HackConstantAssignmentImpl extends ASTWrapperPsiElement implements 
   }
 
   @Override
-  @NotNull
-  public HackHhNameWithType getHhNameWithType() {
-    return findNotNullChildByClass(HackHhNameWithType.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
   @NotNull
-  public HackStaticExpr getStaticExpr() {
-    return findNotNullChildByClass(HackStaticExpr.class);
+  public HackHhNameWithType getHhNameWithType() {
+    return findNotNullChildByClass(HackHhNameWithType.class);
   }
 
 }

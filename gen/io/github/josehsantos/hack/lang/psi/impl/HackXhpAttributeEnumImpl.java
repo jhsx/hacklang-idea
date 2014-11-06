@@ -24,14 +24,8 @@ public class HackXhpAttributeEnumImpl extends ASTWrapperPsiElement implements Ha
 
   @Override
   @NotNull
-  public HackCommonScalar getCommonScalar() {
-    return findNotNullChildByClass(HackCommonScalar.class);
-  }
-
-  @Override
-  @Nullable
-  public HackXhpAttributeEnum getXhpAttributeEnum() {
-    return findChildByClass(HackXhpAttributeEnum.class);
+  public List<HackLiteralExpr> getLiteralExprList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackLiteralExpr.class);
   }
 
 }

@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackContinueStatement extends PsiElement {
+public interface HackContinueStatement extends HackStatement {
 
   @Nullable
   HackExpr getExpr();

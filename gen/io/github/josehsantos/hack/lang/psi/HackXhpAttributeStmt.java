@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackXhpAttributeStmt extends PsiElement {
 
   @NotNull
-  HackXhpAttributeDecl getXhpAttributeDecl();
-
-  @Nullable
-  HackXhpAttributeStmt getXhpAttributeStmt();
+  List<HackXhpAttributeDecl> getXhpAttributeDeclList();
 
 }

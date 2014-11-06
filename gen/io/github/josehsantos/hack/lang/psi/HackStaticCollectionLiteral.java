@@ -10,7 +10,7 @@ public interface HackStaticCollectionLiteral extends PsiElement {
   @NotNull
   HackFullyQualifiedClassName getFullyQualifiedClassName();
 
-  @NotNull
-  HackStaticCollectionInit getStaticCollectionInit();
+  @Nullable
+  HackStaticArrayPairList getStaticArrayPairList();
 
 }

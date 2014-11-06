@@ -8,9 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface HackXhpChildrenStmt extends PsiElement {
 
   @Nullable
-  HackIdent getIdent();
+  HackExpr getExpr();
 
   @Nullable
-  HackXhpChildrenParenExpr getXhpChildrenParenExpr();
+  HackIdent getIdent();
 
 }

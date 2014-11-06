@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackExprStatementImpl extends ASTWrapperPsiElement implements HackExprStatement {
+public class HackExprStatementImpl extends HackStatementImpl implements HackExprStatement {
 
   public HackExprStatementImpl(ASTNode node) {
     super(node);
@@ -23,51 +22,9 @@ public class HackExprStatementImpl extends ASTWrapperPsiElement implements HackE
   }
 
   @Override
-  @Nullable
-  public HackAwaitAssignExpr getAwaitAssignExpr() {
-    return findChildByClass(HackAwaitAssignExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackAwaitExpr getAwaitExpr() {
-    return findChildByClass(HackAwaitExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackAwaitListAssignExpr getAwaitListAssignExpr() {
-    return findChildByClass(HackAwaitListAssignExpr.class);
-  }
-
-  @Override
-  @Nullable
+  @NotNull
   public HackExpr getExpr() {
-    return findChildByClass(HackExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackQueryAssignExpr getQueryAssignExpr() {
-    return findChildByClass(HackQueryAssignExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackYieldAssignExpr getYieldAssignExpr() {
-    return findChildByClass(HackYieldAssignExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackYieldExpr getYieldExpr() {
-    return findChildByClass(HackYieldExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackYieldListAssignExpr getYieldListAssignExpr() {
-    return findChildByClass(HackYieldListAssignExpr.class);
+    return findNotNullChildByClass(HackExpr.class);
   }
 
 }

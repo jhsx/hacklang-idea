@@ -7,13 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackTraitRules extends PsiElement {
 
-  @Nullable
-  HackTraitAliasRule getTraitAliasRule();
-
-  @Nullable
-  HackTraitPrecedenceRule getTraitPrecedenceRule();
+  @NotNull
+  List<HackTraitAliasRule> getTraitAliasRuleList();
 
   @NotNull
-  HackTraitRules getTraitRules();
+  List<HackTraitPrecedenceRule> getTraitPrecedenceRuleList();
 
 }

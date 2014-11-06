@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackGotoStatement extends PsiElement {
+public interface HackGotoStatement extends HackStatement {
 
-  @NotNull
+  @Nullable
   HackIdent getIdent();
 
 }

@@ -7,7 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackSwitchCaseList extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackCaseList getCaseList();
+
+  @Nullable
+  HackSwitchNewStatement getSwitchNewStatement();
 
 }

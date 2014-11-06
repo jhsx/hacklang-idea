@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackHhTypeargsOpt extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackHhTypeList getHhTypeList();
 
 }

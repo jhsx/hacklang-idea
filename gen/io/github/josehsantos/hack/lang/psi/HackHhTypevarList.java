@@ -7,16 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackHhTypevarList extends PsiElement {
 
-  @Nullable
-  HackHhType getHhType();
-
-  @Nullable
-  HackHhTypevarList getHhTypevarList();
-
   @NotNull
-  HackHhTypevarVariance getHhTypevarVariance();
-
-  @NotNull
-  HackIdent getIdent();
+  List<HackHhTypevarItem> getHhTypevarItemList();
 
 }

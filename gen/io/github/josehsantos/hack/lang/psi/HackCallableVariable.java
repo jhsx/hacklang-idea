@@ -7,8 +7,11 @@ import com.intellij.psi.PsiElement;
 
 public interface HackCallableVariable extends PsiElement {
 
+  @NotNull
+  List<HackArrayAccess> getArrayAccessList();
+
   @Nullable
-  HackDimmableVariableAccess getDimmableVariableAccess();
+  HackExpr getExpr();
 
   @Nullable
   HackVariable getVariable();

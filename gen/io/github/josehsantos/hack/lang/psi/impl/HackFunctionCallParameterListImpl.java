@@ -24,14 +24,8 @@ public class HackFunctionCallParameterListImpl extends ASTWrapperPsiElement impl
 
   @Override
   @NotNull
-  public HackHhPossibleComma getHhPossibleComma() {
-    return findNotNullChildByClass(HackHhPossibleComma.class);
-  }
-
-  @Override
-  @NotNull
-  public HackNonEmptyFcallParameterList getNonEmptyFcallParameterList() {
-    return findNotNullChildByClass(HackNonEmptyFcallParameterList.class);
+  public List<HackCallingParameterItem> getCallingParameterItemList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackCallingParameterItem.class);
   }
 
 }

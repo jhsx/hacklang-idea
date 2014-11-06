@@ -23,9 +23,9 @@ public class HackStaticMapArrayLiteralImpl extends ASTWrapperPsiElement implemen
   }
 
   @Override
-  @NotNull
-  public HackStaticMapArrayInit getStaticMapArrayInit() {
-    return findNotNullChildByClass(HackStaticMapArrayInit.class);
+  @Nullable
+  public HackStaticArrayPairList getStaticArrayPairList() {
+    return findChildByClass(HackStaticArrayPairList.class);
   }
 
 }

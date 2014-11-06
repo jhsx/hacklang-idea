@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackUserAttributeList extends PsiElement {
 
   @NotNull
-  HackNonEmptyUserAttributeList getNonEmptyUserAttributeList();
-
-  @NotNull
-  HackPossibleComma getPossibleComma();
+  List<HackUserAttribute> getUserAttributeList();
 
 }

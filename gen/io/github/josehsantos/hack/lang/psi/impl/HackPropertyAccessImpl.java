@@ -24,8 +24,14 @@ public class HackPropertyAccessImpl extends ASTWrapperPsiElement implements Hack
 
   @Override
   @Nullable
-  public HackPropertyAccessWithoutVariables getPropertyAccessWithoutVariables() {
-    return findChildByClass(HackPropertyAccessWithoutVariables.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackIdent getIdent() {
+    return findChildByClass(HackIdent.class);
   }
 
   @Override

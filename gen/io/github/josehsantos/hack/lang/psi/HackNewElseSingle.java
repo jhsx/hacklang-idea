@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackNewElseSingle extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackInnerStatementList getInnerStatementList();
 
 }

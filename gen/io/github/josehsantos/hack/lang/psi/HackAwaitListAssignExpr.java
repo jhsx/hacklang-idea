@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackAwaitListAssignExpr extends PsiElement {
+public interface HackAwaitListAssignExpr extends HackExpr {
 
-  @NotNull
+  @Nullable
   HackAssignmentList getAssignmentList();
 
-  @NotNull
-  HackAwaitExpr getAwaitExpr();
+  @Nullable
+  HackExpr getExpr();
 
 }

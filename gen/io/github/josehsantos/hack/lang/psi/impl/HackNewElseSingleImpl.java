@@ -23,9 +23,9 @@ public class HackNewElseSingleImpl extends ASTWrapperPsiElement implements HackN
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackInnerStatementList getInnerStatementList() {
-    return findNotNullChildByClass(HackInnerStatementList.class);
+    return findChildByClass(HackInnerStatementList.class);
   }
 
 }

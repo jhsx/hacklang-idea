@@ -7,10 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface HackXhpCategoryStmt extends PsiElement {
 
-  @NotNull
-  HackXhpCategoryDecl getXhpCategoryDecl();
-
-  @Nullable
-  HackXhpCategoryStmt getXhpCategoryStmt();
-
 }

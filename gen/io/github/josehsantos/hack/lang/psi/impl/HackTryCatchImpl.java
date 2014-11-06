@@ -23,15 +23,15 @@ public class HackTryCatchImpl extends ASTWrapperPsiElement implements HackTryCat
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackFullyQualifiedClassName getFullyQualifiedClassName() {
-    return findNotNullChildByClass(HackFullyQualifiedClassName.class);
+    return findChildByClass(HackFullyQualifiedClassName.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackInnerStatementList getInnerStatementList() {
-    return findNotNullChildByClass(HackInnerStatementList.class);
+    return findChildByClass(HackInnerStatementList.class);
   }
 
 }

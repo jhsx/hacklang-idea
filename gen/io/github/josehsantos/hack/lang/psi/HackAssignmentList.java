@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackAssignmentList extends PsiElement {
 
-  @Nullable
-  HackAssignmentList getAssignmentList();
+  @NotNull
+  List<HackAssignmentList> getAssignmentListList();
 
-  @Nullable
-  HackVariable getVariable();
+  @NotNull
+  List<HackVariable> getVariableList();
 
 }

@@ -5,15 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackDimExpr extends PsiElement {
+public interface HackDimExpr extends HackExpr {
 
-  @Nullable
-  HackDimExpr getDimExpr();
-
-  @Nullable
+  @NotNull
   HackDimExprBase getDimExprBase();
 
   @NotNull
-  HackDimOffset getDimOffset();
+  List<HackExpr> getExprList();
 
 }

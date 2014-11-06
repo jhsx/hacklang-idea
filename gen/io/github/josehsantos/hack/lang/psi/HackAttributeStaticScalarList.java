@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackAttributeStaticScalarList extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackStaticScalarListAe getStaticScalarListAe();
 
 }

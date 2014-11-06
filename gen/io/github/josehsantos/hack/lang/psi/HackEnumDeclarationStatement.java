@@ -5,18 +5,42 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackEnumDeclarationStatement extends PsiElement {
+public interface HackEnumDeclarationStatement extends HackStatement {
 
   @NotNull
+  List<HackArrayType> getArrayTypeList();
+
+  @NotNull
+  List<HackCallableType> getCallableTypeList();
+
+  @Nullable
   HackEnumStatementList getEnumStatementList();
 
   @NotNull
-  HackHhOptConstraint getHhOptConstraint();
+  List<HackHhFunctionType> getHhFunctionTypeList();
 
   @NotNull
-  HackHhType getHhType();
+  List<HackHhNullableType> getHhNullableTypeList();
 
   @NotNull
+  List<HackHhShapeType> getHhShapeTypeList();
+
+  @NotNull
+  List<HackHhSoftType> getHhSoftTypeList();
+
+  @NotNull
+  List<HackHhTupleType> getHhTupleTypeList();
+
+  @NotNull
+  List<HackHhXhpType> getHhXhpTypeList();
+
+  @Nullable
   HackIdent getIdent();
+
+  @NotNull
+  List<HackIdentType> getIdentTypeList();
+
+  @Nullable
+  HackUserAttributes getUserAttributes();
 
 }

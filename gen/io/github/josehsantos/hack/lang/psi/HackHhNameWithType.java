@@ -8,9 +8,33 @@ import com.intellij.psi.PsiElement;
 public interface HackHhNameWithType extends PsiElement {
 
   @Nullable
-  HackHhType getHhType();
+  HackArrayType getArrayType();
+
+  @Nullable
+  HackCallableType getCallableType();
+
+  @Nullable
+  HackHhFunctionType getHhFunctionType();
+
+  @Nullable
+  HackHhNullableType getHhNullableType();
+
+  @Nullable
+  HackHhShapeType getHhShapeType();
+
+  @Nullable
+  HackHhSoftType getHhSoftType();
+
+  @Nullable
+  HackHhTupleType getHhTupleType();
+
+  @Nullable
+  HackHhXhpType getHhXhpType();
 
   @NotNull
   HackIdent getIdent();
+
+  @Nullable
+  HackIdentType getIdentType();
 
 }

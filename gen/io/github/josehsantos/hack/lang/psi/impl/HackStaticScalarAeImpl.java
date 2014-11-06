@@ -24,14 +24,14 @@ public class HackStaticScalarAeImpl extends ASTWrapperPsiElement implements Hack
 
   @Override
   @Nullable
-  public HackCommonScalarAe getCommonScalarAe() {
-    return findChildByClass(HackCommonScalarAe.class);
+  public HackIdent getIdent() {
+    return findChildByClass(HackIdent.class);
   }
 
   @Override
   @Nullable
-  public HackIdent getIdent() {
-    return findChildByClass(HackIdent.class);
+  public HackLiteralScalarAe getLiteralScalarAe() {
+    return findChildByClass(HackLiteralScalarAe.class);
   }
 
   @Override

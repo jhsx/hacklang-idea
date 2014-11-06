@@ -1,18 +1,20 @@
-package io.github.josehsantos.hack.lang;
+package io.github.josehsantos.hack.lang.parser;
 
 
 import com.intellij.lexer.FlexLexer;
 import java.util.ArrayList;
 import java.util.List;
-import static io.github.josehsantos.hack.lang.NextTokenType.getNextTokenType;
+import static io.github.josehsantos.hack.lang.parser.NextTokenType.getNextTokenType;
 import static io.github.josehsantos.hack.lang.HackTypes.*;
 import com.intellij.psi.tree.IElementType;
 import org.jetbrains.annotations.NotNull;
+import io.github.josehsantos.hack.lang.parser.managers.*;
 
 %%
 // Options adn declarations section
 
-%class HackLexer
+%class _HackLexer
+%abstract
 %implements FlexLexer
 %public
 %unicode
@@ -22,7 +24,7 @@ import org.jetbrains.annotations.NotNull;
 %eof{  return;
 %eof}
 
-%function advance
+%function next_token
 %public
 
 %caseless
@@ -32,58 +34,24 @@ import org.jetbrains.annotations.NotNull;
 
 
 
-    private StateStack stack = new StateStack();
-    private char yy_old_buffer[] = new char[ZZ_BUFFERSIZE];
-    private int yy_old_pushbackPos;
-    protected int commentStartPosition;
-    private int whitespaceEndPosition;
+   private StateStack stack = new StateStack();
 
-    private boolean isEndedPhp;
+   protected IElementType lastToken = null;
 
-    private IElementType lastToken = null;
-
-
-    public void BEGIN(int state) {
-        yybegin(state);
-    }
-
-
-    private void pushState(int state) {
+   private void pushState(int state) {
         stack.pushStack(yystate());
         yybegin(state);
-    }
+   }
 
-    private void popState() {
-        yybegin(stack.popStack());
-    }
-
-   private IElementType RETTOKEN(IElementType token){
-        lastToken = token;
-
-        return token;
-    }
-     private IElementType RETSTEP(IElementType token){
-        lastToken = token;
-        return token;
-    }
-    private IElementType SETTOKEN(IElementType token){
-        lastToken = token;
-        return token;
-    }
-
-   private IElementType XHP_ONLY_KEYWORD(IElementType token){
-        lastToken = token;
-        return token;
-    }
-
-    private void STEPPOS(IElementType elementType){
-
-    }
+   private int popState() {
+       int st= stack.popStack();
+       yybegin(st);
+       return st;
+   }
 
    private boolean isHHSyntaxEnabled(){
         return true;
    }
-
 
    private boolean isXHPSyntaxEnabled(){
         return true;
@@ -92,20 +60,47 @@ import org.jetbrains.annotations.NotNull;
    private boolean shortTags(){
         return true;
    }
+
    private boolean isHHFile(){
         return true;
    }
 
-    private IElementType HH_ONLY_KEYWORD(IElementType token){
-        lastToken = token;
-        return token;
+    /*
+        TODO: STRING, HEREDOC
+     */
+   	//	private StatesManager sManager = new StatesManager(this);
+    //	private HeredocManager hdManager = new HeredocManager(this, sManager);
+   	private LineCommentManager lcManager = new LineCommentManager(this);
+
+   	@NotNull
+   	public final CharSequence getBuffer(){
+   		return zzBuffer;
+   	}
+
+    public final LexerState getLexerState(){
+        return new LexerState(zzCurrentPos, zzMarkedPos, zzStartRead, zzPushbackPos);
+    }
+
+    public final void setLexerState(LexerState state){
+        zzCurrentPos = state.zzCurrentPos;
+         zzMarkedPos = state.zzMarkedPos;
+         zzStartRead = state.zzStartRead;
+        zzPushbackPos= state.zzPushbackPos;
     }
 
 
-	@NotNull
-	public final CharSequence getBuffer(){
-		return zzBuffer;
-	}
+   	protected void onReset(){
+//   		opManager.reset();
+            stack.reset();
+       		lcManager.reset();
+//   		sManager.reset();
+//   		hdManager.reset();
+//   		brcManager = null;
+//
+//   		sManager.toState(initialState);
+   	}
+
+
 
 %}
 
@@ -156,7 +151,8 @@ TOKENS = [;:,.\[\])|\^&+\-*/=%!~$<>?@]
 ANY_CHAR = (.|[\n])
 NEWLINE = ("\r"|"\n"|"\r\n")
 XHPLABEL = {LABEL}([:-]{LABEL})*
-COMMENT_REGEX = ("/*"([^\*]|("*"[^/]))*"*/"|("//"|"#")[^\r\n]*{NEWLINE})
+COMMENT_REGEX = "/*"([^\*]|("*"[^/]))*"*/"
+DOC_COMMENT_REGEX = "/**"([^\*]|("*"[^/]))*"*/"
 WHITESPACE_AND_COMMENTS = ([ \n\r\t]|({COMMENT_REGEX}))+
 
 /*
@@ -183,52 +179,52 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 
 
 
-<ST_IN_SCRIPTING>"exit"                 { return RETTOKEN(T_EXIT);}
-<ST_IN_SCRIPTING>"die"                  { return RETTOKEN(T_EXIT);}
-<ST_IN_SCRIPTING>"function"             { return RETTOKEN(T_FUNCTION);}
-<ST_IN_SCRIPTING>"const"                { return RETTOKEN(T_CONST);}
-<ST_IN_SCRIPTING>"return"               { return RETTOKEN(T_RETURN); }
-<ST_IN_SCRIPTING>"yield"                { return RETTOKEN(T_YIELD);}
-<ST_IN_SCRIPTING>"try"                  { return RETTOKEN(T_TRY);}
-<ST_IN_SCRIPTING>"catch"                { return RETTOKEN(T_CATCH);}
-<ST_IN_SCRIPTING>"finally"              { return RETTOKEN(T_FINALLY);}
-<ST_IN_SCRIPTING>"throw"                { return RETTOKEN(T_THROW);}
-<ST_IN_SCRIPTING>"if"                   { return RETTOKEN(T_IF);}
-<ST_IN_SCRIPTING>"elseif"               { return RETTOKEN(T_ELSEIF);}
-<ST_IN_SCRIPTING>"endif"                { return RETTOKEN(T_ENDIF);}
-<ST_IN_SCRIPTING>"else"                 { return RETTOKEN(T_ELSE);}
-<ST_IN_SCRIPTING>"while"                { return RETTOKEN(T_WHILE);}
-<ST_IN_SCRIPTING>"endwhile"             { return RETTOKEN(T_ENDWHILE);}
-<ST_IN_SCRIPTING>"do"                   { return RETTOKEN(T_DO);}
-<ST_IN_SCRIPTING>"for"                  { return RETTOKEN(T_FOR);}
-<ST_IN_SCRIPTING>"endfor"               { return RETTOKEN(T_ENDFOR);}
-<ST_IN_SCRIPTING>"foreach"              { return RETTOKEN(T_FOREACH);}
-<ST_IN_SCRIPTING>"endforeach"           { return RETTOKEN(T_ENDFOREACH);}
-<ST_IN_SCRIPTING>"declare"              { return RETTOKEN(T_DECLARE);}
-<ST_IN_SCRIPTING>"enddeclare"           { return RETTOKEN(T_ENDDECLARE);}
-<ST_IN_SCRIPTING>"instanceof"           { return RETTOKEN(T_INSTANCEOF);}
-<ST_IN_SCRIPTING>"as"                   { return RETTOKEN(T_AS);}
-<ST_IN_SCRIPTING>"switch"               { return RETTOKEN(T_SWITCH);}
-<ST_IN_SCRIPTING>"endswitch"            { return RETTOKEN(T_ENDSWITCH);}
-<ST_IN_SCRIPTING>"case"                 { return RETTOKEN(T_CASE);}
-<ST_IN_SCRIPTING>"default"              { return RETTOKEN(T_DEFAULT);}
-<ST_IN_SCRIPTING>"break"                { return RETTOKEN(T_BREAK);}
-<ST_IN_SCRIPTING>"continue"             { return RETTOKEN(T_CONTINUE);}
-<ST_IN_SCRIPTING>"goto"                 { return RETTOKEN(T_GOTO);}
-<ST_IN_SCRIPTING>"echo"                 { return RETTOKEN(T_ECHO);}
-<ST_IN_SCRIPTING>"print"                { return RETTOKEN(T_PRINT);}
-<ST_IN_SCRIPTING>"class"                { return RETTOKEN(T_CLASS);}
-<ST_IN_SCRIPTING>"interface"            { return RETTOKEN(T_INTERFACE);}
-<ST_IN_SCRIPTING>"trait"                { return RETTOKEN(T_TRAIT);}
-<ST_IN_SCRIPTING>"..."                  { return RETTOKEN(T_ELLIPSIS);}
-<ST_IN_SCRIPTING>"insteadof"            { return RETTOKEN(T_INSTEADOF);}
-<ST_IN_SCRIPTING>"extends"              { return RETTOKEN(T_EXTENDS);}
-<ST_IN_SCRIPTING>"implements"           { return RETTOKEN(T_IMPLEMENTS);}
-<ST_IN_SCRIPTING>"enum"                 { return XHP_ONLY_KEYWORD(T_ENUM); }
-<ST_IN_SCRIPTING>"attribute"            { return XHP_ONLY_KEYWORD(T_XHP_ATTRIBUTE); }
-<ST_IN_SCRIPTING>"category"             { return XHP_ONLY_KEYWORD(T_XHP_CATEGORY); }
-<ST_IN_SCRIPTING>"children"             { return XHP_ONLY_KEYWORD(T_XHP_CHILDREN); }
-<ST_IN_SCRIPTING>"required"             { return XHP_ONLY_KEYWORD(T_XHP_REQUIRED); }
+<ST_IN_SCRIPTING>"exit"                 { return T_EXIT;}
+<ST_IN_SCRIPTING>"die"                  { return T_EXIT;}
+<ST_IN_SCRIPTING>"function"             { return T_FUNCTION;}
+<ST_IN_SCRIPTING>"const"                { return T_CONST;}
+<ST_IN_SCRIPTING>"return"               { return T_RETURN; }
+<ST_IN_SCRIPTING>"yield"                { return T_YIELD;}
+<ST_IN_SCRIPTING>"try"                  { return T_TRY;}
+<ST_IN_SCRIPTING>"catch"                { return T_CATCH;}
+<ST_IN_SCRIPTING>"finally"              { return T_FINALLY;}
+<ST_IN_SCRIPTING>"throw"                { return T_THROW;}
+<ST_IN_SCRIPTING>"if"                   { return T_IF;}
+<ST_IN_SCRIPTING>"elseif"               { return T_ELSEIF;}
+<ST_IN_SCRIPTING>"endif"                { return T_ENDIF;}
+<ST_IN_SCRIPTING>"else"                 { return T_ELSE;}
+<ST_IN_SCRIPTING>"while"                { return T_WHILE;}
+<ST_IN_SCRIPTING>"endwhile"             { return T_ENDWHILE;}
+<ST_IN_SCRIPTING>"do"                   { return T_DO;}
+<ST_IN_SCRIPTING>"for"                  { return T_FOR;}
+<ST_IN_SCRIPTING>"endfor"               { return T_ENDFOR;}
+<ST_IN_SCRIPTING>"foreach"              { return T_FOREACH;}
+<ST_IN_SCRIPTING>"endforeach"           { return T_ENDFOREACH;}
+<ST_IN_SCRIPTING>"declare"              { return T_DECLARE;}
+<ST_IN_SCRIPTING>"enddeclare"           { return T_ENDDECLARE;}
+<ST_IN_SCRIPTING>"instanceof"           { return T_INSTANCEOF;}
+<ST_IN_SCRIPTING>"as"                   { return T_AS;}
+<ST_IN_SCRIPTING>"switch"               { return T_SWITCH;}
+<ST_IN_SCRIPTING>"endswitch"            { return T_ENDSWITCH;}
+<ST_IN_SCRIPTING>"case"                 { return T_CASE;}
+<ST_IN_SCRIPTING>"default"              { return T_DEFAULT;}
+<ST_IN_SCRIPTING>"break"                { return T_BREAK;}
+<ST_IN_SCRIPTING>"continue"             { return T_CONTINUE;}
+<ST_IN_SCRIPTING>"goto"                 { return T_GOTO;}
+<ST_IN_SCRIPTING>"echo"                 { return T_ECHO;}
+<ST_IN_SCRIPTING>"print"                { return T_PRINT;}
+<ST_IN_SCRIPTING>"class"                { return T_CLASS;}
+<ST_IN_SCRIPTING>"interface"            { return T_INTERFACE;}
+<ST_IN_SCRIPTING>"trait"                { return T_TRAIT;}
+<ST_IN_SCRIPTING>"..."                  { return T_ELLIPSIS;}
+<ST_IN_SCRIPTING>"insteadof"            { return T_INSTEADOF;}
+<ST_IN_SCRIPTING>"extends"              { return T_EXTENDS;}
+<ST_IN_SCRIPTING>"implements"           { return T_IMPLEMENTS;}
+<ST_IN_SCRIPTING>"enum"                 { return T_ENUM; }
+<ST_IN_SCRIPTING>"attribute"            { return T_XHP_ATTRIBUTE; }
+<ST_IN_SCRIPTING>"category"             { return T_XHP_CATEGORY; }
+<ST_IN_SCRIPTING>"children"             { return T_XHP_CHILDREN; }
+<ST_IN_SCRIPTING>"required"             { return T_XHP_REQUIRED; }
 
 
 
@@ -238,169 +234,170 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 //<ST_LOOKING_FOR_PROPERTY>"->" {
-//        return RETTOKEN(T_OBJECT_OPERATOR);
+//        return T_OBJECT_OPERATOR;
 //}
 
 <ST_LOOKING_FOR_PROPERTY>{LABEL} {
         popState();
-        return RETTOKEN(T_STRING);
+        return T_STRING;
 }
 
 <ST_LOOKING_FOR_PROPERTY>{WHITESPACE} {
-        return RETTOKEN(T_WHITESPACE);
+        return T_WHITESPACE;
 }
 
 <ST_LOOKING_FOR_PROPERTY>{ANY_CHAR} {
         popState();
+        yypushback(1);
 }
 
 
-<ST_IN_SCRIPTING>"::"                { return RETTOKEN(T_DOUBLE_COLON);}
-<ST_IN_SCRIPTING>"\\"                { return RETTOKEN(T_NS_SEPARATOR);}
-<ST_IN_SCRIPTING>"new"               { return RETTOKEN(T_NEW);}
-<ST_IN_SCRIPTING>"clone"             { return RETTOKEN(T_CLONE);}
-<ST_IN_SCRIPTING>"var"               { return RETTOKEN(T_VAR);}
+<ST_IN_SCRIPTING>"::"                { return T_DOUBLE_COLON;}
+<ST_IN_SCRIPTING>"\\"                { return T_NS_SEPARATOR;}
+<ST_IN_SCRIPTING>"new"               { return T_NEW;}
+<ST_IN_SCRIPTING>"clone"             { return T_CLONE;}
+<ST_IN_SCRIPTING>"var"               { return T_VAR;}
 
 //Casts
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}("int"|"integer"){TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_INT_CAST);
+    return T_INT_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}("real"|"double"|"float"){TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_DOUBLE_CAST);
+    return T_DOUBLE_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}("string"|"binary"){TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_STRING_CAST);
+    return T_STRING_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}"array"{TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_ARRAY_CAST);
+    return T_ARRAY_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}"object"{TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_OBJECT_CAST);
+    return T_OBJECT_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}("bool"|"boolean"){TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_BOOL_CAST);
+    return T_BOOL_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 <ST_IN_SCRIPTING>"("{TABS_AND_SPACES}("unset"){TABS_AND_SPACES}")" {
   if (lastToken != T_FUNCTION) {
-    return RETTOKEN(T_UNSET_CAST);
+    return T_UNSET_CAST;
   }
-  yypushback(1);
-  return RETTOKEN(T_LPAREN);
+  yypushback(yylength()-1);
+  return T_LPAREN;
 }
 
 
-<ST_IN_SCRIPTING>"callable"           { return RETTOKEN(T_CALLABLE);}
-<ST_IN_SCRIPTING>"eval"               { return RETTOKEN(T_EVAL);}
-<ST_IN_SCRIPTING>"include"            { return RETTOKEN(T_INCLUDE);}
-<ST_IN_SCRIPTING>"include_once"       { return RETTOKEN(T_INCLUDE_ONCE);}
-<ST_IN_SCRIPTING>"require"            { return RETTOKEN(T_REQUIRE);}
-<ST_IN_SCRIPTING>"require_once"       { return RETTOKEN(T_REQUIRE_ONCE);}
-<ST_IN_SCRIPTING>"namespace"          { return RETTOKEN(T_NAMESPACE);}
-<ST_IN_SCRIPTING>"use"                { return RETTOKEN(T_USE);}
-<ST_IN_SCRIPTING>"global"             { return RETTOKEN(T_GLOBAL);}
-<ST_IN_SCRIPTING>"isset"              { return RETTOKEN(T_ISSET);}
-<ST_IN_SCRIPTING>"empty"              { return RETTOKEN(T_EMPTY);}
-<ST_IN_SCRIPTING>"__halt_compiler"    { return RETTOKEN(T_HALT_COMPILER);}
-<ST_IN_SCRIPTING>"__compiler_halt_offset__" { return RETTOKEN(T_COMPILER_HALT_OFFSET);}
-<ST_IN_SCRIPTING>"static"             { return RETTOKEN(T_STATIC);}
-<ST_IN_SCRIPTING>"abstract"           { return RETTOKEN(T_ABSTRACT);}
-<ST_IN_SCRIPTING>"final"              { return RETTOKEN(T_FINAL);}
-<ST_IN_SCRIPTING>"private"            { return RETTOKEN(T_PRIVATE);}
-<ST_IN_SCRIPTING>"protected"          { return RETTOKEN(T_PROTECTED);}
-<ST_IN_SCRIPTING>"public"             { return RETTOKEN(T_PUBLIC);}
-<ST_IN_SCRIPTING>"unset"              { return RETTOKEN(T_UNSET);}
-<ST_IN_SCRIPTING>"==>"                { return RETTOKEN(T_LAMBDA_ARROW);}
-<ST_IN_SCRIPTING>"=>"                 { return RETSTEP(T_DOUBLE_ARROW);}
-<ST_IN_SCRIPTING>"list"               { return RETTOKEN(T_LIST);}
-<ST_IN_SCRIPTING>"array"              { return RETTOKEN(T_ARRAY);}
-<ST_IN_SCRIPTING>"++"                 { return RETSTEP(T_INC);}
-<ST_IN_SCRIPTING>"--"                 { return RETSTEP(T_DEC);}
-<ST_IN_SCRIPTING>"==="                { return RETSTEP(T_IS_IDENTICAL);}
-<ST_IN_SCRIPTING>"!=="                { return RETSTEP(T_IS_NOT_IDENTICAL);}
-<ST_IN_SCRIPTING>"=="                 { return RETSTEP(T_IS_EQUAL);}
-<ST_IN_SCRIPTING>"!="|"<>"            { return RETSTEP(T_IS_NOT_EQUAL);}
-<ST_IN_SCRIPTING>"<="                 { return RETSTEP(T_IS_SMALLER_OR_EQUAL);}
-<ST_IN_SCRIPTING>">="                 { return RETSTEP(T_IS_GREATER_OR_EQUAL);}
-<ST_IN_SCRIPTING>"+="                 { return RETSTEP(T_PLUS_EQUAL);}
-<ST_IN_SCRIPTING>"-="                 { return RETSTEP(T_MINUS_EQUAL);}
-<ST_IN_SCRIPTING>"*="                 { return RETSTEP(T_MUL_EQUAL);}
-<ST_IN_SCRIPTING>"/="                 { return RETSTEP(T_DIV_EQUAL);}
-<ST_IN_SCRIPTING>"**"                 { return RETSTEP(T_POW);}
-<ST_IN_SCRIPTING>"**="                { return RETSTEP(T_POW_EQUAL);}
-<ST_IN_SCRIPTING>".="                 { return RETSTEP(T_CONCAT_EQUAL);}
-<ST_IN_SCRIPTING>"%="                 { return RETSTEP(T_MOD_EQUAL);}
-<ST_IN_SCRIPTING>"<<="                { return RETSTEP(T_SL_EQUAL);}
-<ST_IN_SCRIPTING>">>="                { return RETSTEP(T_SR_EQUAL);}
-<ST_IN_SCRIPTING>"&="                 { return RETSTEP(T_AND_EQUAL);}
-<ST_IN_SCRIPTING>"|="                 { return RETSTEP(T_OR_EQUAL);}
-<ST_IN_SCRIPTING>"^="                 { return RETSTEP(T_XOR_EQUAL);}
-<ST_IN_SCRIPTING>"||"                 { return RETSTEP(T_BOOLEAN_OR);}
-<ST_IN_SCRIPTING>"&&"                 { return RETSTEP(T_BOOLEAN_AND);}
-<ST_IN_SCRIPTING>"OR"                 { return RETTOKEN(T_LOGICAL_OR);}
-<ST_IN_SCRIPTING>"AND"                { return RETTOKEN(T_LOGICAL_AND);}
-<ST_IN_SCRIPTING>"XOR"                { return RETTOKEN(T_LOGICAL_XOR);}
-<ST_IN_SCRIPTING>"<<"                 { return RETSTEP(T_SL);}
+<ST_IN_SCRIPTING>"callable"           { return T_CALLABLE;}
+<ST_IN_SCRIPTING>"eval"               { return T_EVAL;}
+<ST_IN_SCRIPTING>"include"            { return T_INCLUDE;}
+<ST_IN_SCRIPTING>"include_once"       { return T_INCLUDE_ONCE;}
+<ST_IN_SCRIPTING>"require"            { return T_REQUIRE;}
+<ST_IN_SCRIPTING>"require_once"       { return T_REQUIRE_ONCE;}
+<ST_IN_SCRIPTING>"namespace"          { return T_NAMESPACE;}
+<ST_IN_SCRIPTING>"use"                { return T_USE;}
+<ST_IN_SCRIPTING>"global"             { return T_GLOBAL;}
+<ST_IN_SCRIPTING>"isset"              { return T_ISSET;}
+<ST_IN_SCRIPTING>"empty"              { return T_EMPTY;}
+<ST_IN_SCRIPTING>"__halt_compiler"    { return T_HALT_COMPILER;}
+<ST_IN_SCRIPTING>"__compiler_halt_offset__" { return T_COMPILER_HALT_OFFSET;}
+<ST_IN_SCRIPTING>"static"             { return T_STATIC;}
+<ST_IN_SCRIPTING>"abstract"           { return T_ABSTRACT;}
+<ST_IN_SCRIPTING>"final"              { return T_FINAL;}
+<ST_IN_SCRIPTING>"private"            { return T_PRIVATE;}
+<ST_IN_SCRIPTING>"protected"          { return T_PROTECTED;}
+<ST_IN_SCRIPTING>"public"             { return T_PUBLIC;}
+<ST_IN_SCRIPTING>"unset"              { return T_UNSET;}
+<ST_IN_SCRIPTING>"list"               { return T_LIST;}
+<ST_IN_SCRIPTING>"array"              { return T_ARRAY;}
+<ST_IN_SCRIPTING>"==>"                { return T_LAMBDA_ARROW;}
+<ST_IN_SCRIPTING>"=>"                 { return T_DOUBLE_ARROW;}
+<ST_IN_SCRIPTING>"++"                 { return T_INC;}
+<ST_IN_SCRIPTING>"--"                 { return T_DEC;}
+<ST_IN_SCRIPTING>"==="                { return T_IS_IDENTICAL;}
+<ST_IN_SCRIPTING>"!=="                { return T_IS_NOT_IDENTICAL;}
+<ST_IN_SCRIPTING>"=="                 { return T_IS_EQUAL;}
+<ST_IN_SCRIPTING>"!="|"<>"            { return T_IS_NOT_EQUAL;}
+<ST_IN_SCRIPTING>"<="                 { return T_IS_SMALLER_OR_EQUAL;}
+<ST_IN_SCRIPTING>">="                 { return T_IS_GREATER_OR_EQUAL;}
+<ST_IN_SCRIPTING>"+="                 { return T_PLUS_EQUAL;}
+<ST_IN_SCRIPTING>"-="                 { return T_MINUS_EQUAL;}
+<ST_IN_SCRIPTING>"*="                 { return T_MUL_EQUAL;}
+<ST_IN_SCRIPTING>"/="                 { return T_DIV_EQUAL;}
+<ST_IN_SCRIPTING>"**"                 { return T_POW;}
+<ST_IN_SCRIPTING>"**="                { return T_POW_EQUAL;}
+<ST_IN_SCRIPTING>".="                 { return T_CONCAT_EQUAL;}
+<ST_IN_SCRIPTING>"%="                 { return T_MOD_EQUAL;}
+<ST_IN_SCRIPTING>"<<="                { return T_SL_EQUAL;}
+<ST_IN_SCRIPTING>">>="                { return T_SR_EQUAL;}
+<ST_IN_SCRIPTING>"&="                 { return T_AND_EQUAL;}
+<ST_IN_SCRIPTING>"|="                 { return T_OR_EQUAL;}
+<ST_IN_SCRIPTING>"^="                 { return T_XOR_EQUAL;}
+<ST_IN_SCRIPTING>"||"                 { return T_BOOLEAN_OR;}
+<ST_IN_SCRIPTING>"&&"                 { return T_BOOLEAN_AND;}
+<ST_IN_SCRIPTING>"OR"                 { return T_LOGICAL_OR;}
+<ST_IN_SCRIPTING>"AND"                { return T_LOGICAL_AND;}
+<ST_IN_SCRIPTING>"XOR"                { return T_LOGICAL_XOR;}
+<ST_IN_SCRIPTING>"<<"                 { return T_SL;}
 
-<ST_IN_SCRIPTING>"shape"              { return HH_ONLY_KEYWORD(T_SHAPE); }
-<ST_IN_SCRIPTING>"varray"             { return HH_ONLY_KEYWORD(T_VARRAY); }
-<ST_IN_SCRIPTING>"miarray"            { return HH_ONLY_KEYWORD(T_MIARRAY); }
-<ST_IN_SCRIPTING>"msarray"            { return HH_ONLY_KEYWORD(T_MSARRAY); }
-<ST_IN_SCRIPTING>"type"               { return HH_ONLY_KEYWORD(T_UNRESOLVED_TYPE); }
-<ST_IN_SCRIPTING>"newtype"            { return HH_ONLY_KEYWORD(T_UNRESOLVED_NEWTYPE); }
-<ST_IN_SCRIPTING>"await"              { return HH_ONLY_KEYWORD(T_AWAIT);}
+<ST_IN_SCRIPTING>"shape"              { return T_SHAPE; }
+<ST_IN_SCRIPTING>"varray"             { return T_VARRAY; }
+<ST_IN_SCRIPTING>"miarray"            { return T_MIARRAY; }
+<ST_IN_SCRIPTING>"msarray"            { return T_MSARRAY; }
+<ST_IN_SCRIPTING>"type"               { return T_UNRESOLVED_TYPE; }
+<ST_IN_SCRIPTING>"newtype"            { return T_UNRESOLVED_NEWTYPE; }
+<ST_IN_SCRIPTING>"await"              { return T_AWAIT;}
 <ST_IN_SCRIPTING>"from"/{WHITESPACE_AND_COMMENTS}\$[a-zA-Z0-9_\x7f-\xff] {
-  return HH_ONLY_KEYWORD(T_FROM);
+  return T_FROM;
 }
-<ST_IN_SCRIPTING>"where"              { return HH_ONLY_KEYWORD(T_WHERE); }
-<ST_IN_SCRIPTING>"join"               { return HH_ONLY_KEYWORD(T_JOIN); }
-<ST_IN_SCRIPTING>"in"                 { return HH_ONLY_KEYWORD(T_IN); }
-<ST_IN_SCRIPTING>"on"                 { return HH_ONLY_KEYWORD(T_ON); }
-<ST_IN_SCRIPTING>"equals"             { return HH_ONLY_KEYWORD(T_EQUALS); }
-<ST_IN_SCRIPTING>"into"               { return HH_ONLY_KEYWORD(T_INTO); }
-<ST_IN_SCRIPTING>"let"                { return HH_ONLY_KEYWORD(T_LET); }
-<ST_IN_SCRIPTING>"orderby"            { return HH_ONLY_KEYWORD(T_ORDERBY); }
-<ST_IN_SCRIPTING>"ascending"          { return HH_ONLY_KEYWORD(T_ASCENDING); }
-<ST_IN_SCRIPTING>"descending"         { return HH_ONLY_KEYWORD(T_DESCENDING); }
-<ST_IN_SCRIPTING>"select"             { return HH_ONLY_KEYWORD(T_SELECT); }
-<ST_IN_SCRIPTING>"group"              { return HH_ONLY_KEYWORD(T_GROUP); }
-<ST_IN_SCRIPTING>"by"                 { return HH_ONLY_KEYWORD(T_BY); }
+<ST_IN_SCRIPTING>"where"              { return T_WHERE; }
+<ST_IN_SCRIPTING>"join"               { return T_JOIN; }
+<ST_IN_SCRIPTING>"in"                 { return T_IN; }
+<ST_IN_SCRIPTING>"on"                 { return T_ON; }
+<ST_IN_SCRIPTING>"equals"             { return T_EQUALS; }
+<ST_IN_SCRIPTING>"into"               { return T_INTO; }
+<ST_IN_SCRIPTING>"let"                { return T_LET; }
+<ST_IN_SCRIPTING>"orderby"            { return T_ORDERBY; }
+<ST_IN_SCRIPTING>"ascending"          { return T_ASCENDING; }
+<ST_IN_SCRIPTING>"descending"         { return T_DESCENDING; }
+<ST_IN_SCRIPTING>"select"             { return T_SELECT; }
+<ST_IN_SCRIPTING>"group"              { return T_GROUP; }
+<ST_IN_SCRIPTING>"by"                 { return T_BY; }
 <ST_IN_SCRIPTING>"async"/{WHITESPACE_AND_COMMENTS}[a-zA-Z0-9_\x7f-\xff($] {
-  return HH_ONLY_KEYWORD(T_ASYNC);
+  return T_ASYNC;
 }
 
 <ST_IN_SCRIPTING>"tuple"/("("|{WHITESPACE_AND_COMMENTS}"(") {
-  return HH_ONLY_KEYWORD(T_ARRAY);
+  return T_TUPLE;
 }
 
 
@@ -408,48 +405,43 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
   int ntt = getNextTokenType(lastToken);
   if (!isXHPSyntaxEnabled() ||
       (((ntt & NextTokenType.XhpClassName) > 0) && lastToken != T_RBRACE)) {
-    return RETTOKEN(T_QUEST);
+    return T_QUEST;
   }
 
-  BEGIN(ST_LOOKING_FOR_COLON);
-  return RETTOKEN(T_QUEST);
+  yybegin(ST_LOOKING_FOR_COLON);
+  return T_QUEST;
 }
 
 <ST_LOOKING_FOR_COLON>":" {
-  BEGIN(ST_IN_SCRIPTING);
-  return RETTOKEN(T_COLON);
+  yybegin(ST_IN_SCRIPTING);
+  return T_COLON;
 }
 
 <ST_IN_SCRIPTING>">>" {
-//  if (getLookaheadLtDepth() < 2) {
-//    return RETTOKEN(T_SR);
-//  }
-  yypushback(1);
-  return RETTOKEN(T_GREATER);
+  return T_SR;
 }
 
 <ST_IN_SCRIPTING>"<"[a-zA-Z_\x7f-\xff] {
 
   int ntt = getNextTokenType(lastToken);
+  yypushback(1);
+
   if ((ntt & NextTokenType.XhpTag) > 0) {
-    yypushback(1);
-    STEPPOS(T_XHP_TAG_LT);
     pushState(ST_XHP_IN_TAG);
     return T_XHP_TAG_LT;
   }
   if ((ntt & NextTokenType.XhpTagMaybe) > 0) {
     // Shift to state state ST_LT_CHECK to do a more extensive check to
     // determine if this is the beginning of an XHP tag.
-    BEGIN(ST_LT_CHECK);
+    yybegin(ST_LT_CHECK);
     break;
   }
-  yypushback(1);
   if (isHHSyntaxEnabled() && ((ntt & NextTokenType.TypeListMaybe) > 0)) {
     // Return T_UNRESOLVED_LT; the scanner will inspect subseqent tokens
     // to resolve this.
-    return RETTOKEN(T_UNRESOLVED_LT);
+    return T_UNRESOLVED_LT;
   }
-  return RETTOKEN(T_LESS);
+  return T_LESS;
 }
 
 <ST_IN_SCRIPTING>"<" {
@@ -458,191 +450,188 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
     if ((ntt & NextTokenType.TypeListMaybe) > 0) {
       // Return T_UNRESOLVED_LT; the scanner will inspect subseqent tokens
       // to resolve this.
-      return RETTOKEN(T_UNRESOLVED_LT);
+      return T_UNRESOLVED_LT;
     }
   }
-  return RETTOKEN(T_LESS);
+  return T_LESS;
 }
 
 <ST_LT_CHECK>"<"{XHPLABEL}(">"|"/>"|{WHITESPACE_AND_COMMENTS}(">"|"/>"|[a-zA-Z_\x7f-\xff])) {
-  BEGIN(ST_IN_SCRIPTING);
-  yypushback(1);
-  STEPPOS(T_XHP_TAG_LT);
+  yypushback(yylength()-1);
+  yybegin(ST_IN_SCRIPTING);
   pushState(ST_XHP_IN_TAG);
   return T_XHP_TAG_LT;
 }
 
 <ST_LT_CHECK>"<" {
-  BEGIN(ST_IN_SCRIPTING);
-  return RETTOKEN(T_LESS);
+  yybegin(ST_IN_SCRIPTING);
+  return T_LESS;
 }
 
 <ST_IN_SCRIPTING>":"{XHPLABEL}  {
   if (isXHPSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.XhpClassName) > 0) {
-      RETTOKEN(T_XHP_LABEL);
+      return T_XHP_LABEL;
     }
   }
-  yypushback(1);
-  return RETTOKEN(T_COLON);
+  yypushback(yylength()-1);
+  return T_COLON;
 }
 
 <ST_IN_SCRIPTING>"%"{XHPLABEL}  {
   if (isXHPSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.XhpCategoryName) > 0) {
-      RETTOKEN(T_XHP_CATEGORY_LABEL);
+      return T_XHP_CATEGORY_LABEL;
     }
   }
-  yypushback(1);
-  return RETTOKEN(T_MOD);
+  yypushback(yylength()-1);
+  return T_MOD;
 }
 
 <ST_IN_SCRIPTING>"("            {
   if (isHHSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.LambdaMaybe) > 0) {
-      return RETTOKEN(T_UNRESOLVED_OP);
+      return T_UNRESOLVED_OP;
     }
   }
-  return RETTOKEN(T_LPAREN);
+  return T_LPAREN;
 }
 
 //TOKENS = [;:,.\[\])|^&+\-*/=%!~$<>?@]
-<ST_IN_SCRIPTING>    ";" {return RETTOKEN(T_SEMICOLON);}
-<ST_IN_SCRIPTING>    ":" {return RETTOKEN(T_COLON);}
-<ST_IN_SCRIPTING>    "," {return RETTOKEN(T_COMMA);}
-<ST_IN_SCRIPTING>    "." {return RETTOKEN(T_DOT);}
-<ST_IN_SCRIPTING>    "[" {return RETTOKEN(T_LBRACKET);}
-<ST_IN_SCRIPTING>    "]" {return RETTOKEN(T_RBRACKET);}
-<ST_IN_SCRIPTING>    ")" {return RETTOKEN(T_RPAREN);}
-<ST_IN_SCRIPTING>    "|" {return RETTOKEN(T_OR);}
-<ST_IN_SCRIPTING>    "^" {return RETTOKEN(T_XOR);}
-<ST_IN_SCRIPTING>    "&" {return RETTOKEN(T_AND);}
-<ST_IN_SCRIPTING>    "+" {return RETTOKEN(T_PLUS);}
-<ST_IN_SCRIPTING>    "-" {return RETTOKEN(T_MINUS);}
-<ST_IN_SCRIPTING>    "*" {return RETTOKEN(T_MUL);}
-<ST_IN_SCRIPTING>    "/" {return RETTOKEN(T_DIV);}
-<ST_IN_SCRIPTING>    "=" {return RETTOKEN(T_EQUAL);}
-<ST_IN_SCRIPTING>    "%" {return RETTOKEN(T_MOD);}
-<ST_IN_SCRIPTING>    "!" {return RETTOKEN(T_NEGATE);}
-<ST_IN_SCRIPTING>    "~" {return RETTOKEN(T_NOT);}
-<ST_IN_SCRIPTING>    "<" {return RETTOKEN(T_LESS);}
-<ST_IN_SCRIPTING>    ">" {return RETTOKEN(T_GREATER);}
-<ST_IN_SCRIPTING>    "?" {return RETTOKEN(T_QUEST);}
-<ST_IN_SCRIPTING>    "@" {return RETTOKEN(T_SILENCE);}
-<ST_IN_SCRIPTING>    "$" {return RETTOKEN(T_DOLLAR_SIGN);}
+<ST_IN_SCRIPTING>    ";" {return T_SEMICOLON;}
+<ST_IN_SCRIPTING>    ":" {return T_COLON;}
+<ST_IN_SCRIPTING>    "," {return T_COMMA;}
+<ST_IN_SCRIPTING>    "." {return T_DOT;}
+<ST_IN_SCRIPTING>    "[" {return T_LBRACKET;}
+<ST_IN_SCRIPTING>    "]" {return T_RBRACKET;}
+<ST_IN_SCRIPTING>    ")" {return T_RPAREN;}
+<ST_IN_SCRIPTING>    "|" {return T_OR;}
+<ST_IN_SCRIPTING>    "^" {return T_XOR;}
+<ST_IN_SCRIPTING>    "&" {return T_AND;}
+<ST_IN_SCRIPTING>    "+" {return T_PLUS;}
+<ST_IN_SCRIPTING>    "-" {return T_MINUS;}
+<ST_IN_SCRIPTING>    "*" {return T_MUL;}
+<ST_IN_SCRIPTING>    "/" {return T_DIV;}
+<ST_IN_SCRIPTING>    "=" {return T_EQUAL;}
+<ST_IN_SCRIPTING>    "%" {return T_MOD;}
+<ST_IN_SCRIPTING>    "!" {return T_NEGATE;}
+<ST_IN_SCRIPTING>    "~" {return T_NOT;}
+<ST_IN_SCRIPTING>    "<" {return T_LESS;}
+<ST_IN_SCRIPTING>    ">" {return T_GREATER;}
+<ST_IN_SCRIPTING>    "?" {return T_QUEST;}
+<ST_IN_SCRIPTING>    "@" {return T_SILENCE;}
+<ST_IN_SCRIPTING>    "$" {return T_DOLLAR_SIGN;}
 
 
 
 <ST_IN_SCRIPTING>"{" {
-        STEPPOS(T_LBRACE);
         pushState(ST_IN_SCRIPTING);
-        return RETTOKEN(T_LBRACE);
+        return T_LBRACE;
 }
 
 <ST_DOUBLE_QUOTES,ST_BACKQUOTE,ST_HEREDOC>"${" {
-        STEPPOS(T_DOLLAR_OPEN_CURLY_BRACES);
         pushState(ST_LOOKING_FOR_VARNAME);
-        return RETTOKEN(T_DOLLAR_OPEN_CURLY_BRACES);
+        return T_DOLLAR_OPEN_CURLY_BRACES;
 }
 
 <ST_IN_SCRIPTING>"}"/":"[a-zA-Z_\x7f-\xff] {
-        STEPPOS(T_RBRACE);
+        
         if (stack.size() > 1) {
           int yyS = popState();
           if (yyS == ST_IN_SCRIPTING) {
-            BEGIN(ST_LOOKING_FOR_COLON);
+            yybegin(ST_LOOKING_FOR_COLON);
           }
         }
         return T_RBRACE;
 }
 
 <ST_IN_SCRIPTING>"}" {
-        STEPPOS(T_RBRACE);
+        
         if (stack.size()>1) popState();
         return T_RBRACE;
 }
 
 <ST_LOOKING_FOR_VARNAME>{LABEL} {
-        BEGIN(ST_IN_SCRIPTING);
+        yybegin(ST_IN_SCRIPTING);
         return T_STRING_VARNAME;
 }
 
 <ST_LOOKING_FOR_VARNAME>{ANY_CHAR} {
-        BEGIN(ST_IN_SCRIPTING);
+        yybegin(ST_IN_SCRIPTING);
 }
 
 <ST_IN_SCRIPTING,ST_XHP_IN_TAG>{LNUM} {
         // Hex literals shouldn't match.
-       return RETTOKEN(T_LNUMBER);
+       return T_LNUMBER;
 }
 
 <ST_IN_SCRIPTING,ST_XHP_IN_TAG>{HNUM} {
         // Check for literals that don't fit in 64-bits.
-             return   RETTOKEN(T_ONUMBER);
+             return   T_ONUMBER;
 }
 
 <ST_IN_SCRIPTING,ST_XHP_IN_TAG>{BNUM} {
-              return  RETTOKEN(T_LNUMBER);
+              return  T_LNUMBER;
 }
 
 
 <ST_VAR_OFFSET>0|([1-9][0-9]*) { /* Offset could be treated as a long */
-     return  RETTOKEN(T_NUM_STRING);
+     return  T_NUM_STRING;
 }
 
 <ST_VAR_OFFSET>{LNUM}|{HNUM}|{BNUM} { /* Offset must be treated as a string */
-       return RETTOKEN(T_NUM_STRING);
+       return T_NUM_STRING;
 }
 
 <ST_IN_SCRIPTING,ST_XHP_IN_TAG>{DNUM}|{EXPONENT_DNUM} {
-      return  RETTOKEN(T_DNUMBER);
+      return  T_DNUMBER;
 }
 
-<ST_IN_SCRIPTING>"__CLASS__"            { return RETTOKEN(T_CLASS_C); }
-<ST_IN_SCRIPTING>"__TRAIT__"            { return RETTOKEN(T_TRAIT_C); }
-<ST_IN_SCRIPTING>"__FUNCTION__"         { return RETTOKEN(T_FUNC_C); }
-<ST_IN_SCRIPTING>"__METHOD__"           { return RETTOKEN(T_METHOD_C);}
-<ST_IN_SCRIPTING>"__LINE__"             { return RETTOKEN(T_LINE); }
-<ST_IN_SCRIPTING>"__FILE__"             { return RETTOKEN(T_FILE); }
-<ST_IN_SCRIPTING>"__DIR__"              { return RETTOKEN(T_DIR); }
-<ST_IN_SCRIPTING>"__NAMESPACE__"        { return RETTOKEN(T_NS_C); }
+<ST_IN_SCRIPTING>"__CLASS__"            { return T_CLASS_C; }
+<ST_IN_SCRIPTING>"__TRAIT__"            { return T_TRAIT_C; }
+<ST_IN_SCRIPTING>"__FUNCTION__"         { return T_FUNC_C; }
+<ST_IN_SCRIPTING>"__METHOD__"           { return T_METHOD_C;}
+<ST_IN_SCRIPTING>"__LINE__"             { return T_LINE; }
+<ST_IN_SCRIPTING>"__FILE__"             { return T_FILE; }
+<ST_IN_SCRIPTING>"__DIR__"              { return T_DIR; }
+<ST_IN_SCRIPTING>"__NAMESPACE__"        { return T_NS_C; }
 
 <YYINITIAL> "#!"[^\n]*"\n" {
-        BEGIN(ST_IN_SCRIPTING);
+        yybegin(ST_IN_SCRIPTING);
         pushState(ST_AFTER_HASHBANG);
         return T_INLINE_HTML;
 }
 
 <YYINITIAL>(([^<#]|"<"[^?%s<]|"#"[^!]){1,400})|"<s"|"<" {
-        BEGIN(ST_IN_SCRIPTING);
+        yybegin(ST_IN_SCRIPTING);
         pushState(ST_IN_HTML);
         return T_INLINE_HTML;
 }
 
 <ST_IN_HTML,ST_AFTER_HASHBANG>(([^<]|"<"[^?%s<]){1,400})|"<s"|"<" {
-        BEGIN(ST_IN_HTML);
+        yybegin(ST_IN_HTML);
         return T_INLINE_HTML;
 }
 //
 <YYINITIAL,ST_IN_HTML,ST_AFTER_HASHBANG>"<?"|("<?php"([ \t]|{NEWLINE}))|"<script"{WHITESPACE}+"language"{WHITESPACE}*"="{WHITESPACE}*("php"|"\"php\""|"\'php\'"){WHITESPACE}*">" {
         if (shortTags() ||yylength() > 2) {
-          SETTOKEN(T_OPEN_TAG);
+          
           if (yystate() == YYINITIAL) {
-            BEGIN(ST_IN_SCRIPTING);
+            yybegin(ST_IN_SCRIPTING);
           } else {
             popState();
           }
           return T_OPEN_TAG;
         } else {
-          SETTOKEN(T_INLINE_HTML);
+          
           if (yystate() == YYINITIAL) {
-            BEGIN(ST_IN_SCRIPTING);
+            yybegin(ST_IN_SCRIPTING);
             pushState(ST_IN_HTML);
           } else if (yystate() == ST_AFTER_HASHBANG) {
-            BEGIN(ST_IN_HTML);
+            yybegin(ST_IN_HTML);
           }
           return T_INLINE_HTML;
         }
@@ -651,7 +640,7 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
   /* this rule, and ST_IN_PHP_OPEN_TAG are specifically for the case where a file */
   /* contains the <?php directive followed directly by an EOF: */
 <YYINITIAL>"<?php" {
-        BEGIN(ST_IN_PHP_OPEN_TAG);
+        yybegin(ST_IN_PHP_OPEN_TAG);
         return T_OPEN_TAG;
 }
 
@@ -661,23 +650,23 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 
 <YYINITIAL,ST_IN_HTML,ST_AFTER_HASHBANG>"<?=" {
           if (yystate() == YYINITIAL) {
-            BEGIN(ST_IN_SCRIPTING);
+            yybegin(ST_IN_SCRIPTING);
           } else {
             popState();
           }
-          RETTOKEN(T_ECHO); //return T_OPEN_TAG_WITH_ECHO;
+          return T_ECHO; //return T_OPEN_TAG_WITH_ECHO;
 }
 
 
 <YYINITIAL,ST_IN_HTML,ST_AFTER_HASHBANG>"<?hh"([ \t]|{NEWLINE}) {
         if (yystate() == YYINITIAL) {
-          BEGIN(ST_IN_SCRIPTING);
+          yybegin(ST_IN_SCRIPTING);
         } else if (yystate() == ST_AFTER_HASHBANG) {
           popState();
         } else {
           return T_HH_ERROR;
         }
-        STEPPOS(T_OPEN_TAG);
+        
         return T_OPEN_TAG;
 }
 
@@ -686,14 +675,14 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_DOUBLE_QUOTES,ST_HEREDOC,ST_BACKQUOTE>"$"{LABEL}"->"[a-zA-Z_\x7f-\xff] {
-        yypushback(yylength() - 3);
+        yypushback(3);
         pushState(ST_LOOKING_FOR_PROPERTY);
         //setToken(yytext, yylength(), yytext+1, yylength()-1, T_VARIABLE);
         return T_VARIABLE;
 }
 
 <ST_DOUBLE_QUOTES,ST_HEREDOC,ST_BACKQUOTE>"$"{LABEL}"[" {
-        yypushback(yylength() - 1);
+        yypushback(1);
         pushState(ST_VAR_OFFSET);
        // setToken(yytext, yylength(), yytext+1, yylength()-1, T_VARIABLE);
         return T_VARIABLE;
@@ -704,101 +693,52 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
         return T_RBRACKET;
 }
 
-//<ST_VAR_OFFSET>{TOKENS}|[({}\"`] {
-//        /* Only '[' can be valid, but returning other tokens will allow
-//           a more explicit parse error */
-//        return yytext[0];
-//}
+<ST_VAR_OFFSET>"[" {
+        return T_LBRACKET;
+}
 
 <ST_VAR_OFFSET>[ \n\r\t\\\'#] {
-
-        yypushback(0);
         popState();
-        return RETTOKEN(T_ENCAPSED_AND_WHITESPACE);
+        return T_ENCAPSED_AND_WHITESPACE;
 }
 
 <ST_IN_SCRIPTING,ST_VAR_OFFSET>{LABEL} {
-       return RETTOKEN(T_STRING);
+       return T_STRING;
 }
 
 <ST_IN_SCRIPTING,ST_XHP_IN_TAG>{WHITESPACE} {
-        return RETTOKEN(T_WHITESPACE);
+        return T_WHITESPACE;
 }
 
-<ST_IN_SCRIPTING,ST_XHP_IN_TAG>"#"|"//" {
-        pushState(ST_ONE_LINE_COMMENT);
 
+<ST_IN_SCRIPTING,ST_XHP_IN_TAG>"#" {
+
+	int eatResult = lcManager.eat();
+	zzMarkedPos += eatResult;
+	return T_LINE_COMMENT;
 }
 
-<ST_ONE_LINE_COMMENT>"?"|"%"|">" {
-
+<ST_IN_SCRIPTING,ST_XHP_IN_TAG>"//" {
+	int eatResult = lcManager.eat();
+    zzMarkedPos += eatResult;
+	return T_LINE_COMMENT;
 }
 
-//
-//<ST_ONE_LINE_COMMENT>[^\n\r?%>]*{ANY_CHAR} {
-//        switch (yytext[yylength()-1]) {
-//        case '?':
-//        case '%':
-//        case '>':
-//                yypushback(yylength()-1);
-//                more();
-//                break;
-//        default:
-//                STEPPOS(T_COMMENT);
-//                popState();
-//                return T_COMMENT;
-//        }
-//}
 
-<ST_ONE_LINE_COMMENT>{NEWLINE} {
-        STEPPOS(T_COMMENT);
-        popState();
-        return T_COMMENT;
+<ST_IN_SCRIPTING,ST_XHP_IN_TAG>{DOC_COMMENT_REGEX} {
+    return T_DOC_COMMENT;
 }
 
-<ST_ONE_LINE_COMMENT>"?>" {
-
-        if (isHHFile()) {
-          return T_HH_ERROR;
-        }
+<ST_IN_SCRIPTING,ST_XHP_IN_TAG>{COMMENT_REGEX} {
+    return T_COMMENT;
 }
 
-<ST_IN_SCRIPTING,ST_XHP_IN_TAG>"/**"{WHITESPACE} {
-        pushState(ST_DOC_COMMENT);
-
-}
-
-<ST_IN_SCRIPTING,ST_XHP_IN_TAG>"/*" {
-        pushState(ST_COMMENT);
-
-}
-
-<ST_COMMENT,ST_DOC_COMMENT>[^*]+ {
-
-}
-
-<ST_DOC_COMMENT>"*/" {
-        SETTOKEN(T_DOC_COMMENT);
-        popState();
-        return T_DOC_COMMENT;
-}
-
-<ST_COMMENT>"*/" {
-        STEPPOS(T_COMMENT);
-        popState();
-        return T_COMMENT;
-}
-
-<ST_COMMENT,ST_DOC_COMMENT>"*" {
-
-}
 
 <ST_XHP_COMMENT>[^-]+ {
 
 }
 
 <ST_XHP_COMMENT>"-->" {
-        STEPPOS(T_COMMENT);
         popState();
         return T_COMMENT;
 }
@@ -813,18 +753,18 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
         }
         pushState(ST_IN_HTML);
         if (zzAtEOF) {
-          return RETTOKEN(T_CLOSE_TAG);
+          return T_CLOSE_TAG;
         } else {
-          return RETTOKEN(T_SEMICOLON);
+          return T_SEMICOLON;
         }
 }
 
 <ST_IN_SCRIPTING>"</script"{WHITESPACE}*">"{NEWLINE}? {
         pushState(ST_IN_HTML);
         if (zzAtEOF) {
-          return RETTOKEN(T_CLOSE_TAG);
+          return T_CLOSE_TAG;
         } else {
-          return RETTOKEN(T_SEMICOLON);
+          return T_SEMICOLON;
         }
 }
 
@@ -834,14 +774,11 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_IN_SCRIPTING>(b?[\']([^\'\\]|("\\"{ANY_CHAR}))*[\']?) {
-        boolean closed = true;
-       // (yytext[yylength() - 1] == '\'');
-
-        return closed ? T_CONSTANT_ENCAPSED_STRING : T_ENCAPSED_AND_WHITESPACE;
+        return yycharat(yylength()-1)=='\'' ? T_CONSTANT_ENCAPSED_STRING : T_ENCAPSED_AND_WHITESPACE;
 }
 
 <ST_IN_SCRIPTING>b?[\"] {
-        BEGIN(ST_DOUBLE_QUOTES);
+        yybegin(ST_DOUBLE_QUOTES);
         return T_DOUBLE_QUOTE;
 }
 
@@ -856,13 +793,13 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 //        if (*s == '\'') {
 //                s++;
 //                label_len -= 2;
-//                BEGIN(ST_NOWDOC);
+//                yybegin(ST_NOWDOC);
 //        } else {
 //                if (*s == '"') {
 //                       s++;
 //                       label_len -= 2;
 //                }
-//                BEGIN(ST_HEREDOC);
+//                yybegin(ST_HEREDOC);
 //        }
 //        setHeredocLabel(s, label_len);
 //        setToken(yytext, yylength(), s, label_len);
@@ -870,44 +807,41 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 //}
 
 <ST_IN_SCRIPTING>[`] {
-        STEPPOS(T_BACK_QUOTE);
-        BEGIN(ST_BACKQUOTE);
+        yybegin(ST_BACKQUOTE);
         return T_BACK;
 }
 
 <ST_XHP_IN_TAG>{XHPLABEL} {
-        RETTOKEN(T_XHP_LABEL);
+        return T_XHP_LABEL;
 }
 
 <ST_XHP_IN_TAG>"=" {
-  return RETTOKEN(T_EQUAL);
+  return T_EQUAL;
 }
 
 <ST_XHP_IN_TAG>[\"][^\"]*[\"] {
- // setToken(yytext, yylength(), yytext+1, yylength()-2);
   return T_XHP_TEXT;
 }
 
 <ST_XHP_IN_TAG>[{] {
-  STEPPOS(T_LBRACE);
+  
   pushState(ST_IN_SCRIPTING);
   return T_LBRACE;
 }
 
 <ST_XHP_IN_TAG>">" {
-  STEPPOS(T_XHP_TAG_GT);
-  BEGIN(ST_XHP_CHILD);
+  
+  yybegin(ST_XHP_CHILD);
   return T_XHP_TAG_GT;
 }
 
 <ST_XHP_IN_TAG>"/>" {
-  BEGIN(ST_XHP_END_SINGLETON_TAG);
+  yybegin(ST_XHP_END_SINGLETON_TAG);
   yypushback(1);
   return T_DIV;
 }
 
 <ST_XHP_END_SINGLETON_TAG>">" {
-  STEPPOS(T_XHP_TAG_GT);
   popState();
   return T_XHP_TAG_GT;
 }
@@ -918,37 +852,35 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_XHP_CHILD>[^{<]+ {
-  RETTOKEN(T_XHP_TEXT);
+  return T_XHP_TEXT;
 }
 
 <ST_XHP_CHILD>"{" {
-  STEPPOS(T_LBRACE);
   pushState(ST_IN_SCRIPTING);
   return T_LBRACE;
 }
 
 <ST_XHP_CHILD>"</" {
-  BEGIN(ST_XHP_END_CLOSE_TAG);
+  yybegin(ST_XHP_END_CLOSE_TAG);
   yypushback(1);
-  return RETTOKEN(T_XHP_TAG_LT);
+  return T_XHP_TAG_LT;
 }
 
 <ST_XHP_END_CLOSE_TAG>"/" {
-  return RETTOKEN(T_DIV);
+  return T_DIV;
 }
 
 <ST_XHP_END_CLOSE_TAG>{XHPLABEL} {
-  RETTOKEN(T_XHP_LABEL);
+  return T_XHP_LABEL;
 }
 
 <ST_XHP_END_CLOSE_TAG>">" {
-  STEPPOS(T_XHP_TAG_GT);
   popState();
   return T_XHP_TAG_GT;
 }
 
 <ST_XHP_CHILD>"<" {
-  STEPPOS(T_XHP_TAG_LT);
+  
   pushState(ST_XHP_IN_TAG);
   return T_XHP_TAG_LT;
 }
@@ -1037,7 +969,7 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 //                end++;
 //              }
 //              if (*end == '\n' || *end == '\r') {
-//                BEGIN(ST_END_HEREDOC);
+//                yybegin(ST_END_HEREDOC);
 //                goto doc_scan_done;
 //              }
 //            }
@@ -1122,8 +1054,8 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 //}
 
 <ST_END_HEREDOC>{LABEL} {
-        BEGIN(ST_IN_SCRIPTING);
-        return RETTOKEN(T_END_HEREDOC);
+        yybegin(ST_IN_SCRIPTING);
+        return T_END_HEREDOC;
 }
 
 <ST_DOUBLE_QUOTES,ST_BACKQUOTE,ST_HEREDOC>"{$" {
@@ -1140,9 +1072,7 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_DOUBLE_QUOTES>{DOUBLE_QUOTES_CHARS}*("{"{2,200}|"$"{2,200}|(("{"+|"$"+)[\"])) {
-//        yypushback(yylength() - 1);
-//        std::string strval = escape(yytext, yylength(), '"');
-//        setToken(yytext, yylength(), strval.c_str(), strval.length());
+        yypushback(1);
         return T_ENCAPSED_AND_WHITESPACE;
 }
 
@@ -1153,28 +1083,29 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_BACKQUOTE>{BACKQUOTE_CHARS}*("{"{2,5}|"$"{2,5}|(("{"+|"$"+)[`])) {
-        yypushback(yylength() - 1);
+        yypushback(1);
 //        std::string strval = escape(yytext, yylength(), T_BACKQUOTE);
 //        setToken(yytext, yylength(), strval.c_str(), strval.length());
         return T_ENCAPSED_AND_WHITESPACE;
 }
 
 <ST_DOUBLE_QUOTES>[\"] {
-        BEGIN(ST_IN_SCRIPTING);
+        yybegin(ST_IN_SCRIPTING);
         return T_DOUBLE_QUOTE;
 }
 
 <ST_BACKQUOTE>[\`] {
-        BEGIN(ST_IN_SCRIPTING);
+        yybegin(ST_IN_SCRIPTING);
         return T_BACK_QUOTE;
 }
 
 <ST_COMMENT,ST_DOC_COMMENT><<EOF>> {
 //        error("Unterminated comment at end of file");
-        return T_UNRESOLVED_LT;
+        //return T_HH_ERROR;
 }
 
 <ST_IN_HTML ,ST_IN_SCRIPTING ,ST_AFTER_HASHBANG ,ST_DOUBLE_QUOTES ,ST_BACKQUOTE ,ST_HEREDOC ,ST_NOWDOC ,ST_END_HEREDOC ,ST_LOOKING_FOR_PROPERTY ,ST_LOOKING_FOR_VARNAME ,ST_LOOKING_FOR_COLON ,ST_VAR_OFFSET ,ST_LT_CHECK ,ST_COMMENT ,ST_DOC_COMMENT ,ST_ONE_LINE_COMMENT ,ST_IN_PHP_OPEN_TAG,ST_XHP_IN_TAG ,ST_XHP_END_SINGLETON_TAG ,ST_XHP_END_CLOSE_TAG ,ST_XHP_CHILD ,ST_XHP_COMMENT>{ANY_CHAR} {
 //        error("Unexpected character in input: '%c' (ASCII=%d)",
 //                        yytext[0], yytext[0]);
+       // return T_HH_ERROR;
 }

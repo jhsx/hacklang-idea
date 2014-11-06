@@ -24,14 +24,8 @@ public class HackClassStatementListImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @NotNull
-  public HackClassStatement getClassStatement() {
-    return findNotNullChildByClass(HackClassStatement.class);
-  }
-
-  @Override
-  @NotNull
-  public HackClassStatementList getClassStatementList() {
-    return findNotNullChildByClass(HackClassStatementList.class);
+  public List<HackClassStatement> getClassStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackClassStatement.class);
   }
 
 }

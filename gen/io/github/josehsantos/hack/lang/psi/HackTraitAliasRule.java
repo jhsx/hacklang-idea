@@ -13,9 +13,6 @@ public interface HackTraitAliasRule extends PsiElement {
   @Nullable
   HackMethodModifiers getMethodModifiers();
 
-  @Nullable
-  HackNonEmptyMemberModifiers getNonEmptyMemberModifiers();
-
   @NotNull
   HackTraitAliasRuleMethod getTraitAliasRuleMethod();
 

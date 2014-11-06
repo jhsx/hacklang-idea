@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackStaticMapArrayLiteral extends PsiElement {
 
-  @NotNull
-  HackStaticMapArrayInit getStaticMapArrayInit();
+  @Nullable
+  HackStaticArrayPairList getStaticArrayPairList();
 
 }

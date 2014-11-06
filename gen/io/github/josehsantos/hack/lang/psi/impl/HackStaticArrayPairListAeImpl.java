@@ -24,14 +24,8 @@ public class HackStaticArrayPairListAeImpl extends ASTWrapperPsiElement implemen
 
   @Override
   @NotNull
-  public HackNonEmptyStaticArrayPairListAe getNonEmptyStaticArrayPairListAe() {
-    return findNotNullChildByClass(HackNonEmptyStaticArrayPairListAe.class);
-  }
-
-  @Override
-  @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
+  public List<HackStaticArrayItemAe> getStaticArrayItemAeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticArrayItemAe.class);
   }
 
 }

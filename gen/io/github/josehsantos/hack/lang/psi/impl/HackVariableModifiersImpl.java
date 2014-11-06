@@ -22,10 +22,4 @@ public class HackVariableModifiersImpl extends ASTWrapperPsiElement implements H
     else super.accept(visitor);
   }
 
-  @Override
-  @Nullable
-  public HackNonEmptyMemberModifiers getNonEmptyMemberModifiers() {
-    return findChildByClass(HackNonEmptyMemberModifiers.class);
-  }
-
 }

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackCtorArguments extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackFunctionCallParameterList getFunctionCallParameterList();
 
 }

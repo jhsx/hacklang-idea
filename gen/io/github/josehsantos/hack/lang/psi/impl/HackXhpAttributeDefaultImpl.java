@@ -23,9 +23,9 @@ public class HackXhpAttributeDefaultImpl extends ASTWrapperPsiElement implements
   }
 
   @Override
-  @NotNull
-  public HackStaticExpr getStaticExpr() {
-    return findNotNullChildByClass(HackStaticExpr.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
 }

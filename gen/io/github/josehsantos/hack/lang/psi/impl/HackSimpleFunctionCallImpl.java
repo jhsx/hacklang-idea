@@ -23,9 +23,9 @@ public class HackSimpleFunctionCallImpl extends ASTWrapperPsiElement implements 
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackFunctionCallParameterList getFunctionCallParameterList() {
-    return findNotNullChildByClass(HackFunctionCallParameterList.class);
+    return findChildByClass(HackFunctionCallParameterList.class);
   }
 
   @Override

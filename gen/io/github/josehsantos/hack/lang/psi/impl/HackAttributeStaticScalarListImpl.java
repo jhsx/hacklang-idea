@@ -23,9 +23,9 @@ public class HackAttributeStaticScalarListImpl extends ASTWrapperPsiElement impl
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackStaticScalarListAe getStaticScalarListAe() {
-    return findNotNullChildByClass(HackStaticScalarListAe.class);
+    return findChildByClass(HackStaticScalarListAe.class);
   }
 
 }

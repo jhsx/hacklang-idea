@@ -7,6 +7,9 @@ import com.intellij.psi.PsiElement;
 
 public interface HackVariable extends PsiElement {
 
+  @NotNull
+  List<HackArrayAccess> getArrayAccessList();
+
   @Nullable
   HackCallableVariable getCallableVariable();
 
@@ -14,10 +17,7 @@ public interface HackVariable extends PsiElement {
   HackClassMethodCall getClassMethodCall();
 
   @Nullable
-  HackDimmableVariableAccess getDimmableVariableAccess();
-
-  @Nullable
-  HackExprWithParens getExprWithParens();
+  HackExpr getExpr();
 
   @Nullable
   HackFunctionCallParameterList getFunctionCallParameterList();
@@ -25,8 +25,8 @@ public interface HackVariable extends PsiElement {
   @Nullable
   HackObjectMethodCall getObjectMethodCall();
 
-  @Nullable
-  HackPropertyAccess getPropertyAccess();
+  @NotNull
+  List<HackPropertyAccess> getPropertyAccessList();
 
   @Nullable
   HackSimpleFunctionCall getSimpleFunctionCall();

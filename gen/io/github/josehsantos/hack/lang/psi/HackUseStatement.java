@@ -5,15 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackUseStatement extends PsiElement {
-
-  @Nullable
-  HackUseConstDeclarations getUseConstDeclarations();
+public interface HackUseStatement extends HackStatement {
 
   @Nullable
   HackUseDeclarations getUseDeclarations();
-
-  @Nullable
-  HackUseFnDeclarations getUseFnDeclarations();
 
 }

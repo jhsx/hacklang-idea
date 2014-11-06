@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackForeachStatementImpl extends ASTWrapperPsiElement implements HackForeachStatement {
+public class HackForeachStatementImpl extends HackStatementImpl implements HackForeachStatement {
 
   public HackForeachStatementImpl(ASTNode node) {
     super(node);
@@ -23,27 +22,27 @@ public class HackForeachStatementImpl extends ASTWrapperPsiElement implements Ha
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackExpr getExpr() {
-    return findNotNullChildByClass(HackExpr.class);
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackForeachOptionalArg getForeachOptionalArg() {
-    return findNotNullChildByClass(HackForeachOptionalArg.class);
+    return findChildByClass(HackForeachOptionalArg.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackForeachStatementBody getForeachStatementBody() {
-    return findNotNullChildByClass(HackForeachStatementBody.class);
+    return findChildByClass(HackForeachStatementBody.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackForeachVariable getForeachVariable() {
-    return findNotNullChildByClass(HackForeachVariable.class);
+    return findChildByClass(HackForeachVariable.class);
   }
 
 }

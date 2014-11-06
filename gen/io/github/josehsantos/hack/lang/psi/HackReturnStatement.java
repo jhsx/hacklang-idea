@@ -5,15 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackReturnStatement extends PsiElement {
-
-  @Nullable
-  HackAwaitExpr getAwaitExpr();
+public interface HackReturnStatement extends HackStatement {
 
   @Nullable
   HackExpr getExpr();
-
-  @Nullable
-  HackQueryExpr getQueryExpr();
 
 }

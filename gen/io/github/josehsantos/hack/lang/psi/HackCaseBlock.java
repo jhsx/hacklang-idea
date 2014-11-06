@@ -7,13 +7,13 @@ import com.intellij.psi.PsiElement;
 
 public interface HackCaseBlock extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackCaseSeparator getCaseSeparator();
 
-  @NotNull
+  @Nullable
   HackExpr getExpr();
 
-  @NotNull
+  @Nullable
   HackInnerStatementList getInnerStatementList();
 
 }

@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface HackLexicalVarList extends PsiElement {
 
-  @Nullable
-  HackLexicalVarList getLexicalVarList();
-
 }

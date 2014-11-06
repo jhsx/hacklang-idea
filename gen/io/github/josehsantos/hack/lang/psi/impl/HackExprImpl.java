@@ -23,15 +23,9 @@ public class HackExprImpl extends ASTWrapperPsiElement implements HackExpr {
   }
 
   @Override
-  @Nullable
-  public HackExprNoVariable getExprNoVariable() {
-    return findChildByClass(HackExprNoVariable.class);
-  }
-
-  @Override
-  @Nullable
-  public HackExprWithParens getExprWithParens() {
-    return findChildByClass(HackExprWithParens.class);
+  @NotNull
+  public List<HackExpr> getExprList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpr.class);
   }
 
   @Override

@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackEchoStatementImpl extends ASTWrapperPsiElement implements HackEchoStatement {
+public class HackEchoStatementImpl extends HackStatementImpl implements HackEchoStatement {
 
   public HackEchoStatementImpl(ASTNode node) {
     super(node);
@@ -23,9 +22,9 @@ public class HackEchoStatementImpl extends ASTWrapperPsiElement implements HackE
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackExprList getExprList() {
-    return findNotNullChildByClass(HackExprList.class);
+    return findChildByClass(HackExprList.class);
   }
 
 }

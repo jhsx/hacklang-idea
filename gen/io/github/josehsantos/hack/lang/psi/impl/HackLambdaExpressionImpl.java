@@ -23,9 +23,21 @@ public class HackLambdaExpressionImpl extends ASTWrapperPsiElement implements Ha
   }
 
   @Override
+  @Nullable
+  public HackHhOptReturnType getHhOptReturnType() {
+    return findChildByClass(HackHhOptReturnType.class);
+  }
+
+  @Override
   @NotNull
   public HackLambdaBody getLambdaBody() {
     return findNotNullChildByClass(HackLambdaBody.class);
+  }
+
+  @Override
+  @Nullable
+  public HackParameterList getParameterList() {
+    return findChildByClass(HackParameterList.class);
   }
 
 }

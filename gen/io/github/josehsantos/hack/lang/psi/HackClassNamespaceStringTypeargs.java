@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackClassNamespaceStringTypeargs extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackHhTypeargsOpt getHhTypeargsOpt();
 
   @NotNull
-  HackNamespaceStringBase getNamespaceStringBase();
+  HackNamespaceName getNamespaceName();
 
 }

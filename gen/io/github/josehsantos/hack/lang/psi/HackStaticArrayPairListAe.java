@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticArrayPairListAe extends PsiElement {
 
   @NotNull
-  HackNonEmptyStaticArrayPairListAe getNonEmptyStaticArrayPairListAe();
-
-  @NotNull
-  HackPossibleComma getPossibleComma();
+  List<HackStaticArrayItemAe> getStaticArrayItemAeList();
 
 }

@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackDeclareStatementBody extends PsiElement {
 
   @Nullable
-  HackInnerStatementList getInnerStatementList();
-
-  @Nullable
-  HackStatement getStatement();
+  HackDeclareNewStatement getDeclareNewStatement();
 
 }

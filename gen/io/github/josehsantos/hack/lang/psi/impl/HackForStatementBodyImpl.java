@@ -24,14 +24,8 @@ public class HackForStatementBodyImpl extends ASTWrapperPsiElement implements Ha
 
   @Override
   @Nullable
-  public HackInnerStatementList getInnerStatementList() {
-    return findChildByClass(HackInnerStatementList.class);
-  }
-
-  @Override
-  @Nullable
-  public HackStatement getStatement() {
-    return findChildByClass(HackStatement.class);
+  public HackForNewStatement getForNewStatement() {
+    return findChildByClass(HackForNewStatement.class);
   }
 
 }

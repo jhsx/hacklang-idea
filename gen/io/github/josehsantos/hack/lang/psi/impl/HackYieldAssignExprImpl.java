@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackYieldAssignExprImpl extends ASTWrapperPsiElement implements HackYieldAssignExpr {
+public class HackYieldAssignExprImpl extends HackExprImpl implements HackYieldAssignExpr {
 
   public HackYieldAssignExprImpl(ASTNode node) {
     super(node);
@@ -23,15 +22,15 @@ public class HackYieldAssignExprImpl extends ASTWrapperPsiElement implements Hac
   }
 
   @Override
-  @NotNull
-  public HackVariable getVariable() {
-    return findNotNullChildByClass(HackVariable.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
   @NotNull
-  public HackYieldExpr getYieldExpr() {
-    return findNotNullChildByClass(HackYieldExpr.class);
+  public HackVariable getVariable() {
+    return findNotNullChildByClass(HackVariable.class);
   }
 
 }

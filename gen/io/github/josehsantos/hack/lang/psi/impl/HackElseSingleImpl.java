@@ -22,10 +22,4 @@ public class HackElseSingleImpl extends ASTWrapperPsiElement implements HackElse
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public HackStatement getStatement() {
-    return findNotNullChildByClass(HackStatement.class);
-  }
-
 }

@@ -24,20 +24,68 @@ public class HackHhShapeMemberTypeImpl extends ASTWrapperPsiElement implements H
 
   @Override
   @Nullable
+  public HackArrayType getArrayType() {
+    return findChildByClass(HackArrayType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackCallableType getCallableType() {
+    return findChildByClass(HackCallableType.class);
+  }
+
+  @Override
+  @Nullable
   public HackClassNamespaceStringTypeargs getClassNamespaceStringTypeargs() {
     return findChildByClass(HackClassNamespaceStringTypeargs.class);
   }
 
   @Override
-  @NotNull
-  public HackHhType getHhType() {
-    return findNotNullChildByClass(HackHhType.class);
+  @Nullable
+  public HackHhFunctionType getHhFunctionType() {
+    return findChildByClass(HackHhFunctionType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhNullableType getHhNullableType() {
+    return findChildByClass(HackHhNullableType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhShapeType getHhShapeType() {
+    return findChildByClass(HackHhShapeType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhSoftType getHhSoftType() {
+    return findChildByClass(HackHhSoftType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhTupleType getHhTupleType() {
+    return findChildByClass(HackHhTupleType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhXhpType getHhXhpType() {
+    return findChildByClass(HackHhXhpType.class);
   }
 
   @Override
   @Nullable
   public HackIdent getIdent() {
     return findChildByClass(HackIdent.class);
+  }
+
+  @Override
+  @Nullable
+  public HackIdentType getIdentType() {
+    return findChildByClass(HackIdentType.class);
   }
 
 }

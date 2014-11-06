@@ -23,9 +23,15 @@ public class HackSwitchCaseListImpl extends ASTWrapperPsiElement implements Hack
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackCaseList getCaseList() {
-    return findNotNullChildByClass(HackCaseList.class);
+    return findChildByClass(HackCaseList.class);
+  }
+
+  @Override
+  @Nullable
+  public HackSwitchNewStatement getSwitchNewStatement() {
+    return findChildByClass(HackSwitchNewStatement.class);
   }
 
 }

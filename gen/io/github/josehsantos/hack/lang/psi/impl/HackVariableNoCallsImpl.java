@@ -30,8 +30,8 @@ public class HackVariableNoCallsImpl extends ASTWrapperPsiElement implements Hac
 
   @Override
   @Nullable
-  public HackExprWithParens getExprWithParens() {
-    return findChildByClass(HackExprWithParens.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override

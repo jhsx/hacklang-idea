@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackQueryBodyClauses extends PsiElement {
 
   @NotNull
-  HackQueryBodyClause getQueryBodyClause();
-
-  @Nullable
-  HackQueryBodyClauses getQueryBodyClauses();
+  List<HackQueryBodyClause> getQueryBodyClauseList();
 
 }

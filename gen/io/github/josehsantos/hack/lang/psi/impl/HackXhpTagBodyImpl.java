@@ -23,9 +23,9 @@ public class HackXhpTagBodyImpl extends ASTWrapperPsiElement implements HackXhpT
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackXhpAttributes getXhpAttributes() {
-    return findNotNullChildByClass(HackXhpAttributes.class);
+    return findChildByClass(HackXhpAttributes.class);
   }
 
   @Override

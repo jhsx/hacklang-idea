@@ -1,7 +1,7 @@
 package io.github.josehsantos.hack.lang;
 
 import com.intellij.psi.tree.IElementType;
-import io.github.josehsantos.hack.ide.HackLanguage;
+import io.github.josehsantos.hack.HackLanguage;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 

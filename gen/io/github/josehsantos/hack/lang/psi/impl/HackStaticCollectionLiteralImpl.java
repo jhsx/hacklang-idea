@@ -29,9 +29,9 @@ public class HackStaticCollectionLiteralImpl extends ASTWrapperPsiElement implem
   }
 
   @Override
-  @NotNull
-  public HackStaticCollectionInit getStaticCollectionInit() {
-    return findNotNullChildByClass(HackStaticCollectionInit.class);
+  @Nullable
+  public HackStaticArrayPairList getStaticArrayPairList() {
+    return findChildByClass(HackStaticArrayPairList.class);
   }
 
 }

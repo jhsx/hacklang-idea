@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackNamespaceString extends PsiElement {
 
   @NotNull
-  HackNamespaceStringBase getNamespaceStringBase();
+  HackNamespaceName getNamespaceName();
 
 }

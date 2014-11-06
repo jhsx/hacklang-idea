@@ -24,14 +24,8 @@ public class HackOrderingsImpl extends ASTWrapperPsiElement implements HackOrder
 
   @Override
   @NotNull
-  public HackOrdering getOrdering() {
-    return findNotNullChildByClass(HackOrdering.class);
-  }
-
-  @Override
-  @Nullable
-  public HackOrderings getOrderings() {
-    return findChildByClass(HackOrderings.class);
+  public List<HackOrdering> getOrderingList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackOrdering.class);
   }
 
 }

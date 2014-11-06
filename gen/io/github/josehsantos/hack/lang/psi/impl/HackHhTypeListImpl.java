@@ -24,14 +24,56 @@ public class HackHhTypeListImpl extends ASTWrapperPsiElement implements HackHhTy
 
   @Override
   @NotNull
-  public HackHhNonEmptyTypeList getHhNonEmptyTypeList() {
-    return findNotNullChildByClass(HackHhNonEmptyTypeList.class);
+  public List<HackArrayType> getArrayTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackArrayType.class);
   }
 
   @Override
   @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
+  public List<HackCallableType> getCallableTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackCallableType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackHhFunctionType> getHhFunctionTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhFunctionType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackHhNullableType> getHhNullableTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhNullableType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackHhShapeType> getHhShapeTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhShapeType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackHhSoftType> getHhSoftTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhSoftType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackHhTupleType> getHhTupleTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhTupleType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackHhXhpType> getHhXhpTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhXhpType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackIdentType> getIdentTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackIdentType.class);
   }
 
 }

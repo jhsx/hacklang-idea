@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackForeachOptionalArg extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackForeachVariable getForeachVariable();
 
 }

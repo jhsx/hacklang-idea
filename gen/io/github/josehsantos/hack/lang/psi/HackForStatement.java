@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackForStatement extends PsiElement {
+public interface HackForStatement extends HackStatement {
 
   @NotNull
-  List<HackForExpr> getForExprList();
+  List<HackExprList> getExprListList();
 
-  @NotNull
+  @Nullable
   HackForStatementBody getForStatementBody();
 
 }

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackXhpTagBody extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackXhpAttributes getXhpAttributes();
 
   @Nullable

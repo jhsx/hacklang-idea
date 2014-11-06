@@ -22,10 +22,4 @@ public class HackLexicalVarListImpl extends ASTWrapperPsiElement implements Hack
     else super.accept(visitor);
   }
 
-  @Override
-  @Nullable
-  public HackLexicalVarList getLexicalVarList() {
-    return findChildByClass(HackLexicalVarList.class);
-  }
-
 }

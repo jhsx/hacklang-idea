@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackGlobalStatementImpl extends ASTWrapperPsiElement implements HackGlobalStatement {
+public class HackGlobalStatementImpl extends HackStatementImpl implements HackGlobalStatement {
 
   public HackGlobalStatementImpl(ASTNode node) {
     super(node);
@@ -23,9 +22,9 @@ public class HackGlobalStatementImpl extends ASTWrapperPsiElement implements Hac
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackGlobalVarList getGlobalVarList() {
-    return findNotNullChildByClass(HackGlobalVarList.class);
+    return findChildByClass(HackGlobalVarList.class);
   }
 
 }

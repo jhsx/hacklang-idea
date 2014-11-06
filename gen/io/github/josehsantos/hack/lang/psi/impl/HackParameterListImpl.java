@@ -28,10 +28,4 @@ public class HackParameterListImpl extends ASTWrapperPsiElement implements HackP
     return PsiTreeUtil.getChildrenOfTypeAsList(this, HackParameterItem.class);
   }
 
-  @Override
-  @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
-  }
-
 }

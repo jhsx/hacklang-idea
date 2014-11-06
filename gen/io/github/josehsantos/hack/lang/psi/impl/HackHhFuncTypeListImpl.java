@@ -24,12 +24,6 @@ public class HackHhFuncTypeListImpl extends ASTWrapperPsiElement implements Hack
 
   @Override
   @Nullable
-  public HackHhNonEmptyTypeList getHhNonEmptyTypeList() {
-    return findChildByClass(HackHhNonEmptyTypeList.class);
-  }
-
-  @Override
-  @Nullable
   public HackHhTypeList getHhTypeList() {
     return findChildByClass(HackHhTypeList.class);
   }

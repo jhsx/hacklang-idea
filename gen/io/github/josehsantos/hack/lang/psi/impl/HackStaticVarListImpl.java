@@ -24,8 +24,8 @@ public class HackStaticVarListImpl extends ASTWrapperPsiElement implements HackS
 
   @Override
   @NotNull
-  public List<HackStaticExpr> getStaticExprList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticExpr.class);
+  public List<HackStaticAssignment> getStaticAssignmentList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticAssignment.class);
   }
 
 }

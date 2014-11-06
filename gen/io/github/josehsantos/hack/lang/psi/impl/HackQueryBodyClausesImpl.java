@@ -24,14 +24,8 @@ public class HackQueryBodyClausesImpl extends ASTWrapperPsiElement implements Ha
 
   @Override
   @NotNull
-  public HackQueryBodyClause getQueryBodyClause() {
-    return findNotNullChildByClass(HackQueryBodyClause.class);
-  }
-
-  @Override
-  @Nullable
-  public HackQueryBodyClauses getQueryBodyClauses() {
-    return findChildByClass(HackQueryBodyClauses.class);
+  public List<HackQueryBodyClause> getQueryBodyClauseList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackQueryBodyClause.class);
   }
 
 }

@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackNewElseifBody extends PsiElement {
 
-  @NotNull
-  HackInnerStatementList getInnerStatementList();
+  @Nullable
+  HackExpr getExpr();
 
-  @NotNull
-  HackParenthesisExpr getParenthesisExpr();
+  @Nullable
+  HackInnerStatementList getInnerStatementList();
 
 }

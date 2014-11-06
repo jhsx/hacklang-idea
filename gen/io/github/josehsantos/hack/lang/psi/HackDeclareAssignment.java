@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackDeclareAssignment extends PsiElement {
 
-  @NotNull
-  HackIdent getIdent();
+  @Nullable
+  HackExpr getExpr();
 
   @NotNull
-  HackStaticExpr getStaticExpr();
+  HackIdent getIdent();
 
 }

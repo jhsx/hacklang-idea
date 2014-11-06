@@ -23,6 +23,12 @@ public class HackVariableImpl extends ASTWrapperPsiElement implements HackVariab
   }
 
   @Override
+  @NotNull
+  public List<HackArrayAccess> getArrayAccessList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackArrayAccess.class);
+  }
+
+  @Override
   @Nullable
   public HackCallableVariable getCallableVariable() {
     return findChildByClass(HackCallableVariable.class);
@@ -36,14 +42,8 @@ public class HackVariableImpl extends ASTWrapperPsiElement implements HackVariab
 
   @Override
   @Nullable
-  public HackDimmableVariableAccess getDimmableVariableAccess() {
-    return findChildByClass(HackDimmableVariableAccess.class);
-  }
-
-  @Override
-  @Nullable
-  public HackExprWithParens getExprWithParens() {
-    return findChildByClass(HackExprWithParens.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
@@ -59,9 +59,9 @@ public class HackVariableImpl extends ASTWrapperPsiElement implements HackVariab
   }
 
   @Override
-  @Nullable
-  public HackPropertyAccess getPropertyAccess() {
-    return findChildByClass(HackPropertyAccess.class);
+  @NotNull
+  public List<HackPropertyAccess> getPropertyAccessList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackPropertyAccess.class);
   }
 
   @Override

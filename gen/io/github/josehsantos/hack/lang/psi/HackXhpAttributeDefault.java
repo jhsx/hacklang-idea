@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackXhpAttributeDefault extends PsiElement {
 
-  @NotNull
-  HackStaticExpr getStaticExpr();
+  @Nullable
+  HackExpr getExpr();
 
 }

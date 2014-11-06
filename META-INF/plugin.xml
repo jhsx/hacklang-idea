@@ -1,6 +1,6 @@
 <idea-plugin version="2">
     <id>com.yourcompany.unique.plugin.id</id>
-    <name>Plugin display name here</name>
+    <name>Hacklang Support </name>
     <version>1.0</version>
     <vendor email="support@yourcompany.com" url="http://www.yourcompany.com">YourCompany</vendor>
 
@@ -23,13 +23,19 @@
     <!-- uncomment to enable plugin in all products
     <depends>com.intellij.modules.lang</depends>
     -->
-
+    <resource-bundle>io.github.josehsantos.hack.HackBundle</resource-bundle>
     <extensions defaultExtensionNs="com.intellij">
         <!-- Add your extensions here -->
-        <fileTypeFactory implementation="io.github.josehsantos.hack.ide.HackFileTypeFactory"/>
+        <fileTypeFactory implementation="io.github.josehsantos.hack.HackFileTypeFactory"/>
 
         <lang.parserDefinition language="Hack"
                                implementationClass="io.github.josehsantos.hack.ide.HackParserDefinition"/>
+        <lang.syntaxHighlighterFactory key="Hack"
+                                       implementationClass="io.github.josehsantos.hack.ide.highlighter.HackSyntaxHighlighterFactory"/>
+
+        <lang.commenter language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackCommenter"/>
+
+        <annotator language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackAnnotator"/>
     </extensions>
 
     <application-components>

@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackTryFinally extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackFinallyStatementList getFinallyStatementList();
 
 }

@@ -23,15 +23,9 @@ public class HackLambdaUseVarsImpl extends ASTWrapperPsiElement implements HackL
   }
 
   @Override
-  @NotNull
-  public HackHhPossibleComma getHhPossibleComma() {
-    return findNotNullChildByClass(HackHhPossibleComma.class);
-  }
-
-  @Override
-  @NotNull
+  @Nullable
   public HackLexicalVarList getLexicalVarList() {
-    return findNotNullChildByClass(HackLexicalVarList.class);
+    return findChildByClass(HackLexicalVarList.class);
   }
 
 }

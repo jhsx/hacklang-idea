@@ -23,39 +23,27 @@ public class HackClosureExpressionImpl extends ASTWrapperPsiElement implements H
   }
 
   @Override
-  @NotNull
-  public HackFunctionLoc getFunctionLoc() {
-    return findNotNullChildByClass(HackFunctionLoc.class);
-  }
-
-  @Override
-  @NotNull
+  @Nullable
   public HackHhOptReturnType getHhOptReturnType() {
-    return findNotNullChildByClass(HackHhOptReturnType.class);
+    return findChildByClass(HackHhOptReturnType.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackInnerStatementList getInnerStatementList() {
-    return findNotNullChildByClass(HackInnerStatementList.class);
+    return findChildByClass(HackInnerStatementList.class);
   }
 
   @Override
-  @NotNull
-  public HackIsReference getIsReference() {
-    return findNotNullChildByClass(HackIsReference.class);
-  }
-
-  @Override
-  @NotNull
+  @Nullable
   public HackLambdaUseVars getLambdaUseVars() {
-    return findNotNullChildByClass(HackLambdaUseVars.class);
+    return findChildByClass(HackLambdaUseVars.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackParameterList getParameterList() {
-    return findNotNullChildByClass(HackParameterList.class);
+    return findChildByClass(HackParameterList.class);
   }
 
 }

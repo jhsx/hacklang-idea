@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackFunctionCallParameterList extends PsiElement {
 
   @NotNull
-  HackHhPossibleComma getHhPossibleComma();
-
-  @NotNull
-  HackNonEmptyFcallParameterList getNonEmptyFcallParameterList();
+  List<HackCallingParameterItem> getCallingParameterItemList();
 
 }

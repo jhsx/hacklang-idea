@@ -24,8 +24,8 @@ public class HackInnerStatementListImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @NotNull
-  public List<HackInnerStatement> getInnerStatementList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackInnerStatement.class);
+  public List<HackStatement> getStatementList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStatement.class);
   }
 
 }

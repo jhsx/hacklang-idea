@@ -23,9 +23,9 @@ public class HackHhTypeargsOptImpl extends ASTWrapperPsiElement implements HackH
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackHhTypeList getHhTypeList() {
-    return findNotNullChildByClass(HackHhTypeList.class);
+    return findChildByClass(HackHhTypeList.class);
   }
 
 }

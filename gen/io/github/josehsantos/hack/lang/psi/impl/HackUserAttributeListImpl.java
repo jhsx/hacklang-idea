@@ -24,14 +24,8 @@ public class HackUserAttributeListImpl extends ASTWrapperPsiElement implements H
 
   @Override
   @NotNull
-  public HackNonEmptyUserAttributeList getNonEmptyUserAttributeList() {
-    return findNotNullChildByClass(HackNonEmptyUserAttributeList.class);
-  }
-
-  @Override
-  @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
+  public List<HackUserAttribute> getUserAttributeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackUserAttribute.class);
   }
 
 }

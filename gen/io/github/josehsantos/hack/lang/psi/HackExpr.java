@@ -7,11 +7,8 @@ import com.intellij.psi.PsiElement;
 
 public interface HackExpr extends PsiElement {
 
-  @Nullable
-  HackExprNoVariable getExprNoVariable();
-
-  @Nullable
-  HackExprWithParens getExprWithParens();
+  @NotNull
+  List<HackExpr> getExprList();
 
   @Nullable
   HackVariable getVariable();

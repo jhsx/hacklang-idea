@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackBackticksExprImpl extends ASTWrapperPsiElement implements HackBackticksExpr {
+public class HackBackticksExprImpl extends HackExprImpl implements HackBackticksExpr {
 
   public HackBackticksExprImpl(ASTNode node) {
     super(node);
@@ -23,9 +22,9 @@ public class HackBackticksExprImpl extends ASTWrapperPsiElement implements HackB
   }
 
   @Override
-  @Nullable
-  public HackEncapsList getEncapsList() {
-    return findChildByClass(HackEncapsList.class);
+  @NotNull
+  public List<HackEncapsList> getEncapsListList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackEncapsList.class);
   }
 
 }

@@ -24,8 +24,8 @@ public class HackForeachVariableImpl extends ASTWrapperPsiElement implements Hac
 
   @Override
   @Nullable
-  public HackAssignmentList getAssignmentList() {
-    return findChildByClass(HackAssignmentList.class);
+  public HackForeachListAssignment getForeachListAssignment() {
+    return findChildByClass(HackForeachListAssignment.class);
   }
 
   @Override

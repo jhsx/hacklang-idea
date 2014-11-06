@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackEnumStatement extends PsiElement {
+public interface HackEnumStatement extends HackStatement {
 
   @NotNull
   HackEnumConstantDeclaration getEnumConstantDeclaration();

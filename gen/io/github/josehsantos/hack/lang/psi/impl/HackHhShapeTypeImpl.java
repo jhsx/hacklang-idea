@@ -23,9 +23,9 @@ public class HackHhShapeTypeImpl extends ASTWrapperPsiElement implements HackHhS
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackHhShapeMemberList getHhShapeMemberList() {
-    return findNotNullChildByClass(HackHhShapeMemberList.class);
+    return findChildByClass(HackHhShapeMemberList.class);
   }
 
 }

@@ -24,14 +24,8 @@ public class HackStaticScalarListAeImpl extends ASTWrapperPsiElement implements 
 
   @Override
   @NotNull
-  public HackNonEmptyStaticScalarListAe getNonEmptyStaticScalarListAe() {
-    return findNotNullChildByClass(HackNonEmptyStaticScalarListAe.class);
-  }
-
-  @Override
-  @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
+  public List<HackStaticScalarAe> getStaticScalarAeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticScalarAe.class);
   }
 
 }

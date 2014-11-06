@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackUnsetStatement extends PsiElement {
+public interface HackUnsetStatement extends HackStatement {
 
-  @NotNull
+  @Nullable
   HackVariableList getVariableList();
 
 }

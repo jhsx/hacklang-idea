@@ -24,14 +24,8 @@ public class HackHhShapeMemberListImpl extends ASTWrapperPsiElement implements H
 
   @Override
   @NotNull
-  public HackHhNonEmptyShapeMemberList getHhNonEmptyShapeMemberList() {
-    return findNotNullChildByClass(HackHhNonEmptyShapeMemberList.class);
-  }
-
-  @Override
-  @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
+  public List<HackHhShapeMemberType> getHhShapeMemberTypeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhShapeMemberType.class);
   }
 
 }

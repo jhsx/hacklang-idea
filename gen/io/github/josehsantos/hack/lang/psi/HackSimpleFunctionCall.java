@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackSimpleFunctionCall extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackFunctionCallParameterList getFunctionCallParameterList();
 
   @NotNull

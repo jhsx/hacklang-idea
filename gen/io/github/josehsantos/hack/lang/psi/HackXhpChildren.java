@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackXhpChildren extends PsiElement {
 
   @NotNull
-  HackXhpChild getXhpChild();
-
-  @NotNull
-  HackXhpChildren getXhpChildren();
+  List<HackXhpChild> getXhpChildList();
 
 }

@@ -24,8 +24,8 @@ public class HackNamespaceStringImpl extends ASTWrapperPsiElement implements Hac
 
   @Override
   @NotNull
-  public HackNamespaceStringBase getNamespaceStringBase() {
-    return findNotNullChildByClass(HackNamespaceStringBase.class);
+  public HackNamespaceName getNamespaceName() {
+    return findNotNullChildByClass(HackNamespaceName.class);
   }
 
 }

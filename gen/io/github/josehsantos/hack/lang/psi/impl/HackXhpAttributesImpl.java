@@ -24,20 +24,8 @@ public class HackXhpAttributesImpl extends ASTWrapperPsiElement implements HackX
 
   @Override
   @NotNull
-  public HackXhpAttributeName getXhpAttributeName() {
-    return findNotNullChildByClass(HackXhpAttributeName.class);
-  }
-
-  @Override
-  @NotNull
-  public HackXhpAttributeValue getXhpAttributeValue() {
-    return findNotNullChildByClass(HackXhpAttributeValue.class);
-  }
-
-  @Override
-  @NotNull
-  public HackXhpAttributes getXhpAttributes() {
-    return findNotNullChildByClass(HackXhpAttributes.class);
+  public List<HackXhpAttribute> getXhpAttributeList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpAttribute.class);
   }
 
 }

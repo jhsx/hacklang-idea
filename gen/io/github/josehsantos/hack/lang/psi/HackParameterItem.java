@@ -7,16 +7,40 @@ import com.intellij.psi.PsiElement;
 
 public interface HackParameterItem extends PsiElement {
 
-  @NotNull
-  HackHhTypeOpt getHhTypeOpt();
-
-  @NotNull
-  HackOptionalUserAttributes getOptionalUserAttributes();
-
-  @NotNull
-  HackParameterModifiers getParameterModifiers();
+  @Nullable
+  HackArrayType getArrayType();
 
   @Nullable
-  HackStaticExpr getStaticExpr();
+  HackCallableType getCallableType();
+
+  @Nullable
+  HackExpr getExpr();
+
+  @Nullable
+  HackHhFunctionType getHhFunctionType();
+
+  @Nullable
+  HackHhNullableType getHhNullableType();
+
+  @Nullable
+  HackHhShapeType getHhShapeType();
+
+  @Nullable
+  HackHhSoftType getHhSoftType();
+
+  @Nullable
+  HackHhTupleType getHhTupleType();
+
+  @Nullable
+  HackHhXhpType getHhXhpType();
+
+  @Nullable
+  HackIdentType getIdentType();
+
+  @NotNull
+  List<HackParameterModifier> getParameterModifierList();
+
+  @Nullable
+  HackUserAttributes getUserAttributes();
 
 }

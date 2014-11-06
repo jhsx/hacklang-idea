@@ -23,15 +23,15 @@ public class HackClassNamespaceStringTypeargsImpl extends ASTWrapperPsiElement i
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackHhTypeargsOpt getHhTypeargsOpt() {
-    return findNotNullChildByClass(HackHhTypeargsOpt.class);
+    return findChildByClass(HackHhTypeargsOpt.class);
   }
 
   @Override
   @NotNull
-  public HackNamespaceStringBase getNamespaceStringBase() {
-    return findNotNullChildByClass(HackNamespaceStringBase.class);
+  public HackNamespaceName getNamespaceName() {
+    return findNotNullChildByClass(HackNamespaceName.class);
   }
 
 }

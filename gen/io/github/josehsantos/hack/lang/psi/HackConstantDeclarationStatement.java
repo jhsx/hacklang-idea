@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackConstantDeclarationStatement extends PsiElement {
+public interface HackConstantDeclarationStatement extends HackStatement {
 
   @NotNull
   HackConstantDeclaration getConstantDeclaration();

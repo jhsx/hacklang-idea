@@ -7,8 +7,8 @@ import com.intellij.psi.PsiElement;
 
 public interface HackCollectionLiteral extends PsiElement {
 
-  @NotNull
-  HackCollectionInit getCollectionInit();
+  @Nullable
+  HackArrayPairList getArrayPairList();
 
   @NotNull
   HackFullyQualifiedClassName getFullyQualifiedClassName();

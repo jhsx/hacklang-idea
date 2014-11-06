@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackOrderings extends PsiElement {
 
   @NotNull
-  HackOrdering getOrdering();
-
-  @Nullable
-  HackOrderings getOrderings();
+  List<HackOrdering> getOrderingList();
 
 }

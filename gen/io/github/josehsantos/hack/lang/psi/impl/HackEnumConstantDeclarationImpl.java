@@ -23,15 +23,15 @@ public class HackEnumConstantDeclarationImpl extends ASTWrapperPsiElement implem
   }
 
   @Override
-  @NotNull
-  public HackHhNameWithType getHhNameWithType() {
-    return findNotNullChildByClass(HackHhNameWithType.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
   @NotNull
-  public HackStaticExpr getStaticExpr() {
-    return findNotNullChildByClass(HackStaticExpr.class);
+  public HackHhNameWithType getHhNameWithType() {
+    return findNotNullChildByClass(HackHhNameWithType.class);
   }
 
 }

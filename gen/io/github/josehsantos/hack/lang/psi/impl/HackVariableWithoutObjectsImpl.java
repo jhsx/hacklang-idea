@@ -28,10 +28,4 @@ public class HackVariableWithoutObjectsImpl extends ASTWrapperPsiElement impleme
     return findNotNullChildByClass(HackReferenceVariable.class);
   }
 
-  @Override
-  @Nullable
-  public HackSimpleIndirectReference getSimpleIndirectReference() {
-    return findChildByClass(HackSimpleIndirectReference.class);
-  }
-
 }

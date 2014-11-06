@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackFunctionDeclarationStatementImpl extends ASTWrapperPsiElement implements HackFunctionDeclarationStatement {
+public class HackFunctionDeclarationStatementImpl extends HackStatementImpl implements HackFunctionDeclarationStatement {
 
   public HackFunctionDeclarationStatementImpl(ASTNode node) {
     super(node);
@@ -23,39 +22,45 @@ public class HackFunctionDeclarationStatementImpl extends ASTWrapperPsiElement i
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackFunctionBody getFunctionBody() {
-    return findNotNullChildByClass(HackFunctionBody.class);
+    return findChildByClass(HackFunctionBody.class);
   }
 
   @Override
-  @NotNull
-  public HackFunctionLoc getFunctionLoc() {
-    return findNotNullChildByClass(HackFunctionLoc.class);
-  }
-
-  @Override
-  @NotNull
-  public HackHhNameWithTypevar getHhNameWithTypevar() {
-    return findNotNullChildByClass(HackHhNameWithTypevar.class);
-  }
-
-  @Override
-  @NotNull
+  @Nullable
   public HackHhOptReturnType getHhOptReturnType() {
-    return findNotNullChildByClass(HackHhOptReturnType.class);
+    return findChildByClass(HackHhOptReturnType.class);
   }
 
   @Override
-  @NotNull
-  public HackIsReference getIsReference() {
-    return findNotNullChildByClass(HackIsReference.class);
+  @Nullable
+  public HackHhTypevar getHhTypevar() {
+    return findChildByClass(HackHhTypevar.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public HackIdent getIdent() {
+    return findChildByClass(HackIdent.class);
+  }
+
+  @Override
+  @Nullable
+  public HackMethodModifiers getMethodModifiers() {
+    return findChildByClass(HackMethodModifiers.class);
+  }
+
+  @Override
+  @Nullable
   public HackParameterList getParameterList() {
-    return findNotNullChildByClass(HackParameterList.class);
+    return findChildByClass(HackParameterList.class);
+  }
+
+  @Override
+  @Nullable
+  public HackUserAttributes getUserAttributes() {
+    return findChildByClass(HackUserAttributes.class);
   }
 
 }

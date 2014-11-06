@@ -23,15 +23,15 @@ public class HackDeclareAssignmentImpl extends ASTWrapperPsiElement implements H
   }
 
   @Override
-  @NotNull
-  public HackIdent getIdent() {
-    return findNotNullChildByClass(HackIdent.class);
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
   @NotNull
-  public HackStaticExpr getStaticExpr() {
-    return findNotNullChildByClass(HackStaticExpr.class);
+  public HackIdent getIdent() {
+    return findNotNullChildByClass(HackIdent.class);
   }
 
 }

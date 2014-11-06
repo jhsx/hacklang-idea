@@ -23,9 +23,9 @@ public class HackExtendsFromImpl extends ASTWrapperPsiElement implements HackExt
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackFullyQualifiedClassName getFullyQualifiedClassName() {
-    return findNotNullChildByClass(HackFullyQualifiedClassName.class);
+    return findChildByClass(HackFullyQualifiedClassName.class);
   }
 
 }

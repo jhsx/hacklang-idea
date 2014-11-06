@@ -43,620 +43,498 @@
      T_DOUBLE_QUOTE = "\""
      T_DOLLAR_SIGN = "$"
      T_ELLIPSIS="..."
+     T_BACK='`'
   ]
 }
 
-hackFile ::= T_OPEN_TAG top_statement_list
+hackFile ::= T_OPEN_TAG top_statement_list?
 
-top_statement_list::= ( statement
-                       | function_declaration_statement
-                       | class_declaration_statement
-                       | enum_declaration_statement
-                       | trait_declaration_statement
+private top_statement_list::= ( statement //Almost
+                       | function_declaration_statement //OK
+                       | class_declaration_statement //OK
+                       | interface_declaration_statement //OK
+                       | enum_declaration_statement //OK
+                       | trait_declaration_statement //OK
                        | hh_type_alias_statement
-                       | halt_compiler_statement
-                       | namespace_statement
-                       | use_statement
-                       | constant_declaration_statement)*
+                       | halt_compiler_statement //OK
+                       | namespace_statement //OK
+                       | use_statement //OK
+                       | constant_declaration_statement //OK
+                       )+
 
-halt_compiler_statement ::= T_HALT_COMPILER '(' ')' ';'
+halt_compiler_statement ::= T_HALT_COMPILER '(' ')' ';'  {pin=1}
 
 //Namespaces
 namespace_statement ::= (T_NAMESPACE namespace_name ';')
-        | (T_NAMESPACE namespace_name '{'  top_statement_list '}')
-        | (T_NAMESPACE '{'  top_statement_list '}')
+        | (T_NAMESPACE namespace_name? '{'  top_statement_list? '}')  {pin=1}
 
 constant_declaration_statement ::= constant_declaration ';'
 
-use_statement::= (T_USE use_declarations ';')
-        | (T_USE T_FUNCTION use_fn_declarations ';')
-        | (T_USE T_CONST use_const_declarations ';')
+use_statement::= T_USE (T_FUNCTION | T_CONST)? use_declarations ';'  {pin=1}
 
 ident::= T_STRING
-| T_XHP_ATTRIBUTE
-| T_XHP_CATEGORY
-| T_XHP_CHILDREN
-| T_XHP_REQUIRED
-| T_ENUM
-| T_WHERE
-| T_JOIN
-| T_ON
-| T_IN
-| T_EQUALS
-| T_INTO
-| T_LET
-| T_ORDERBY
-| T_ASCENDING
-| T_DESCENDING
-| T_SELECT
-| T_GROUP
-| T_BY
+        | T_XHP_ATTRIBUTE
+        | T_XHP_CATEGORY
+        | T_XHP_CHILDREN
+        | T_XHP_REQUIRED
+        | T_ENUM
+        | T_WHERE
+        | T_JOIN
+        | T_ON
+        | T_IN
+        | T_EQUALS
+        | T_INTO
+        | T_LET
+        | T_ORDERBY
+        | T_ASCENDING
+        | T_DESCENDING
+        | T_SELECT
+        | T_GROUP
+        | T_BY
 
 use_declarations::=  use_declaration (',' use_declaration)*
 
-use_fn_declarations::= use_fn_declaration (',' use_fn_declaration)*
-
-use_const_declarations::= use_const_declaration (',' use_const_declaration)*
-
-use_declaration::= (namespace_name T_AS ident)
-        | namespace_name
-
-use_fn_declaration::= (namespace_name T_AS ident)
-        | namespace_name
-
-use_const_declaration::=( namespace_name T_AS ident)
-        | namespace_name
-
+use_declaration::= namespace_name (T_AS ident)?
 
 namespace_name::= T_NS_SEPARATOR? ident (T_NS_SEPARATOR ident)*
 
+namespace_string::= (T_NAMESPACE namespace_name) | namespace_name
 
-namespace_string_base::= (T_NAMESPACE namespace_name)
-        | namespace_name
+namespace_string_typeargs::= ((T_NAMESPACE namespace_name)
+        | namespace_name) hh_typeargs_opt?
 
-namespace_string::= namespace_string_base
+class_namespace_string_typeargs::= ((T_NAMESPACE namespace_name)
+        | namespace_name) hh_typeargs_opt?
 
-namespace_string_typeargs::= namespace_string_base hh_typeargs_opt
+constant_assignment::= hh_name_with_type '=' static_expr {pin=2}
 
-class_namespace_string_typeargs::= namespace_string_base hh_typeargs_opt
+constant_declaration::=  T_CONST constant_assignment (',' constant_assignment)*  {pin=1}
 
-constant_assignment::= hh_name_with_type '=' static_expr
-
-constant_declaration::=  T_CONST constant_assignment (',' constant_assignment)*
-
-inner_statement_list::= inner_statement*
+inner_statement_list::= inner_statement+
 
 
-inner_statement::= statement
-| function_declaration_statement
-| class_declaration_statement
-| trait_declaration_statement
+private inner_statement::=  statement
+                    | function_declaration_statement
+                    | class_declaration_statement
+                    | interface_declaration_statement
+                    | trait_declaration_statement
 
-statement::= ('{' inner_statement_list '}')
-| if_statement
-| while_statement
-| do_while_statement
-| for_statement
-| switch_statement
-| break_statement
-| continue_statement
-| return_statement
-| yield_statement
-| global_statement
-| static_statement
-| echo_statement
-| unset_statement
-| ';'
-| html_statement
-| foreach_statement
-| declare_statement
-| try_statement
-| throw_statement
-| goto_statement
-| expr_statement
-| label_statement
+statement::=    (block_statement)
+                | if_statement
+                | while_statement
+                | do_while_statement
+                | for_statement
+                | switch_statement
+                | break_statement
+                | continue_statement
+                | return_statement
+                | yield_statement
+                | global_statement
+                | static_statement
+                | echo_statement
+                | unset_statement
+                | ';'
+                | html_statement
+                | foreach_statement
+                | declare_statement
+                | try_statement
+                | throw_statement
+                | goto_statement
+                | expr_statement
+                | label_statement
 
-if_statement::=  (T_IF parenthesis_expr statement elseif_list else_single)
-        |  (T_IF parenthesis_expr ':' inner_statement_list new_elseif_list new_else_single T_ENDIF ';')
-
-
-while_statement::= T_WHILE parenthesis_expr  while_statement_body
-
-
-do_while_statement::= T_DO  statement T_WHILE parenthesis_expr ';'
+if_statement::=  normal_if_statement
+        |  new_if_statement
+private normal_if_statement ::= T_IF parenthesized_expr statement? elseif_list? else_single? {pin=1}
+private new_if_statement ::= T_IF parenthesized_expr ':' inner_statement_list? new_elseif_list? new_else_single? T_ENDIF ';' {pin=3}
 
 
-for_statement::= T_FOR '(' for_expr ';' for_expr ';' for_expr ')'  for_statement_body
-
-switch_statement::= T_SWITCH parenthesis_expr  switch_case_list
-
-break_statement::= T_BREAK expr? ';'
-
-continue_statement::= T_CONTINUE expr? ';'
-
-return_statement::= T_RETURN  (expr|query_expr|await_expr)? ';'
+while_statement::= T_WHILE parenthesized_expr  while_statement_body {pin=1}
 
 
-yield_statement::= T_YIELD T_BREAK ';'
-global_statement::= T_GLOBAL global_var_list ';'
-static_statement::= T_STATIC static_var_list ';'
-echo_statement::= T_ECHO expr_list ';'
-unset_statement::= T_UNSET '(' variable_list ')' ';'
+do_while_statement::= T_DO  statement T_WHILE parenthesized_expr ';' {pin=1}
+
+for_statement::= T_FOR '(' expr_list ';' expr_list ';' expr_list ')'  for_statement_body {pin=1}
+
+switch_statement::= T_SWITCH parenthesized_expr  switch_case_list {pin=1}
+
+break_statement::= T_BREAK expr? ';' {pin=1}
+
+continue_statement::= T_CONTINUE expr? ';' {pin=1}
+
+return_statement::= T_RETURN  (expr|query_expr|await_expr)? ';' {pin=1}
+
+yield_statement::= T_YIELD T_BREAK ';' {pin=1}
+global_statement::= T_GLOBAL global_var_list ';' {pin=1}
+static_statement::= T_STATIC static_var_list ';'{pin=1}
+echo_statement::= T_ECHO expr_list ';' {pin=1}
+unset_statement::= T_UNSET '(' variable_list ')' ';' {pin=1}
 
 html_statement::= T_INLINE_HTML
 
 
-foreach_statement::= T_FOREACH '(' expr T_AWAIT? T_AS foreach_variable foreach_optional_arg ')'  foreach_statement_body
+foreach_statement::= T_FOREACH '(' expr T_AWAIT? T_AS foreach_variable foreach_optional_arg ')'  foreach_statement_body {pin=1}
 
-declare_statement::=  T_DECLARE '(' declare_list ')' declare_statement_body
+declare_statement::=  T_DECLARE '(' declare_list ')' declare_statement_body {pin=1}
 
-try_catch::= T_CATCH '(' fully_qualified_class_name T_VARIABLE ')' '{' inner_statement_list '}'
-try_finally ::= T_FINALLY  finally_statement_list
+try_catch::= T_CATCH '(' fully_qualified_class_name T_VARIABLE ')' '{' inner_statement_list? '}' {pin=1}
+try_finally ::= T_FINALLY  finally_statement_list {pin=1}
 
 try_statement::= (T_TRY try_statement_list try_catch additional_catches  optional_finally)
-        | (T_TRY try_statement_list try_finally)
+        | (T_TRY try_statement_list try_finally) {pin=1}
 
-throw_statement::= T_THROW expr ';'
-goto_statement::= T_GOTO ident ';'
+throw_statement::= T_THROW expr ';'{pin=1}
+goto_statement::= T_GOTO ident ';'{pin=1}
 
 expr_statement::= (expr|yield_expr|yield_assign_expr|yield_list_assign_expr|await_expr|await_assign_expr|await_list_assign_expr|query_assign_expr) ';'
 
 
-try_statement_list::= '{'  inner_statement_list '}'
+try_statement_list::= block_statement {pin=1}
 additional_catches::= try_catch*
-finally_statement_list::= '{'  inner_statement_list '}'
+finally_statement_list::= block_statement{pin=1}
 optional_finally::= try_finally?
 
 
 
 label_statement::= ident ':'
-is_reference::= '&'
 
 
-function_loc::= T_FUNCTION
+function_declaration_statement::= user_attributes? method_modifiers? T_FUNCTION '&'? ident hh_typevar?  '(' parameter_list? ')' hh_opt_return_type? function_body {pin=3}
 
 
-function_declaration_statement::= function_loc is_reference hh_name_with_typevar  '(' parameter_list ')' hh_opt_return_type function_body
+enum_declaration_statement::= user_attributes? T_ENUM ident  ':' hh_type (T_AS hh_type)? '{' enum_statement_list? '}' {pin=2}
 
 
-function_declaration_statement::= non_empty_member_modifiers function_loc is_reference hh_name_with_typevar  '(' parameter_list ')' hh_opt_return_type function_body
+class_declaration_statement::= user_attributes? (T_CLASS | T_ABSTRACT T_CLASS | T_FINAL T_CLASS) ((ident hh_typevar?)
+| T_XHP_LABEL)  extends_from? implements_list? class_statement_block {pin=2}
+private class_statement_block ::= '{' class_statement_list? '}' {pin=1}
 
 
-function_declaration_statement::= non_empty_user_attributes method_modifiers function_loc is_reference hh_name_with_typevar  '(' parameter_list ')' hh_opt_return_type function_body
+interface_declaration_statement::= user_attributes? T_INTERFACE ident hh_typevar?  interface_extends_list? class_statement_block {pin=2}
+
+trait_declaration_statement::= user_attributes? T_TRAIT ident hh_typevar?  implements_list? class_statement_block {pin=2}
+
+extends_from::= T_EXTENDS fully_qualified_class_name {pin=1}
 
 
-enum_declaration_statement::= T_ENUM ident  ':' hh_type hh_opt_constraint '{' enum_statement_list '}'
+implements_list::= T_IMPLEMENTS interface_list {pin=1}
 
 
-enum_declaration_statement::= non_empty_user_attributes T_ENUM ident  ':' hh_type hh_opt_constraint '{' enum_statement_list '}'
+interface_extends_list::= T_EXTENDS interface_list {pin=1}
 
 
-class_declaration_statement::= class_entry_type class_decl_name  extends_from implements_list '{' class_statement_list '}'
+interface_list::= fully_qualified_class_name (',' fully_qualified_class_name)*
 
 
-class_declaration_statement::= non_empty_user_attributes class_entry_type class_decl_name  extends_from implements_list '{' class_statement_list '}'
+trait_list::= fully_qualified_class_name (',' fully_qualified_class_name)*
 
 
-class_declaration_statement::= T_INTERFACE interface_decl_name  interface_extends_list '{' class_statement_list '}'
+foreach_optional_arg::= T_DOUBLE_ARROW foreach_variable {pin=1}
 
 
-class_declaration_statement::= non_empty_user_attributes T_INTERFACE interface_decl_name  interface_extends_list '{' class_statement_list '}'
+foreach_variable::= ('&'? variable) | foreach_list_assignment
 
+foreach_list_assignment ::= T_LIST '(' assignment_list ')' {pin=1}
 
-trait_declaration_statement::= T_TRAIT trait_decl_name  implements_list '{' class_statement_list '}'
+for_statement_body::= statement | for_new_statement
 
+foreach_statement_body::= statement | foreach_new_statement
 
-trait_declaration_statement::= non_empty_user_attributes T_TRAIT trait_decl_name  implements_list '{' class_statement_list '}'
+for_new_statement ::= ':' inner_statement_list? T_ENDFOR ';' {pin=1}
+foreach_new_statement ::= ':' inner_statement_list? T_ENDFOREACH ';'{pin=1}
+while_new_statement ::= ':' inner_statement_list? T_ENDWHILE ';'{pin=1}
+declare_new_statement ::= ':' inner_statement_list? T_ENDDECLARE ';'{pin=1}
 
-class_decl_name::= hh_name_with_typevar
-| T_XHP_LABEL
+while_statement_body::= statement | while_new_statement
 
-interface_decl_name::= hh_name_with_typevar
+declare_statement_body::= statement | declare_new_statement
 
-trait_decl_name::= hh_name_with_typevar
-
-class_entry_type::= T_CLASS
-| T_ABSTRACT T_CLASS
-| T_FINAL T_CLASS
-
-extends_from::= T_EXTENDS fully_qualified_class_name
-
-
-implements_list::= T_IMPLEMENTS interface_list
-
-
-interface_extends_list::= T_EXTENDS interface_list
-
-
-interface_list::= fully_qualified_class_name
-| interface_list ',' fully_qualified_class_name
-
-trait_list::= fully_qualified_class_name
-| trait_list ',' fully_qualified_class_name
-
-foreach_optional_arg::= T_DOUBLE_ARROW foreach_variable
-
-
-foreach_variable::= variable
-| '&' variable
-| T_LIST '(' assignment_list ')'
-
-for_statement_body::= statement
-| ':' inner_statement_list T_ENDFOR ';'
-
-foreach_statement_body::= statement
-| ':' inner_statement_list T_ENDFOREACH ';'
-
-while_statement_body::= statement
-| ':' inner_statement_list T_ENDWHILE ';'
-
-declare_statement_body::= statement
-| ':' inner_statement_list T_ENDDECLARE ';'
-
-declare_assignment::= ident '=' static_expr
+declare_assignment::= ident '=' static_expr {pin=2}
 
 declare_list::=  declare_assignment (',' declare_assignment )*
 
-switch_case_list::= '{' case_list '}'
-| '{' ';' case_list '}'
-| ':' case_list T_ENDSWITCH ';'
-| ':' ';' case_list T_ENDSWITCH ';'
-
-case_block::= T_CASE expr case_separator inner_statement_list
-default_case_block::= T_DEFAULT case_separator inner_statement_list
-
-case_list::= (case_block|default_case_block)*
+switch_new_statement ::= ':' ';'? case_list? T_ENDSWITCH ';' {pin=1}
+private switch_statament_list ::= '{' ';'? case_list? '}' {pin=1}
+switch_case_list::= switch_statament_list | switch_new_statement
 
 
+case_block::= T_CASE expr case_separator inner_statement_list? {pin=1}
+default_case_block::= T_DEFAULT case_separator inner_statement_list? {pin=1}
+
+case_list::= (case_block|default_case_block)+
 case_separator::= ':' | ';'
 
-elseif_list::=  elseif_body*
-elseif_body ::= T_ELSEIF parenthesis_expr statement
+elseif_list::=  elseif_body+
+elseif_body ::= T_ELSEIF parenthesized_expr statement {pin=1}
 
 
-new_elseif_list::=  new_elseif_body*
-new_elseif_body ::= T_ELSEIF parenthesis_expr ':' inner_statement_list
+new_elseif_list::=  new_elseif_body+
+new_elseif_body ::= T_ELSEIF parenthesized_expr ':' inner_statement_list? {pin=1}
 
 
-else_single::= T_ELSE statement
+else_single::= T_ELSE statement {pin=1}
 
 
-new_else_single::= T_ELSE ':' inner_statement_list
+new_else_single::= T_ELSE ':' inner_statement_list? {pin=1}
 
-parameter_item::= optional_user_attributes parameter_modifiers hh_type_opt ('&'|"...")? T_VARIABLE ('=' static_expr)?
-parameter_list::= parameter_item (',' parameter_item)*  possible_comma
-
-
-function_call_parameter_list::= non_empty_fcall_parameter_list hh_possible_comma
+parameter_item::= user_attributes? parameter_modifiers? hh_type? ('&'|"...")? T_VARIABLE ('=' static_expr)?
+parameter_list::= parameter_item (',' parameter_item)*  ','?
 
 
-non_empty_fcall_parameter_list::= expr
-| '&' variable
-| "..." expr
-| non_empty_fcall_parameter_list ',' expr
-| non_empty_fcall_parameter_list ',' "..." expr
-| non_empty_fcall_parameter_list ',' '&' variable
+function_call_parameter_list::= calling_parameter_item (',' calling_parameter_item)* ','?
 
-global_var_list::=     global_var (',' global_var)*
+calling_parameter_item ::= expr | ('&' variable) | ("..." expr) {}
+
+global_var_list::=  global_var (',' global_var)*
 
 global_var::= T_VARIABLE
 | '$' variable
-| '$' '{' expr '}'
+| '$' '{' expr '}' {pin=1}
 
 static_var_list::= (T_VARIABLE | static_assignment) (',' (T_VARIABLE|static_assignment))*
-private static_assignment ::= T_VARIABLE '=' static_expr
+static_assignment ::= T_VARIABLE '=' static_expr{pin=2}
 
-enum_statement_list::=  enum_statement*
+enum_statement_list ::=  enum_statement+
 
 
 enum_statement::= enum_constant_declaration ';'
 
-enum_constant_declaration::= hh_name_with_type '=' static_expr
+enum_constant_declaration::= hh_name_with_type '=' static_expr {pin=2}
 
-class_statement_list::= class_statement_list class_statement
-
-
-
-class_statement::= variable_modifiers  class_variable_declaration ';'
+class_statement_list::= class_statement+
 
 
-class_statement::= non_empty_member_modifiers hh_type  class_variable_declaration ';'
-| class_constant_declaration ';'
+//TODO: Inspect that rule later
+class_variable_declarations ::= (variable_modifiers|(member_modifier+ hh_type?))  class_variable_declaration
+
+class_statement::= class_variable_declarations ';'
+| constant_declaration ';'
+| method_function_declaration ';'?
+| xhp_attribute_declaration
+| xhp_category_declaration
+| xhp_children_declaration
+| trait_require_declaration
+| trait_use_declaration
+
+trait_require_declaration ::= T_REQUIRE (T_EXTENDS|T_IMPLEMENTS) fully_qualified_class_name ';' {pin=1}
+xhp_children_declaration ::= T_XHP_CHILDREN xhp_children_stmt ';' {pin=1}
+xhp_category_declaration ::= T_XHP_CATEGORY xhp_category_stmt ';' {pin=1}
+trait_use_declaration ::= T_USE trait_list (';'| '{' trait_rules? '}') {pin=1}
+
+xhp_attribute_declaration ::= T_XHP_ATTRIBUTE xhp_attribute_stmt ';' {pin=1}
+method_function_declaration ::= user_attributes? method_modifiers? T_FUNCTION '&'? ident hh_typevar?  '(' parameter_list? ')' hh_opt_return_type? function_body {extends=function_declaration_statement}
 
 
-class_statement::= method_modifiers function_loc is_reference hh_name_with_typevar '('  parameter_list ')' hh_opt_return_type method_body
-
-
-class_statement::= non_empty_user_attributes method_modifiers function_loc is_reference hh_name_with_typevar '('  parameter_list ')' hh_opt_return_type method_body
-| T_XHP_ATTRIBUTE xhp_attribute_stmt ';'
-| T_XHP_CATEGORY xhp_category_stmt ';'
-| T_XHP_CHILDREN xhp_children_stmt ';'
-| T_REQUIRE T_EXTENDS fully_qualified_class_name ';'
-| T_REQUIRE T_IMPLEMENTS fully_qualified_class_name ';'
-| T_USE trait_list ';'
-| T_USE trait_list '{' trait_rules '}'
-
-trait_rules::= trait_rules trait_precedence_rule
-| trait_rules trait_alias_rule
-
+trait_rules::= (trait_precedence_rule |  trait_alias_rule)+
 
 trait_precedence_rule::= class_namespace_string_typeargs T_DOUBLE_COLON ident T_INSTEADOF trait_list ';'
 
-trait_alias_rule::= trait_alias_rule_method T_AS method_modifiers ident ';'
-| trait_alias_rule_method T_AS non_empty_member_modifiers ';'
+trait_alias_rule::= trait_alias_rule_method T_AS method_modifiers? ident ';'
+| trait_alias_rule_method T_AS member_modifier+ ';'
 
 trait_alias_rule_method::= class_namespace_string_typeargs T_DOUBLE_COLON ident
 | ident
 
-xhp_attribute_stmt::= xhp_attribute_decl
-| xhp_attribute_stmt ',' xhp_attribute_decl
+xhp_attribute_stmt::= xhp_attribute_decl (',' xhp_attribute_decl)*
 
-xhp_attribute_decl::= xhp_attribute_decl_type xhp_label_ws xhp_attribute_default xhp_attribute_is_required
+xhp_attribute_decl::= xhp_attribute_decl_type xhp_label_ws xhp_attribute_default? xhp_attribute_is_required?
 | T_XHP_LABEL
 
 xhp_attribute_decl_type::= T_ARRAY
 | fully_qualified_class_name
 | T_VAR
-| T_ENUM '{' xhp_attribute_enum '}'
+| T_ENUM '{' xhp_attribute_enum? '}'
 | T_CALLABLE
 
-xhp_attribute_enum::= common_scalar
-| xhp_attribute_enum ',' common_scalar
+xhp_attribute_enum::= literal_expr (',' literal_expr)*
 
-xhp_attribute_default::= '=' static_expr
+xhp_attribute_default::= '=' static_expr {pin=1}
 
 
 xhp_attribute_is_required::= '@' T_XHP_REQUIRED
 
 
-xhp_category_stmt::= xhp_category_decl
-| xhp_category_stmt ',' xhp_category_decl
-
-xhp_category_decl::= T_XHP_CATEGORY_LABEL
+xhp_category_stmt::= T_XHP_CATEGORY_LABEL (',' T_XHP_CATEGORY_LABEL)*
 
 xhp_children_stmt::= xhp_children_paren_expr
 | ident
 | T_EMPTY
 
-xhp_children_paren_expr::= '(' xhp_children_decl_expr ')'
-| '(' xhp_children_decl_expr ')' '*'
-| '(' xhp_children_decl_expr ')' '?'
-| '(' xhp_children_decl_expr ')' '+'
+xhp_children_paren_expr::= '(' xhp_children_decl_expr ')' ('*'|'?'|'+')? {pin=1}
 
-xhp_children_decl_expr::= xhp_children_paren_expr
-| xhp_children_decl_tag
-| xhp_children_decl_tag '*'
-| xhp_children_decl_tag '?'
-| xhp_children_decl_tag '+'
-| xhp_children_decl_expr ',' xhp_children_decl_expr
-| xhp_children_decl_expr '|' xhp_children_decl_expr
+xhp_children_decl_expr::= (xhp_children_paren_expr | xhp_children_decl_tag) ((','|'|') (xhp_children_paren_expr | xhp_children_decl_tag))*
 
-xhp_children_decl_tag::= ident
+xhp_children_decl_tag::= (ident
 | T_XHP_LABEL
-| T_XHP_CATEGORY_LABEL
+| T_XHP_CATEGORY_LABEL) ('*'|'?'|'+')?
 
-function_body::= ';'
-| '{' inner_statement_list '}'
+function_body::= ';' | block_statement
+block_statement ::= '{' inner_statement_list? '}' {pin=1}
 
-method_body::= ';'
-| '{' inner_statement_list '}'
 
-variable_modifiers::= non_empty_member_modifiers
+variable_modifiers::= member_modifier+
 | T_VAR
 
-method_modifiers::= non_empty_member_modifiers
+method_modifiers::= member_modifier+
 
 
-non_empty_member_modifiers::= member_modifier
-| non_empty_member_modifiers member_modifier
+private member_modifier::= T_PUBLIC
+                    | T_PROTECTED
+                    | T_PRIVATE
+                    | T_STATIC
+                    | T_ABSTRACT
+                    | T_FINAL
+                    | T_ASYNC
 
-member_modifier::= T_PUBLIC
-| T_PROTECTED
-| T_PRIVATE
-| T_STATIC
-| T_ABSTRACT
-| T_FINAL
-| T_ASYNC
-
-parameter_modifiers::= parameter_modifier
+private parameter_modifiers::= parameter_modifier+
 
 
 parameter_modifier::= T_PUBLIC
-| T_PROTECTED
-| T_PRIVATE
+                        | T_PROTECTED
+                        | T_PRIVATE
 
-class_variable_declaration::= class_variable_declaration ',' T_VARIABLE
-| class_variable_declaration ',' static_assignment
-| T_VARIABLE
-| static_assignment
-
-class_constant_declaration::= class_constant_declaration ',' hh_name_with_type '=' static_expr
-| T_CONST hh_name_with_type '=' static_expr
-
-expr_with_parens::= '(' expr_with_parens ')'
-| T_NEW class_name_reference ctor_arguments
-| T_CLONE expr
-| xhp_tag
-| collection_literal
-
-parenthesis_expr::= '(' expr ')'
+class_variable_declaration::=  (T_VARIABLE | static_assignment) (','  (T_VARIABLE | static_assignment))*
 
 expr_list::= expr (',' expr)*
 
-for_expr::= expr_list
+
+yield_expr::= T_YIELD expr (T_DOUBLE_ARROW expr)? {pin=1}
+
+yield_assign_expr::= variable '=' yield_expr {pin=2}
+
+yield_list_assign_expr::= T_LIST '(' assignment_list? ')' '=' yield_expr {pin=1}
+
+await_expr::= T_AWAIT expr {pin=1}
+
+await_assign_expr::= variable '=' await_expr {pin=2}
+
+await_list_assign_expr::= T_LIST '(' assignment_list? ')' '=' await_expr {pin=1}
 
 
-yield_expr::= T_YIELD expr
-| T_YIELD expr T_DOUBLE_ARROW expr
+private expr_with_parens::= expr_with_parens_base
+| new_expr
+| clone_expr
+| xhp_expr
+| collection_literal_expr
 
-yield_assign_expr::= variable '=' yield_expr
+private expr_with_parens_base ::= '(' expr_with_parens ')'{pin=1}
 
-yield_list_assign_expr::= T_LIST '(' assignment_list ')' '=' yield_expr
-
-await_expr::= T_AWAIT expr
-
-await_assign_expr::= variable '=' await_expr
-
-await_list_assign_expr::= T_LIST '(' assignment_list ')' '=' await_expr
-
-expr::= expr_no_variable
-| variable
-| expr_with_parens
-
-expr_no_variable::= T_LIST '(' assignment_list ')' '=' expr
-| variable '=' expr
-| variable '=' '&' variable
-| variable '=' '&' T_NEW class_name_reference ctor_arguments
-| variable T_PLUS_EQUAL expr
-| variable T_MINUS_EQUAL expr
-| variable T_MUL_EQUAL expr
-| variable T_DIV_EQUAL expr
-| variable T_CONCAT_EQUAL expr
-| variable T_MOD_EQUAL expr
-| variable T_AND_EQUAL expr
-| variable T_OR_EQUAL expr
-| variable T_XOR_EQUAL expr
-| variable T_SL_EQUAL expr
-| variable T_SR_EQUAL expr
-| variable T_POW_EQUAL expr
-| variable T_INC
-| T_INC variable
-| variable T_DEC
-| T_DEC variable
-| expr T_BOOLEAN_OR expr
-| expr T_BOOLEAN_AND expr
-| expr T_LOGICAL_OR expr
-| expr T_LOGICAL_AND expr
-| expr T_LOGICAL_XOR expr
-| expr '|' expr
-| expr '&' expr
-| expr '^' expr
-| expr '.' expr
-| expr '+' expr
-| expr '-' expr
-| expr '*' expr
-| expr '/' expr
-| expr T_POW expr
-| expr '%' expr
-| expr T_SL expr
-| expr T_SR expr
-| '+' expr
-| '-' expr
-| '!' expr
-| '~' expr
-| expr T_IS_IDENTICAL expr
-| expr T_IS_NOT_IDENTICAL expr
-| expr T_IS_EQUAL expr
-| expr T_IS_NOT_EQUAL expr
-| expr '<' expr
-| expr T_IS_SMALLER_OR_EQUAL expr
-| expr '>' expr
-| expr T_IS_GREATER_OR_EQUAL expr
-| expr T_INSTANCEOF class_name_reference
-| '(' expr_no_variable ')'
-| expr '?' expr ':' expr
-| expr '?' ':' expr
-| internal_functions
-| T_INT_CAST expr
-| T_DOUBLE_CAST expr
-| T_STRING_CAST expr
-| T_ARRAY_CAST expr
-| T_OBJECT_CAST expr
-| T_BOOL_CAST expr
-| T_UNSET_CAST expr
-| T_EXIT exit_expr
-| '@' expr
-| scalar
-| array_literal
-| shape_literal
-| map_array_literal
-| varray_literal
-| '`' backticks_expr '`'
-| T_PRINT expr
-| closure_expression
-| lambda_expression
-| dim_expr
-
-lambda_use_vars::= T_USE '(' lexical_var_list hh_possible_comma ')'
+collection_literal_expr ::= collection_literal
+xhp_expr ::= xhp_tag
+clone_expr ::= T_CLONE expr {pin=1}
+new_expr ::= T_NEW class_name_reference ctor_arguments {pin=1}
 
 
 
-closure_expression::= function_loc is_reference '('  parameter_list ')' hh_opt_return_type lambda_use_vars '{' inner_statement_list '}'
+
+private assignment_operator ::= ('=' ('&' T_NEW)?) | T_PLUS_EQUAL | T_MINUS_EQUAL | T_MUL_EQUAL | T_DIV_EQUAL | T_CONCAT_EQUAL | T_MOD_EQUAL | T_AND_EQUAL | T_OR_EQUAL | T_XOR_EQUAL | T_SL_EQUAL | T_SR_EQUAL | T_POW_EQUAL
+
+expr::= assignment_expr_wrapper
+private primary_expr::=   parenthesized_expr
+                        | exit_expr
+                        | scalar_expr
+                        | array_literal_expr
+                        | shape_literal_expr
+                        | map_array_literal_expr
+                        | varray_literal_expr
+                        | backticks_expr
+                        | print_expr
+                        | closure_expression
+                        | lambda_expression
+                        | dim_expr
+                        | variable
+                        | expr_with_parens
+                        | internal_functions
 
 
-closure_expression::= non_empty_member_modifiers function_loc is_reference '('  parameter_list ')' hh_opt_return_type lambda_use_vars '{' inner_statement_list '}'
+left assignment_expr ::= assignment_operator ternary_expr_wrapper{pin=1}
+left ternary_expr::= '?' expr? ':' ternary_expr_wrapper{pin=1}
+left logical_expr::= logical_operator comparative_expr_wrapper{pin=1}
+left comparative_expr::= comparative_operator bitwise_expr_wrapper{pin=1}
+left bitwise_expr::= bitwise_operator shift_expr_wrapper{pin=1}
+left shift_expr::= shift_operator additive_or_concatenation_expr_wrapper{pin=1}
+left additive_or_concatenation_expr::= additive_or_concatenation_operator multiplicative_expr_wrapper{pin=1}
+left multiplicative_expr::= multiplicative_operator instanceof_expr_wrapper{pin=1}
+left instanceof_expr::= T_INSTANCEOF class_name_reference{pin=1}
+prefix_expr::=prefix_operator prefix_expr_wrapper {pin=1}
+private prefix_expr_wrapper::= prefix_expr  | primary_expr
+cast_expr::=   cast_operator  prefix_expr_wrapper{pin=1}
+cast_operator ::= T_INT_CAST | T_DOUBLE_CAST | T_STRING_CAST | T_ARRAY_CAST | T_OBJECT_CAST | T_BOOL_CAST | T_UNSET_CAST
+
+//instaceof operator
 
 
-lambda_expression::= T_VARIABLE  lambda_body
+private assignment_or_list_expr::= assignment_expr | list_assignment_expr
+private assignment_expr_wrapper::= ternary_expr_wrapper assignment_or_list_expr*
+private ternary_expr_wrapper::= logical_expr_wrapper ternary_expr?
+private logical_expr_wrapper::= comparative_expr_wrapper logical_expr*
+private comparative_expr_wrapper::= bitwise_expr_wrapper comparative_expr*
+private bitwise_expr_wrapper::= shift_expr_wrapper bitwise_expr*
+private shift_expr_wrapper::= additive_or_concatenation_expr_wrapper shift_expr*
+private additive_or_concatenation_expr_wrapper::= multiplicative_expr_wrapper additive_or_concatenation_expr*
+private multiplicative_expr_wrapper::= instanceof_expr_wrapper multiplicative_expr*
+private instanceof_expr_wrapper::= cast_expr_wrapper instanceof_expr*
+private cast_expr_wrapper::= cast_expr+|prefix_expr_wrapper
+prefix_operator::= '@' | '!' | '~' | '+' | '-' | T_INC | T_DEC
+
+print_expr ::= T_PRINT expr {pin=1}
+parenthesized_expr ::= '(' expr ')' {pin=1}
+
+list_assignment_expr ::= T_LIST '(' assignment_list? ')' '=' expr {pin=1}
+
+lambda_use_vars::= T_USE '(' lexical_var_list? ')' {pin=1}
+closure_expression::= member_modifier* T_FUNCTION '&'? '('  parameter_list? ')' hh_opt_return_type? lambda_use_vars? '{' inner_statement_list? '}'
+lambda_expression::= T_ASYNC? (T_VARIABLE|(T_LAMBDA_OP  parameter_list? T_LAMBDA_CP hh_opt_return_type?)) lambda_body
+lambda_body::= T_LAMBDA_ARROW (expr | await_expr | (block_statement)) {pin=1}
+shape_keyname::= T_CONSTANT_ENCAPSED_STRING | class_constant
+
+shape_pair ::= shape_keyname T_DOUBLE_ARROW expr {pin=2}
+shape_pair_static ::= shape_keyname T_DOUBLE_ARROW static_expr {pin=2}
+
+shape_pair_list::= shape_pair (',' shape_pair)* ','?
 
 
-lambda_expression::= T_ASYNC T_VARIABLE  lambda_body
+static_shape_pair_list::= shape_pair_static (',' shape_pair_static)* ','?
 
 
-lambda_expression::= T_LAMBDA_OP  parameter_list T_LAMBDA_CP hh_opt_return_type lambda_body
+array_pair_list ::= array_pair_item (',' array_pair_item)* ','?
 
+shape_literal_expr::= T_SHAPE '(' shape_pair_list? ')' {pin=2}
 
-lambda_expression::= T_ASYNC T_LAMBDA_OP  parameter_list T_LAMBDA_CP hh_opt_return_type lambda_body
+array_literal_expr::= array_literal_base
+| short_array_literal_base
+private short_array_literal_base ::= '[' array_pair_list? ']' {pin=1}
+private array_literal_base ::= T_ARRAY '(' array_pair_list? ')' {pin=1}
 
-lambda_body::= T_LAMBDA_ARROW expr
-| T_LAMBDA_ARROW await_expr
-| T_LAMBDA_ARROW '{' inner_statement_list '}'
+collection_literal::= fully_qualified_class_name '{' array_pair_list? '}'{pin=2}
 
-shape_keyname::= T_CONSTANT_ENCAPSED_STRING
-| class_constant
+map_array_literal_expr::= (T_MIARRAY|T_MSARRAY) '(' array_pair_list? ')' {pin=1}
 
-non_empty_shape_pair_list::= non_empty_shape_pair_list ',' shape_keyname T_DOUBLE_ARROW expr
-| shape_keyname T_DOUBLE_ARROW expr
+varray_literal_expr::= T_VARRAY '(' array_pair_list? ')' {pin=1}
 
-non_empty_static_shape_pair_list::= non_empty_static_shape_pair_list ',' shape_keyname T_DOUBLE_ARROW static_expr
-| shape_keyname T_DOUBLE_ARROW static_expr
+static_map_array_literal::= (T_MIARRAY|T_MSARRAY) '(' static_array_pair_list? ')' {pin=1}
 
-shape_pair_list::= non_empty_shape_pair_list possible_comma
+static_varray_literal::= T_VARRAY '(' static_array_pair_list? ')' {pin=1}
 
+static_collection_literal::= fully_qualified_class_name '{' static_array_pair_list? '}' {pin=2}
 
-static_shape_pair_list::= non_empty_static_shape_pair_list possible_comma
+//TODO: Check this private or not
+dim_expr::= dim_expr_base '[' expr ']' ('[' expr ']')*
 
-
-shape_literal::= T_SHAPE '(' shape_pair_list ')'
-
-array_literal::= T_ARRAY '(' array_pair_list ')'
-| '[' array_pair_list ']'
-
-collection_literal::= fully_qualified_class_name '{' collection_init '}'
-
-map_array_literal::= T_MIARRAY '(' map_array_init ')'
-| T_MSARRAY '(' map_array_init ')'
-
-varray_literal::= T_VARRAY '(' varray_init ')'
-
-static_map_array_literal::= T_MIARRAY '(' static_map_array_init ')'
-| T_MSARRAY '(' static_map_array_init ')'
-
-static_varray_literal::= T_VARRAY '(' static_varray_init ')'
-
-static_collection_literal::= fully_qualified_class_name '{' static_collection_init '}'
-
-dim_expr::= dim_expr '[' dim_offset ']'
-| dim_expr_base '[' dim_offset ']'
-
-dim_expr_base::= array_literal
+ dim_expr_base::= array_literal_expr
 | class_constant
 | T_CONSTANT_ENCAPSED_STRING
-| '(' expr_no_variable ')'
+| parenthesized_expr
 
 query_expr::= query_head query_body
 
-query_assign_expr::= variable '=' query_expr
+query_assign_expr::= variable '=' query_expr {pin=2}
 
 query_head::= T_FROM T_VARIABLE T_IN expr
 
-query_body::= query_body_clauses select_or_group_clause
-| query_body_clauses select_or_group_clause query_continuation
-| select_or_group_clause
-| select_or_group_clause query_continuation
+query_body::= query_body_clauses? select_or_group_clause query_continuation?
 
-query_body_clauses::= query_body_clause
-| query_body_clauses query_body_clause
+query_body_clauses::= query_body_clause+
 
 query_body_clause::= from_clause
 | let_clause
@@ -677,17 +555,14 @@ join_into_clause::= T_JOIN T_VARIABLE T_IN expr T_ON expr T_EQUALS expr T_INTO T
 
 orderby_clause::= T_ORDERBY orderings
 
-orderings::= ordering
-| orderings ',' ordering
+orderings::= ordering (',' ordering)*
 
-ordering::= expr
-| expr ordering_direction
+ordering::= expr ordering_direction?
 
 ordering_direction::= T_ASCENDING
 | T_DESCENDING
 
-select_or_group_clause::= select_clause
-| group_clause
+select_or_group_clause::= select_clause | group_clause
 
 select_clause::= T_SELECT expr
 
@@ -695,36 +570,29 @@ group_clause::= T_GROUP expr T_BY expr
 
 query_continuation::= T_INTO T_VARIABLE query_body
 
-lexical_var_list::= lexical_var_list ',' T_VARIABLE
-| lexical_var_list ',' '&' T_VARIABLE
-| T_VARIABLE
-| '&' T_VARIABLE
+lexical_var_list::= '&'? T_VARIABLE (',' '&' T_VARIABLE)* ','?
 
 xhp_tag::= T_XHP_TAG_LT T_XHP_LABEL xhp_tag_body T_XHP_TAG_GT
 
-xhp_tag_body::= xhp_attributes '/'
-| xhp_attributes T_XHP_TAG_GT xhp_children T_XHP_TAG_LT '/' xhp_opt_end_label
+xhp_tag_body::= xhp_attributes? '/'
+| xhp_attributes? T_XHP_TAG_GT xhp_children? T_XHP_TAG_LT '/' xhp_opt_end_label
 
-xhp_opt_end_label::= {T_XHP_LABEL}
+xhp_opt_end_label::= T_XHP_LABEL?
 
-xhp_attributes::= xhp_attributes xhp_attribute_name '=' xhp_attribute_value
+xhp_attributes::=  xhp_attribute+
+xhp_attribute ::= xhp_attribute_name '=' xhp_attribute_value
 
 
-xhp_children::= xhp_children xhp_child
+xhp_children::=xhp_child+
 
 
 xhp_attribute_name::= T_XHP_LABEL
 
-xhp_attribute_value::= T_XHP_TEXT
-| '{' expr '}'
+xhp_attribute_value::= T_XHP_TEXT | '{' expr '}'
 
-xhp_child::= T_XHP_TEXT
-| '{' expr '}'
-| xhp_tag
+xhp_child::= T_XHP_TEXT | '{' expr '}' | xhp_tag
 
-xhp_label_ws::= xhp_bareword
-| xhp_label_ws ':' xhp_bareword
-| xhp_label_ws '-' xhp_bareword
+xhp_label_ws::= xhp_bareword ((':'|'-') xhp_bareword)*
 
 xhp_bareword::= ident
 | T_EXIT
@@ -807,233 +675,176 @@ xhp_bareword::= ident
 | T_NEWTYPE
 | T_SHAPE
 
-simple_function_call::= namespace_string_typeargs '(' function_call_parameter_list ')'
+simple_function_call::= namespace_string_typeargs '(' function_call_parameter_list? ')' {pin=2}
 
 fully_qualified_class_name::= class_namespace_string_typeargs
-| T_XHP_LABEL
+                    | T_XHP_LABEL
 
 static_class_name::= fully_qualified_class_name
-| T_STATIC
-| reference_variable
+                    | T_STATIC
+                    | reference_variable
 
 class_name_reference::= fully_qualified_class_name
-| T_STATIC
-| variable_no_calls
+                    | T_STATIC
+                    | variable_no_calls
 
-exit_expr::= '(' ')'
-| parenthesis_expr
-
-
-backticks_expr::= /* empty */
-| T_ENCAPSED_AND_WHITESPACE
-| encaps_list
-
-ctor_arguments::= '(' function_call_parameter_list ')'
+exit_expr::= T_EXIT (('(' ')' ) | parenthesized_expr)
 
 
-common_scalar::= T_LNUMBER
-| T_DNUMBER
-| T_ONUMBER
-| T_CONSTANT_ENCAPSED_STRING
-| T_LINE
-| T_FILE
-| T_DIR
-| T_CLASS_C
-| T_TRAIT_C
-| T_METHOD_C
-| T_FUNC_C
-| T_NS_C
-| T_COMPILER_HALT_OFFSET
-| T_START_HEREDOC T_ENCAPSED_AND_WHITESPACE T_END_HEREDOC
-| T_START_HEREDOC T_END_HEREDOC
+backticks_expr::= '`' (T_ENCAPSED_AND_WHITESPACE | encaps_list)* '`'
 
-static_expr::= common_scalar
-| namespace_string
-| T_ARRAY '(' static_array_pair_list ')'
-| '[' static_array_pair_list ']'
-| T_SHAPE '(' static_shape_pair_list ')'
-| static_class_constant
-| static_collection_literal
-| static_map_array_literal
-| static_varray_literal
-| '(' static_expr ')'
-| static_expr T_BOOLEAN_OR static_expr
-| static_expr T_BOOLEAN_AND static_expr
-| static_expr T_LOGICAL_OR static_expr
-| static_expr T_LOGICAL_AND static_expr
-| static_expr T_LOGICAL_XOR static_expr
-| static_expr '|' static_expr
-| static_expr '&' static_expr
-| static_expr '^' static_expr
-| static_expr '.' static_expr
-| static_expr '+' static_expr
-| static_expr '-' static_expr
-| static_expr '*' static_expr
-| static_expr '/' static_expr
-| static_expr '%' static_expr
-| static_expr T_SL static_expr
-| static_expr T_SR static_expr
-| static_expr T_POW static_expr
-| '!' static_expr
-| '~' static_expr
-| '+' static_expr
-| '-' static_expr
-| static_expr T_IS_IDENTICAL static_expr
-| static_expr T_IS_NOT_IDENTICAL static_expr
-| static_expr T_IS_EQUAL static_expr
-| static_expr T_IS_NOT_EQUAL static_expr
-| static_expr '<' static_expr
-| static_expr T_IS_SMALLER_OR_EQUAL static_expr
-| static_expr '>' static_expr
-| static_expr T_IS_GREATER_OR_EQUAL static_expr
-| static_expr '?' static_expr ':' static_expr
-| static_expr '?' ':' static_expr
+ctor_arguments::= '(' function_call_parameter_list?  ')'
+
+
+literal_expr::=   T_LNUMBER
+                | T_DNUMBER
+                | T_ONUMBER
+                | T_CONSTANT_ENCAPSED_STRING
+                | T_LINE
+                | T_FILE
+                | T_DIR
+                | T_CLASS_C
+                | T_TRAIT_C
+                | T_METHOD_C
+                | T_FUNC_C
+                | T_NS_C
+                | T_COMPILER_HALT_OFFSET
+                | T_START_HEREDOC T_ENCAPSED_AND_WHITESPACE T_END_HEREDOC
+                | T_START_HEREDOC T_END_HEREDOC
+
+
+
+ private static_primary_expr ::=   literal_expr
+                    | namespace_string
+                    | static_array_expr
+                    | static_shape_expr
+                    | static_class_constant
+                    | static_collection_literal
+                    | static_map_array_literal
+                    | static_varray_literal
+                    | static_parenthesized_expr
+
+static_expr::= static_ternary_expr_wrapper
+
+left static_ternary_expr::= '?' static_expr? ':' static_ternary_expr_wrapper
+left static_logical_expr::= logical_operator static_comparative_expr_wrapper
+left static_comparative_expr::= comparative_operator static_bitwise_expr_wrapper
+left static_bitwise_expr::= bitwise_operator static_shift_expr_wrapper
+left static_shift_expr::= shift_operator static_additive_or_concatenation_expr_wrapper
+left static_additive_or_concatenation_expr::= additive_or_concatenation_operator static_multiplicative_expr_wrapper
+left static_multiplicative_expr::= multiplicative_operator static_prefix_expr
+static_prefix_expr::= (static_prefix_operator static_prefix_expr) | static_primary_expr
+
+private static_ternary_expr_wrapper::= static_logical_expr_wrapper static_ternary_expr?
+private static_logical_expr_wrapper::= static_comparative_expr_wrapper static_logical_expr*
+private static_comparative_expr_wrapper::= static_bitwise_expr_wrapper static_comparative_expr*
+private static_bitwise_expr_wrapper::= static_shift_expr_wrapper static_bitwise_expr*
+private static_shift_expr_wrapper::= static_additive_or_concatenation_expr_wrapper static_shift_expr*
+private static_additive_or_concatenation_expr_wrapper::= static_multiplicative_expr_wrapper static_additive_or_concatenation_expr*
+private static_multiplicative_expr_wrapper::= static_prefix_expr static_multiplicative_expr*
+
+comparative_operator::=    T_IS_IDENTICAL | T_IS_NOT_IDENTICAL | T_IS_EQUAL | T_IS_NOT_EQUAL | '<' | T_IS_SMALLER_OR_EQUAL | '>' | T_IS_GREATER_OR_EQUAL
+bitwise_operator ::= '|' | '&' | '^'
+logical_operator ::= T_BOOLEAN_OR | T_BOOLEAN_AND | T_LOGICAL_OR | T_LOGICAL_AND | T_LOGICAL_XOR
+shift_operator::= T_SL | T_SR
+additive_or_concatenation_operator::= '+'|'-'|'.'
+multiplicative_operator::= '*' | '/' | '%' | T_POW
+static_prefix_operator::= '!' | '~' | '+' | '-'
+
+
+static_parenthesized_expr ::= '(' static_expr ')' {pin=1}
+static_shape_expr ::= T_SHAPE '(' static_shape_pair_list? ')'{pin=2}
+static_array_expr ::= (T_ARRAY '(' static_array_pair_list? ')')  | ('[' static_array_pair_list? ']') {pin=2}
 
 static_class_constant::= class_namespace_string_typeargs T_DOUBLE_COLON ident
 | T_XHP_LABEL T_DOUBLE_COLON ident
 | class_namespace_string_typeargs T_DOUBLE_COLON T_CLASS
 
-scalar::= namespace_string
+scalar_expr::= namespace_string
 | T_STRING_VARNAME
 | class_constant
-| common_scalar
+| literal_expr
 | '"' encaps_list '"'
 | "'" encaps_list "'"
 | T_START_HEREDOC encaps_list T_END_HEREDOC
 
-static_array_pair_list::= non_empty_static_array_pair_list possible_comma
+static_array_pair_list::= static_array_item (',' static_array_item)* ','? ','?
+static_array_item ::= static_expr (T_DOUBLE_ARROW static_expr)?
 
-
-possible_comma::= ','?
-
-
-hh_possible_comma::= ','?
-
-
-non_empty_static_array_pair_list::= non_empty_static_array_pair_list ',' static_expr T_DOUBLE_ARROW static_expr
-| non_empty_static_array_pair_list ',' static_expr
-| static_expr T_DOUBLE_ARROW static_expr
-| static_expr
-
-common_scalar_ae::= T_LNUMBER
+literal_scalar_ae::= T_LNUMBER
 | T_DNUMBER
 | T_ONUMBER
 | T_CONSTANT_ENCAPSED_STRING
 | T_START_HEREDOC T_ENCAPSED_AND_WHITESPACE T_END_HEREDOC
 | T_START_HEREDOC T_END_HEREDOC
 
-static_numeric_scalar_ae::= T_LNUMBER
+static_numeric_scalar_ae::= ('+'|'-')?( T_LNUMBER
 | T_DNUMBER
 | T_ONUMBER
 | ident
+)
 
-static_scalar_ae::= common_scalar_ae
+static_scalar_ae::= literal_scalar_ae
 | ident
-| '+' static_numeric_scalar_ae
-| '-' static_numeric_scalar_ae
-| T_ARRAY '(' static_array_pair_list_ae ')'
-| '[' static_array_pair_list_ae ']'
-| T_SHAPE '(' static_shape_pair_list_ae ')'
+| static_numeric_scalar_ae
+| T_ARRAY '(' static_array_pair_list_ae? ')'
+| '[' static_array_pair_list_ae? ']'
+| T_SHAPE '(' static_shape_pair_list_ae? ')'
 
-static_array_pair_list_ae::= non_empty_static_array_pair_list_ae possible_comma
-
-
-non_empty_static_array_pair_list_ae::= non_empty_static_array_pair_list_ae ',' static_scalar_ae T_DOUBLE_ARROW static_scalar_ae
-| non_empty_static_array_pair_list_ae ',' static_scalar_ae
-| static_scalar_ae T_DOUBLE_ARROW static_scalar_ae
-| static_scalar_ae
-
-non_empty_static_scalar_list_ae::= non_empty_static_scalar_list_ae ',' static_scalar_ae
-| static_scalar_ae
-
-static_shape_pair_list_ae::= non_empty_static_shape_pair_list_ae possible_comma
+static_array_pair_list_ae::= static_array_item_ae (',' static_array_item_ae)* ','?
 
 
-non_empty_static_shape_pair_list_ae::= non_empty_static_shape_pair_list_ae ',' shape_keyname T_DOUBLE_ARROW static_scalar_ae
-| shape_keyname T_DOUBLE_ARROW static_scalar_ae
+static_array_item_ae ::= static_scalar_ae (T_DOUBLE_ARROW static_scalar_ae)?
 
-static_scalar_list_ae::= non_empty_static_scalar_list_ae possible_comma
-
-
-attribute_static_scalar_list::= '(' static_scalar_list_ae ')'
+static_shape_pair_list_ae::= static_shape_pair_item (',' static_shape_pair_item)* ','?
 
 
-non_empty_user_attribute_list::= non_empty_user_attribute_list ',' ident attribute_static_scalar_list
-| ident attribute_static_scalar_list
+static_shape_pair_item ::= shape_keyname T_DOUBLE_ARROW static_scalar_ae
+
+static_scalar_list_ae::= static_scalar_ae (',' static_scalar_ae)* ','?
+
+attribute_static_scalar_list::= '(' static_scalar_list_ae? ')'
+
+user_attribute ::= ident attribute_static_scalar_list?
+
+user_attribute_list::=  user_attribute (',' user_attribute)* ','?
+
+user_attributes::= T_SL user_attribute_list? T_SR
 
 
-user_attribute_list::=  non_empty_user_attribute_list possible_comma
+property_access::= property_access_without_variables | (T_OBJECT_OPERATOR variable_without_objects)
 
-non_empty_user_attributes::= T_SL user_attribute_list T_SR
+private property_access_without_variables::= T_OBJECT_OPERATOR (ident|'{' expr '}')
+private dimmable_variable_access::=  array_access+ | ('(' expr_with_parens ')' array_access)
 
-optional_user_attributes::= non_empty_user_attributes*
+array_access::= '[' expr ']' | '{' expr '}'
 
 
-property_access::= property_access_without_variables
-| T_OBJECT_OPERATOR variable_without_objects
+dimmable_variable_no_calls_access::= array_access+ |('(' expr_with_parens ')' array_access)
 
-property_access_without_variables::= T_OBJECT_OPERATOR ident
-| T_OBJECT_OPERATOR '{' expr '}'
-
-array_access::= '[' dim_offset ']'
-| '{' expr '}'
-
-dimmable_variable_access::= dimmable_variable array_access
-| '(' expr_with_parens ')' array_access
-
-dimmable_variable_no_calls_access::= dimmable_variable_no_calls array_access
-| '(' expr_with_parens ')' array_access
-
-variable::= variable_without_objects
+variable::= (variable_without_objects
 | simple_function_call
 | object_method_call
 | class_method_call
 | dimmable_variable_access
-| variable property_access
-| '(' expr_with_parens ')' property_access
-| static_class_name T_DOUBLE_COLON variable_without_objects
-| callable_variable '(' function_call_parameter_list ')'
-| '(' variable ')'
+| (static_class_name T_DOUBLE_COLON variable_without_objects)
+| (callable_variable '(' function_call_parameter_list? ')')
+| ('(' variable ')') ) property_access*
 
-dimmable_variable::= simple_function_call
-| object_method_call
-| class_method_call
-| dimmable_variable_access
-| variable property_access_without_variables
-| '(' expr_with_parens ')' property_access_without_variables
-| callable_variable '(' function_call_parameter_list ')'
-| '(' variable ')'
-
-callable_variable::= variable_without_objects
-| dimmable_variable_access
-| '(' variable ')'
-
-object_method_call::= variable T_OBJECT_OPERATOR ident hh_typeargs_opt '(' function_call_parameter_list ')'
-| variable T_OBJECT_OPERATOR variable_without_objects '(' function_call_parameter_list ')'
-| variable T_OBJECT_OPERATOR '{' expr '}' '(' function_call_parameter_list ')'
-| '(' expr_with_parens ')' T_OBJECT_OPERATOR ident hh_typeargs_opt '(' function_call_parameter_list ')'
-| '(' expr_with_parens ')' T_OBJECT_OPERATOR variable_without_objects '(' function_call_parameter_list ')'
-| '(' expr_with_parens ')' T_OBJECT_OPERATOR '{' expr '}' '(' function_call_parameter_list ')'
-
-class_method_call::= static_class_name T_DOUBLE_COLON ident hh_typeargs_opt '(' function_call_parameter_list ')'
-| static_class_name T_DOUBLE_COLON variable_without_objects '(' function_call_parameter_list ')'
-| static_class_name T_DOUBLE_COLON '{' expr '}' '(' function_call_parameter_list ')'
-
-variable_without_objects::= reference_variable
-| simple_indirect_reference reference_variable
-
-reference_variable::= reference_variable '[' dim_offset ']'
-| reference_variable '{' expr '}'
-| compound_variable
-
-compound_variable::= T_VARIABLE
-| '$' '{' expr '}'
-
-dim_offset::= expr
+callable_variable::= variable_without_objects | dimmable_variable_access | ('(' variable ')')
 
 
-simple_indirect_reference::= '$'
-| simple_indirect_reference '$'
+object_method_call::= (variable|expr_with_parens_base) T_OBJECT_OPERATOR
+                                    ((ident hh_typeargs_opt?)|variable_without_objects|('{' expr '}'))
+                                        '(' function_call_parameter_list? ')'
+
+class_method_call::= static_class_name T_DOUBLE_COLON
+                ((ident hh_typeargs_opt?)|variable_without_objects|('{' expr '}')) '(' function_call_parameter_list? ')'
+
+variable_without_objects::= '$'* reference_variable
+
+reference_variable::= compound_variable (('[' expr ']')|('{' expr '}')|compound_variable)*
+compound_variable::= T_VARIABLE | ('$' '{' expr '}')
 
 variable_no_calls::= variable_without_objects
 | dimmable_variable_no_calls_access
@@ -1042,75 +853,14 @@ variable_no_calls::= variable_without_objects
 | static_class_name T_DOUBLE_COLON variable_without_objects
 | '(' variable ')'
 
-dimmable_variable_no_calls::= /* empty */
-| dimmable_variable_no_calls_access
-| variable_no_calls property_access_without_variables
-| '(' expr_with_parens ')' property_access_without_variables
-| '(' variable ')'
 
-assignment_list::= assignment_list ','
-| assignment_list ',' variable
-| assignment_list ',' T_LIST '(' assignment_list ')'
+//dimmable_variable_no_calls::= ((variable_no_calls |('(' expr_with_parens')') ) property_access_without_variables) | '(' variable ')'
 
-| variable
-| T_LIST '(' assignment_list ')'
+assignment_list::= (variable | (T_LIST '(' assignment_list? ')')) (',' (variable | (T_LIST '(' assignment_list? ')')))*
 
-array_pair_list::= non_empty_array_pair_list possible_comma
+array_pair_item::=  expr (T_DOUBLE_ARROW (expr|(&variable)))?
 
-
-non_empty_array_pair_list::= non_empty_array_pair_list ',' expr T_DOUBLE_ARROW expr
-| non_empty_array_pair_list ',' expr
-| expr T_DOUBLE_ARROW expr
-| expr
-| non_empty_array_pair_list ',' expr T_DOUBLE_ARROW '&' variable
-| non_empty_array_pair_list ',' '&' variable
-| expr T_DOUBLE_ARROW '&' variable
-| '&' variable
-
-collection_init::= non_empty_collection_init possible_comma
-
-
-non_empty_collection_init::= non_empty_collection_init ',' expr T_DOUBLE_ARROW expr
-| non_empty_collection_init ',' expr
-| expr T_DOUBLE_ARROW expr
-| expr
-
-static_collection_init::= non_empty_static_collection_init possible_comma
-
-
-non_empty_static_collection_init::= non_empty_static_collection_init ',' static_expr T_DOUBLE_ARROW static_expr
-| non_empty_static_collection_init ',' static_expr
-| static_expr T_DOUBLE_ARROW static_expr
-| static_expr
-
-map_array_init::= non_empty_map_array_init possible_comma
-
-
-varray_init::= non_empty_varray_init possible_comma
-
-
-non_empty_map_array_init::= non_empty_map_array_init ',' expr T_DOUBLE_ARROW expr
-| expr T_DOUBLE_ARROW expr
-
-non_empty_varray_init::= non_empty_varray_init ',' expr
-| expr
-
-static_map_array_init::= non_empty_static_map_array_init possible_comma
-
-
-static_varray_init::= non_empty_static_varray_init possible_comma
-
-
-non_empty_static_map_array_init::= non_empty_static_map_array_init ',' static_expr T_DOUBLE_ARROW static_expr
-| static_expr T_DOUBLE_ARROW static_expr
-
-non_empty_static_varray_init::= non_empty_static_varray_init ',' static_expr
-| static_expr
-
-encaps_list::= encaps_list encaps_var
-| encaps_list T_ENCAPSED_AND_WHITESPACE
-| encaps_var
-| T_ENCAPSED_AND_WHITESPACE encaps_var
+encaps_list::=(T_ENCAPSED_AND_WHITESPACE? encaps_var)+
 
 encaps_var::= T_VARIABLE
 | T_VARIABLE '[' encaps_var_offset ']'
@@ -1119,85 +869,69 @@ encaps_var::= T_VARIABLE
 | T_DOLLAR_OPEN_CURLY_BRACES T_STRING_VARNAME '[' expr ']' '}'
 | T_CURLY_OPEN variable '}'
 
-encaps_var_offset::= ident
-| T_NUM_STRING
-| T_VARIABLE
+encaps_var_offset::= ident | T_NUM_STRING | T_VARIABLE
 
-internal_functions::= T_ISSET '(' variable_list ')'
-| T_EMPTY '(' variable ')'
-| T_EMPTY '(' expr_no_variable ')'
-| T_EMPTY '(' expr_with_parens ')'
-| T_INCLUDE expr
-| T_INCLUDE_ONCE expr
-| T_EVAL '(' expr ')'
-| T_REQUIRE expr
-| T_REQUIRE_ONCE expr
+private internal_functions::= internal_isset_expr
+                                | internal_empty_expr
+                                | internal_include_expr
+                                | internal_eval_expr
+                                | internal_require_expr
+                                | internal_tuple_expr
+
+internal_tuple_expr ::= T_TUPLE '(' function_call_parameter_list? ')' {pin=1}
+internal_require_expr ::= (T_REQUIRE|T_REQUIRE_ONCE) expr {pin=1}
+internal_eval_expr ::= T_EVAL '(' expr ')' {pin=1}
+internal_include_expr ::= (T_INCLUDE|T_INCLUDE_ONCE) expr {pin=1}
+internal_empty_expr ::= T_EMPTY '(' expr ')' {pin=1}
+internal_isset_expr ::= T_ISSET '(' variable_list ')' {pin=1}
 
 variable_list::= (variable (',' variable)*)?
 
-class_constant::= static_class_name T_DOUBLE_COLON ident
-| static_class_name T_DOUBLE_COLON T_CLASS
+class_constant::= static_class_name T_DOUBLE_COLON (ident|T_CLASS)
 
-hh_opt_constraint::= /* empty */
-| T_AS hh_type
+hh_type_alias_statement::= (T_TYPE ident hh_typevar? '=' hh_type ';')
+| (T_NEWTYPE ident hh_typevar? (T_AS hh_type)? '=' hh_type ';')
 
-hh_type_alias_statement::= T_TYPE hh_name_with_typevar '=' hh_type ';'
-| T_NEWTYPE hh_name_with_typevar hh_opt_constraint '=' hh_type ';'
+hh_name_with_type::= hh_type? ident
 
-hh_name_with_type::= ident
-| hh_type ident
-
-hh_name_with_typevar::= ident
-| ident T_TYPELIST_LT hh_typevar_list T_TYPELIST_GT
-
-hh_typeargs_opt::= T_TYPELIST_LT hh_type_list T_TYPELIST_GT
+hh_typeargs_opt::= T_TYPELIST_LT hh_type_list? T_TYPELIST_GT {pin=1}
 
 
-hh_non_empty_type_list::= hh_type
-| hh_non_empty_type_list ',' hh_type
+hh_type_list::= hh_type (',' hh_type)* ','?
 
-hh_type_list::= hh_non_empty_type_list possible_comma
+hh_func_type_list::= hh_type_list? "..."?
 
-hh_func_type_list::= hh_non_empty_type_list ',' "..."
-| hh_type_list
-| "..."
+hh_opt_return_type::= ':' hh_type {pin=1}
 
-
-hh_opt_return_type::= (':' hh_type)?
-
-hh_typevar_list::= hh_typevar_list ',' hh_typevar_variance ident
-| hh_typevar_variance ident
-| hh_typevar_list ',' hh_typevar_variance ident T_AS hh_type
-| hh_typevar_variance ident T_AS hh_type
-
+hh_typevar::=T_TYPELIST_LT hh_typevar_list? T_TYPELIST_GT {pin=1}
+hh_typevar_item::= hh_typevar_variance? ident (T_AS hh_type)?
+hh_typevar_list::= hh_typevar_item (',' hh_typevar_item)?
 hh_typevar_variance::= '+' | '-'
 
 
 hh_shape_member_type::= T_CONSTANT_ENCAPSED_STRING T_DOUBLE_ARROW hh_type
 | class_namespace_string_typeargs T_DOUBLE_COLON ident T_DOUBLE_ARROW hh_type
 
-hh_non_empty_shape_member_list::= hh_non_empty_shape_member_list ',' hh_shape_member_type
-| hh_shape_member_type
+hh_shape_member_list::= hh_shape_member_type (',' hh_shape_member_type)* ','?
 
-hh_shape_member_list::= hh_non_empty_shape_member_list possible_comma
+private hh_type::= hh_nullable_type
+        | hh_soft_type
+        | ident_type
+        | array_type
+        | callable_type
+        | hh_shape_type
+        | hh_xhp_type
+        | hh_function_type
+        | hh_tuple_type
 
 
-hh_shape_type::= T_SHAPE '(' hh_shape_member_list ')'
-
-hh_null_type ::= '?' hh_type
-
-//TODO: Separate this Section
-hh_type::= hh_null_type
-| '@' hh_type
-| class_namespace_string_typeargs
-| T_ARRAY
-| T_CALLABLE
-| hh_shape_type
-| T_ARRAY T_TYPELIST_LT hh_type T_TYPELIST_GT
-| T_ARRAY T_TYPELIST_LT hh_type ',' hh_type T_TYPELIST_GT
-| T_XHP_LABEL
-| '(' T_FUNCTION '(' hh_func_type_list ')' ':' hh_type ')'
-| '(' hh_type ',' hh_non_empty_type_list possible_comma ')'
-
-hh_type_opt::= hh_type
+ hh_shape_type::= T_SHAPE '(' hh_shape_member_list? ')' {pin=1}
+ hh_tuple_type ::= '(' hh_type ',' hh_type (',' hh_type)* ','? ')' {pin=1}
+ hh_function_type ::= '(' T_FUNCTION '(' hh_func_type_list? ')' ':' hh_type ')' {pin=2}
+ hh_xhp_type ::= T_XHP_LABEL
+ callable_type ::= T_CALLABLE
+ array_type ::= T_ARRAY hh_typeargs_opt?
+ ident_type ::= class_namespace_string_typeargs
+ hh_nullable_type ::= '?' hh_type {pin=1}
+ hh_soft_type ::= '@' hh_type {pin=1}
 

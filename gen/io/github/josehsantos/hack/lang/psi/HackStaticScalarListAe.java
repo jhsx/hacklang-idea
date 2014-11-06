@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticScalarListAe extends PsiElement {
 
   @NotNull
-  HackNonEmptyStaticScalarListAe getNonEmptyStaticScalarListAe();
-
-  @NotNull
-  HackPossibleComma getPossibleComma();
+  List<HackStaticScalarAe> getStaticScalarAeList();
 
 }

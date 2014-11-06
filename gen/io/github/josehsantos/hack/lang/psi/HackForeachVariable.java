@@ -8,7 +8,7 @@ import com.intellij.psi.PsiElement;
 public interface HackForeachVariable extends PsiElement {
 
   @Nullable
-  HackAssignmentList getAssignmentList();
+  HackForeachListAssignment getForeachListAssignment();
 
   @Nullable
   HackVariable getVariable();

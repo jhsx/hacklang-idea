@@ -7,10 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackLambdaUseVars extends PsiElement {
 
-  @NotNull
-  HackHhPossibleComma getHhPossibleComma();
-
-  @NotNull
+  @Nullable
   HackLexicalVarList getLexicalVarList();
 
 }

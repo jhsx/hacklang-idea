@@ -35,12 +35,6 @@ public class HackTraitAliasRuleImpl extends ASTWrapperPsiElement implements Hack
   }
 
   @Override
-  @Nullable
-  public HackNonEmptyMemberModifiers getNonEmptyMemberModifiers() {
-    return findChildByClass(HackNonEmptyMemberModifiers.class);
-  }
-
-  @Override
   @NotNull
   public HackTraitAliasRuleMethod getTraitAliasRuleMethod() {
     return findNotNullChildByClass(HackTraitAliasRuleMethod.class);

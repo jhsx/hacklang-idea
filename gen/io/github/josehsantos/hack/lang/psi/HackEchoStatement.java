@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackEchoStatement extends PsiElement {
+public interface HackEchoStatement extends HackStatement {
 
-  @NotNull
+  @Nullable
   HackExprList getExprList();
 
 }

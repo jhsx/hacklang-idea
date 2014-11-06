@@ -24,14 +24,8 @@ public class HackStaticShapePairListImpl extends ASTWrapperPsiElement implements
 
   @Override
   @NotNull
-  public HackNonEmptyStaticShapePairList getNonEmptyStaticShapePairList() {
-    return findNotNullChildByClass(HackNonEmptyStaticShapePairList.class);
-  }
-
-  @Override
-  @NotNull
-  public HackPossibleComma getPossibleComma() {
-    return findNotNullChildByClass(HackPossibleComma.class);
+  public List<HackShapePairStatic> getShapePairStaticList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackShapePairStatic.class);
   }
 
 }

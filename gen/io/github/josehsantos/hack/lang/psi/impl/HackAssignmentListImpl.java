@@ -23,15 +23,15 @@ public class HackAssignmentListImpl extends ASTWrapperPsiElement implements Hack
   }
 
   @Override
-  @Nullable
-  public HackAssignmentList getAssignmentList() {
-    return findChildByClass(HackAssignmentList.class);
+  @NotNull
+  public List<HackAssignmentList> getAssignmentListList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackAssignmentList.class);
   }
 
   @Override
-  @Nullable
-  public HackVariable getVariable() {
-    return findChildByClass(HackVariable.class);
+  @NotNull
+  public List<HackVariable> getVariableList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackVariable.class);
   }
 
 }

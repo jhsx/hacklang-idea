@@ -22,16 +22,4 @@ public class HackXhpCategoryStmtImpl extends ASTWrapperPsiElement implements Hac
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public HackXhpCategoryDecl getXhpCategoryDecl() {
-    return findNotNullChildByClass(HackXhpCategoryDecl.class);
-  }
-
-  @Override
-  @Nullable
-  public HackXhpCategoryStmt getXhpCategoryStmt() {
-    return findChildByClass(HackXhpCategoryStmt.class);
-  }
-
 }

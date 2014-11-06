@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackDimExprImpl extends ASTWrapperPsiElement implements HackDimExpr {
+public class HackDimExprImpl extends HackExprImpl implements HackDimExpr {
 
   public HackDimExprImpl(ASTNode node) {
     super(node);
@@ -23,21 +22,15 @@ public class HackDimExprImpl extends ASTWrapperPsiElement implements HackDimExpr
   }
 
   @Override
-  @Nullable
-  public HackDimExpr getDimExpr() {
-    return findChildByClass(HackDimExpr.class);
-  }
-
-  @Override
-  @Nullable
+  @NotNull
   public HackDimExprBase getDimExprBase() {
-    return findChildByClass(HackDimExprBase.class);
+    return findNotNullChildByClass(HackDimExprBase.class);
   }
 
   @Override
   @NotNull
-  public HackDimOffset getDimOffset() {
-    return findNotNullChildByClass(HackDimOffset.class);
+  public List<HackExpr> getExprList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpr.class);
   }
 
 }

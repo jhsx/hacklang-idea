@@ -23,9 +23,9 @@ public class HackTryFinallyImpl extends ASTWrapperPsiElement implements HackTryF
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackFinallyStatementList getFinallyStatementList() {
-    return findNotNullChildByClass(HackFinallyStatementList.class);
+    return findChildByClass(HackFinallyStatementList.class);
   }
 
 }

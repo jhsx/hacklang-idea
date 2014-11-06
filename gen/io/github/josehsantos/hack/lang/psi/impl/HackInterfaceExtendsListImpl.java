@@ -23,9 +23,9 @@ public class HackInterfaceExtendsListImpl extends ASTWrapperPsiElement implement
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackInterfaceList getInterfaceList() {
-    return findNotNullChildByClass(HackInterfaceList.class);
+    return findChildByClass(HackInterfaceList.class);
   }
 
 }

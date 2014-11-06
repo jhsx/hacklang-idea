@@ -5,12 +5,12 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackDeclareStatement extends PsiElement {
+public interface HackDeclareStatement extends HackStatement {
 
-  @NotNull
+  @Nullable
   HackDeclareList getDeclareList();
 
-  @NotNull
+  @Nullable
   HackDeclareStatementBody getDeclareStatementBody();
 
 }

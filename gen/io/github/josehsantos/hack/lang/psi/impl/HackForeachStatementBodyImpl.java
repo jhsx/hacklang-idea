@@ -24,14 +24,8 @@ public class HackForeachStatementBodyImpl extends ASTWrapperPsiElement implement
 
   @Override
   @Nullable
-  public HackInnerStatementList getInnerStatementList() {
-    return findChildByClass(HackInnerStatementList.class);
-  }
-
-  @Override
-  @Nullable
-  public HackStatement getStatement() {
-    return findChildByClass(HackStatement.class);
+  public HackForeachNewStatement getForeachNewStatement() {
+    return findChildByClass(HackForeachNewStatement.class);
   }
 
 }

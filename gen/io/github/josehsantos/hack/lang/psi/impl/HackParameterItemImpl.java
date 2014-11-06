@@ -23,27 +23,75 @@ public class HackParameterItemImpl extends ASTWrapperPsiElement implements HackP
   }
 
   @Override
-  @NotNull
-  public HackHhTypeOpt getHhTypeOpt() {
-    return findNotNullChildByClass(HackHhTypeOpt.class);
-  }
-
-  @Override
-  @NotNull
-  public HackOptionalUserAttributes getOptionalUserAttributes() {
-    return findNotNullChildByClass(HackOptionalUserAttributes.class);
-  }
-
-  @Override
-  @NotNull
-  public HackParameterModifiers getParameterModifiers() {
-    return findNotNullChildByClass(HackParameterModifiers.class);
+  @Nullable
+  public HackArrayType getArrayType() {
+    return findChildByClass(HackArrayType.class);
   }
 
   @Override
   @Nullable
-  public HackStaticExpr getStaticExpr() {
-    return findChildByClass(HackStaticExpr.class);
+  public HackCallableType getCallableType() {
+    return findChildByClass(HackCallableType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhFunctionType getHhFunctionType() {
+    return findChildByClass(HackHhFunctionType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhNullableType getHhNullableType() {
+    return findChildByClass(HackHhNullableType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhShapeType getHhShapeType() {
+    return findChildByClass(HackHhShapeType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhSoftType getHhSoftType() {
+    return findChildByClass(HackHhSoftType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhTupleType getHhTupleType() {
+    return findChildByClass(HackHhTupleType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHhXhpType getHhXhpType() {
+    return findChildByClass(HackHhXhpType.class);
+  }
+
+  @Override
+  @Nullable
+  public HackIdentType getIdentType() {
+    return findChildByClass(HackIdentType.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackParameterModifier> getParameterModifierList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackParameterModifier.class);
+  }
+
+  @Override
+  @Nullable
+  public HackUserAttributes getUserAttributes() {
+    return findChildByClass(HackUserAttributes.class);
   }
 
 }

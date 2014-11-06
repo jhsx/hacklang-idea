@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackTraitList extends PsiElement {
 
   @NotNull
-  HackFullyQualifiedClassName getFullyQualifiedClassName();
-
-  @Nullable
-  HackTraitList getTraitList();
+  List<HackFullyQualifiedClassName> getFullyQualifiedClassNameList();
 
 }

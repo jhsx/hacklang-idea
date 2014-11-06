@@ -24,14 +24,14 @@ public class HackXhpChildrenStmtImpl extends ASTWrapperPsiElement implements Hac
 
   @Override
   @Nullable
-  public HackIdent getIdent() {
-    return findChildByClass(HackIdent.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
   @Nullable
-  public HackXhpChildrenParenExpr getXhpChildrenParenExpr() {
-    return findChildByClass(HackXhpChildrenParenExpr.class);
+  public HackIdent getIdent() {
+    return findChildByClass(HackIdent.class);
   }
 
 }

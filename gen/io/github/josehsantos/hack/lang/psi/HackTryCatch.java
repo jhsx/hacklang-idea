@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackTryCatch extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackFullyQualifiedClassName getFullyQualifiedClassName();
 
-  @NotNull
+  @Nullable
   HackInnerStatementList getInnerStatementList();
 
 }

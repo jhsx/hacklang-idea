@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackFinallyStatementList extends PsiElement {
 
   @NotNull
-  HackInnerStatementList getInnerStatementList();
+  HackBlockStatement getBlockStatement();
 
 }

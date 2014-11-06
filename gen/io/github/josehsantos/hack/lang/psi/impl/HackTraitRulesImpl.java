@@ -23,21 +23,15 @@ public class HackTraitRulesImpl extends ASTWrapperPsiElement implements HackTrai
   }
 
   @Override
-  @Nullable
-  public HackTraitAliasRule getTraitAliasRule() {
-    return findChildByClass(HackTraitAliasRule.class);
-  }
-
-  @Override
-  @Nullable
-  public HackTraitPrecedenceRule getTraitPrecedenceRule() {
-    return findChildByClass(HackTraitPrecedenceRule.class);
+  @NotNull
+  public List<HackTraitAliasRule> getTraitAliasRuleList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackTraitAliasRule.class);
   }
 
   @Override
   @NotNull
-  public HackTraitRules getTraitRules() {
-    return findNotNullChildByClass(HackTraitRules.class);
+  public List<HackTraitPrecedenceRule> getTraitPrecedenceRuleList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackTraitPrecedenceRule.class);
   }
 
 }

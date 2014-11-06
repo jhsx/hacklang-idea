@@ -24,20 +24,14 @@ public class HackLambdaBodyImpl extends ASTWrapperPsiElement implements HackLamb
 
   @Override
   @Nullable
-  public HackAwaitExpr getAwaitExpr() {
-    return findChildByClass(HackAwaitExpr.class);
+  public HackBlockStatement getBlockStatement() {
+    return findChildByClass(HackBlockStatement.class);
   }
 
   @Override
   @Nullable
   public HackExpr getExpr() {
     return findChildByClass(HackExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackInnerStatementList getInnerStatementList() {
-    return findChildByClass(HackInnerStatementList.class);
   }
 
 }

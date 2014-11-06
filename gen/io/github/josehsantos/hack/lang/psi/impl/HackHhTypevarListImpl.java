@@ -23,27 +23,9 @@ public class HackHhTypevarListImpl extends ASTWrapperPsiElement implements HackH
   }
 
   @Override
-  @Nullable
-  public HackHhType getHhType() {
-    return findChildByClass(HackHhType.class);
-  }
-
-  @Override
-  @Nullable
-  public HackHhTypevarList getHhTypevarList() {
-    return findChildByClass(HackHhTypevarList.class);
-  }
-
-  @Override
   @NotNull
-  public HackHhTypevarVariance getHhTypevarVariance() {
-    return findNotNullChildByClass(HackHhTypevarVariance.class);
-  }
-
-  @Override
-  @NotNull
-  public HackIdent getIdent() {
-    return findNotNullChildByClass(HackIdent.class);
+  public List<HackHhTypevarItem> getHhTypevarItemList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackHhTypevarItem.class);
   }
 
 }

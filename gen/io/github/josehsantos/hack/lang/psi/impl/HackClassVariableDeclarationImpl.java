@@ -23,15 +23,9 @@ public class HackClassVariableDeclarationImpl extends ASTWrapperPsiElement imple
   }
 
   @Override
-  @Nullable
-  public HackClassVariableDeclaration getClassVariableDeclaration() {
-    return findChildByClass(HackClassVariableDeclaration.class);
-  }
-
-  @Override
-  @Nullable
-  public HackStaticExpr getStaticExpr() {
-    return findChildByClass(HackStaticExpr.class);
+  @NotNull
+  public List<HackStaticAssignment> getStaticAssignmentList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticAssignment.class);
   }
 
 }

@@ -5,13 +5,16 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackIfStatement extends PsiElement {
+public interface HackIfStatement extends HackStatement {
 
   @Nullable
   HackElseSingle getElseSingle();
 
   @Nullable
   HackElseifList getElseifList();
+
+  @Nullable
+  HackExpr getExpr();
 
   @Nullable
   HackInnerStatementList getInnerStatementList();
@@ -21,11 +24,5 @@ public interface HackIfStatement extends PsiElement {
 
   @Nullable
   HackNewElseifList getNewElseifList();
-
-  @NotNull
-  HackParenthesisExpr getParenthesisExpr();
-
-  @Nullable
-  HackStatement getStatement();
 
 }

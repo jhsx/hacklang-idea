@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackUseStatementImpl extends ASTWrapperPsiElement implements HackUseStatement {
+public class HackUseStatementImpl extends HackStatementImpl implements HackUseStatement {
 
   public HackUseStatementImpl(ASTNode node) {
     super(node);
@@ -24,20 +23,8 @@ public class HackUseStatementImpl extends ASTWrapperPsiElement implements HackUs
 
   @Override
   @Nullable
-  public HackUseConstDeclarations getUseConstDeclarations() {
-    return findChildByClass(HackUseConstDeclarations.class);
-  }
-
-  @Override
-  @Nullable
   public HackUseDeclarations getUseDeclarations() {
     return findChildByClass(HackUseDeclarations.class);
-  }
-
-  @Override
-  @Nullable
-  public HackUseFnDeclarations getUseFnDeclarations() {
-    return findChildByClass(HackUseFnDeclarations.class);
   }
 
 }

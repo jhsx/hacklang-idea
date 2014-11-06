@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackBackticksExpr extends PsiElement {
+public interface HackBackticksExpr extends HackExpr {
 
-  @Nullable
-  HackEncapsList getEncapsList();
+  @NotNull
+  List<HackEncapsList> getEncapsListList();
 
 }

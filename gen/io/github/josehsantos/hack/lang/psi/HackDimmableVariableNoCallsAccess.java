@@ -8,12 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface HackDimmableVariableNoCallsAccess extends PsiElement {
 
   @NotNull
-  HackArrayAccess getArrayAccess();
+  List<HackArrayAccess> getArrayAccessList();
 
   @Nullable
-  HackDimmableVariableNoCalls getDimmableVariableNoCalls();
-
-  @Nullable
-  HackExprWithParens getExprWithParens();
+  HackExpr getExpr();
 
 }

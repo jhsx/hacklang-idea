@@ -24,20 +24,14 @@ public class HackDimExprBaseImpl extends ASTWrapperPsiElement implements HackDim
 
   @Override
   @Nullable
-  public HackArrayLiteral getArrayLiteral() {
-    return findChildByClass(HackArrayLiteral.class);
-  }
-
-  @Override
-  @Nullable
   public HackClassConstant getClassConstant() {
     return findChildByClass(HackClassConstant.class);
   }
 
   @Override
   @Nullable
-  public HackExprNoVariable getExprNoVariable() {
-    return findChildByClass(HackExprNoVariable.class);
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
   }
 
 }

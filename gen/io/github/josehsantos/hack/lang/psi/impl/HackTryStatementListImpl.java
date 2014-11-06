@@ -24,8 +24,8 @@ public class HackTryStatementListImpl extends ASTWrapperPsiElement implements Ha
 
   @Override
   @NotNull
-  public HackInnerStatementList getInnerStatementList() {
-    return findNotNullChildByClass(HackInnerStatementList.class);
+  public HackBlockStatement getBlockStatement() {
+    return findNotNullChildByClass(HackBlockStatement.class);
   }
 
 }

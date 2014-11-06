@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticVarList extends PsiElement {
 
   @NotNull
-  List<HackStaticExpr> getStaticExprList();
+  List<HackStaticAssignment> getStaticAssignmentList();
 
 }

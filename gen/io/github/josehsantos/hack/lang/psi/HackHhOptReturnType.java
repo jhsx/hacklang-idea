@@ -8,6 +8,30 @@ import com.intellij.psi.PsiElement;
 public interface HackHhOptReturnType extends PsiElement {
 
   @Nullable
-  HackHhType getHhType();
+  HackArrayType getArrayType();
+
+  @Nullable
+  HackCallableType getCallableType();
+
+  @Nullable
+  HackHhFunctionType getHhFunctionType();
+
+  @Nullable
+  HackHhNullableType getHhNullableType();
+
+  @Nullable
+  HackHhShapeType getHhShapeType();
+
+  @Nullable
+  HackHhSoftType getHhSoftType();
+
+  @Nullable
+  HackHhTupleType getHhTupleType();
+
+  @Nullable
+  HackHhXhpType getHhXhpType();
+
+  @Nullable
+  HackIdentType getIdentType();
 
 }

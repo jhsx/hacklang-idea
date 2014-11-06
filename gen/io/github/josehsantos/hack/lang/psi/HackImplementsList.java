@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackImplementsList extends PsiElement {
 
-  @NotNull
+  @Nullable
   HackInterfaceList getInterfaceList();
 
 }

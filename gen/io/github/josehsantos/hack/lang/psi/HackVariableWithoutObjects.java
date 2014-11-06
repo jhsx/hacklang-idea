@@ -10,7 +10,4 @@ public interface HackVariableWithoutObjects extends PsiElement {
   @NotNull
   HackReferenceVariable getReferenceVariable();
 
-  @Nullable
-  HackSimpleIndirectReference getSimpleIndirectReference();
-
 }

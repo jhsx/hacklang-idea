@@ -7,16 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackReferenceVariable extends PsiElement {
 
-  @Nullable
-  HackCompoundVariable getCompoundVariable();
+  @NotNull
+  List<HackCompoundVariable> getCompoundVariableList();
 
-  @Nullable
-  HackDimOffset getDimOffset();
-
-  @Nullable
-  HackExpr getExpr();
-
-  @Nullable
-  HackReferenceVariable getReferenceVariable();
+  @NotNull
+  List<HackExpr> getExprList();
 
 }

@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface HackVariableModifiers extends PsiElement {
 
-  @Nullable
-  HackNonEmptyMemberModifiers getNonEmptyMemberModifiers();
-
 }

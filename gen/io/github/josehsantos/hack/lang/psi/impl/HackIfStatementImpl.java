@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackIfStatementImpl extends ASTWrapperPsiElement implements HackIfStatement {
+public class HackIfStatementImpl extends HackStatementImpl implements HackIfStatement {
 
   public HackIfStatementImpl(ASTNode node) {
     super(node);
@@ -36,6 +35,12 @@ public class HackIfStatementImpl extends ASTWrapperPsiElement implements HackIfS
 
   @Override
   @Nullable
+  public HackExpr getExpr() {
+    return findChildByClass(HackExpr.class);
+  }
+
+  @Override
+  @Nullable
   public HackInnerStatementList getInnerStatementList() {
     return findChildByClass(HackInnerStatementList.class);
   }
@@ -50,18 +55,6 @@ public class HackIfStatementImpl extends ASTWrapperPsiElement implements HackIfS
   @Nullable
   public HackNewElseifList getNewElseifList() {
     return findChildByClass(HackNewElseifList.class);
-  }
-
-  @Override
-  @NotNull
-  public HackParenthesisExpr getParenthesisExpr() {
-    return findNotNullChildByClass(HackParenthesisExpr.class);
-  }
-
-  @Override
-  @Nullable
-  public HackStatement getStatement() {
-    return findChildByClass(HackStatement.class);
   }
 
 }

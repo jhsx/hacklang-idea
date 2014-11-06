@@ -8,10 +8,10 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticScalarAe extends PsiElement {
 
   @Nullable
-  HackCommonScalarAe getCommonScalarAe();
+  HackIdent getIdent();
 
   @Nullable
-  HackIdent getIdent();
+  HackLiteralScalarAe getLiteralScalarAe();
 
   @Nullable
   HackStaticArrayPairListAe getStaticArrayPairListAe();

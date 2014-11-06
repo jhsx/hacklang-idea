@@ -7,10 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackArrayAccess extends PsiElement {
 
-  @Nullable
-  HackDimOffset getDimOffset();
-
-  @Nullable
+  @NotNull
   HackExpr getExpr();
 
 }

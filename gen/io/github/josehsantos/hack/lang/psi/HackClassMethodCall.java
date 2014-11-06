@@ -10,7 +10,7 @@ public interface HackClassMethodCall extends PsiElement {
   @Nullable
   HackExpr getExpr();
 
-  @NotNull
+  @Nullable
   HackFunctionCallParameterList getFunctionCallParameterList();
 
   @Nullable

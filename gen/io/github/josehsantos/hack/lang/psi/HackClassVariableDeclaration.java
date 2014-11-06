@@ -7,10 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackClassVariableDeclaration extends PsiElement {
 
-  @Nullable
-  HackClassVariableDeclaration getClassVariableDeclaration();
-
-  @Nullable
-  HackStaticExpr getStaticExpr();
+  @NotNull
+  List<HackStaticAssignment> getStaticAssignmentList();
 
 }

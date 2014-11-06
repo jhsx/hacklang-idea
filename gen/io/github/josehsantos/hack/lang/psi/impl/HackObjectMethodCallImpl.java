@@ -30,14 +30,8 @@ public class HackObjectMethodCallImpl extends ASTWrapperPsiElement implements Ha
 
   @Override
   @Nullable
-  public HackExprWithParens getExprWithParens() {
-    return findChildByClass(HackExprWithParens.class);
-  }
-
-  @Override
-  @NotNull
   public HackFunctionCallParameterList getFunctionCallParameterList() {
-    return findNotNullChildByClass(HackFunctionCallParameterList.class);
+    return findChildByClass(HackFunctionCallParameterList.class);
   }
 
   @Override

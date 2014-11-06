@@ -8,10 +8,9 @@ import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiElementVisitor;
 import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
-import com.intellij.extapi.psi.ASTWrapperPsiElement;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackTraitDeclarationStatementImpl extends ASTWrapperPsiElement implements HackTraitDeclarationStatement {
+public class HackTraitDeclarationStatementImpl extends HackStatementImpl implements HackTraitDeclarationStatement {
 
   public HackTraitDeclarationStatementImpl(ASTNode node) {
     super(node);
@@ -23,21 +22,33 @@ public class HackTraitDeclarationStatementImpl extends ASTWrapperPsiElement impl
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackClassStatementList getClassStatementList() {
-    return findNotNullChildByClass(HackClassStatementList.class);
+    return findChildByClass(HackClassStatementList.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
+  public HackHhTypevar getHhTypevar() {
+    return findChildByClass(HackHhTypevar.class);
+  }
+
+  @Override
+  @Nullable
+  public HackIdent getIdent() {
+    return findChildByClass(HackIdent.class);
+  }
+
+  @Override
+  @Nullable
   public HackImplementsList getImplementsList() {
-    return findNotNullChildByClass(HackImplementsList.class);
+    return findChildByClass(HackImplementsList.class);
   }
 
   @Override
-  @NotNull
-  public HackTraitDeclName getTraitDeclName() {
-    return findNotNullChildByClass(HackTraitDeclName.class);
+  @Nullable
+  public HackUserAttributes getUserAttributes() {
+    return findChildByClass(HackUserAttributes.class);
   }
 
 }

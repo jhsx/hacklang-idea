@@ -23,15 +23,9 @@ public class HackArrayAccessImpl extends ASTWrapperPsiElement implements HackArr
   }
 
   @Override
-  @Nullable
-  public HackDimOffset getDimOffset() {
-    return findChildByClass(HackDimOffset.class);
-  }
-
-  @Override
-  @Nullable
+  @NotNull
   public HackExpr getExpr() {
-    return findChildByClass(HackExpr.class);
+    return findNotNullChildByClass(HackExpr.class);
   }
 
 }

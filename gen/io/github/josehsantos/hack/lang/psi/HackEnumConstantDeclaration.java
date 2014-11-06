@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackEnumConstantDeclaration extends PsiElement {
 
-  @NotNull
-  HackHhNameWithType getHhNameWithType();
+  @Nullable
+  HackExpr getExpr();
 
   @NotNull
-  HackStaticExpr getStaticExpr();
+  HackHhNameWithType getHhNameWithType();
 
 }

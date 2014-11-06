@@ -5,9 +5,9 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackAwaitExpr extends PsiElement {
+public interface HackAwaitExpr extends HackExpr {
 
-  @NotNull
+  @Nullable
   HackExpr getExpr();
 
 }

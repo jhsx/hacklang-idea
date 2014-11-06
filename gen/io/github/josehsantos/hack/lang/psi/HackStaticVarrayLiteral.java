@@ -7,7 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackStaticVarrayLiteral extends PsiElement {
 
-  @NotNull
-  HackStaticVarrayInit getStaticVarrayInit();
+  @Nullable
+  HackStaticArrayPairList getStaticArrayPairList();
 
 }

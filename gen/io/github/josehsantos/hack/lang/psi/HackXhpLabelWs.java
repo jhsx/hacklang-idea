@@ -8,9 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackXhpLabelWs extends PsiElement {
 
   @NotNull
-  HackXhpBareword getXhpBareword();
-
-  @Nullable
-  HackXhpLabelWs getXhpLabelWs();
+  List<HackXhpBareword> getXhpBarewordList();
 
 }

@@ -24,14 +24,8 @@ public class HackInterfaceListImpl extends ASTWrapperPsiElement implements HackI
 
   @Override
   @NotNull
-  public HackFullyQualifiedClassName getFullyQualifiedClassName() {
-    return findNotNullChildByClass(HackFullyQualifiedClassName.class);
-  }
-
-  @Override
-  @Nullable
-  public HackInterfaceList getInterfaceList() {
-    return findChildByClass(HackInterfaceList.class);
+  public List<HackFullyQualifiedClassName> getFullyQualifiedClassNameList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackFullyQualifiedClassName.class);
   }
 
 }

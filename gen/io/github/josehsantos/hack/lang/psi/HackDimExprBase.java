@@ -8,12 +8,9 @@ import com.intellij.psi.PsiElement;
 public interface HackDimExprBase extends PsiElement {
 
   @Nullable
-  HackArrayLiteral getArrayLiteral();
-
-  @Nullable
   HackClassConstant getClassConstant();
 
   @Nullable
-  HackExprNoVariable getExprNoVariable();
+  HackExpr getExpr();
 
 }

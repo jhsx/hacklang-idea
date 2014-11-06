@@ -7,10 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackEncapsList extends PsiElement {
 
-  @Nullable
-  HackEncapsList getEncapsList();
-
-  @Nullable
-  HackEncapsVar getEncapsVar();
+  @NotNull
+  List<HackEncapsVar> getEncapsVarList();
 
 }

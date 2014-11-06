@@ -11,16 +11,36 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitAdditiveOrConcatenationExpr(@NotNull HackAdditiveOrConcatenationExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitAdditiveOrConcatenationOperator(@NotNull HackAdditiveOrConcatenationOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitArrayAccess(@NotNull HackArrayAccess o) {
     visitPsiElement(o);
   }
 
-  public void visitArrayLiteral(@NotNull HackArrayLiteral o) {
+  public void visitArrayLiteralExpr(@NotNull HackArrayLiteralExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitArrayPairItem(@NotNull HackArrayPairItem o) {
     visitPsiElement(o);
   }
 
   public void visitArrayPairList(@NotNull HackArrayPairList o) {
     visitPsiElement(o);
+  }
+
+  public void visitArrayType(@NotNull HackArrayType o) {
+    visitPsiElement(o);
+  }
+
+  public void visitAssignmentExpr(@NotNull HackAssignmentExpr o) {
+    visitExpr(o);
   }
 
   public void visitAssignmentList(@NotNull HackAssignmentList o) {
@@ -32,26 +52,46 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitAwaitAssignExpr(@NotNull HackAwaitAssignExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitAwaitExpr(@NotNull HackAwaitExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitAwaitListAssignExpr(@NotNull HackAwaitListAssignExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitBackticksExpr(@NotNull HackBackticksExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitBitwiseExpr(@NotNull HackBitwiseExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitBitwiseOperator(@NotNull HackBitwiseOperator o) {
     visitPsiElement(o);
   }
 
+  public void visitBlockStatement(@NotNull HackBlockStatement o) {
+    visitStatement(o);
+  }
+
   public void visitBreakStatement(@NotNull HackBreakStatement o) {
+    visitStatement(o);
+  }
+
+  public void visitCallableType(@NotNull HackCallableType o) {
     visitPsiElement(o);
   }
 
   public void visitCallableVariable(@NotNull HackCallableVariable o) {
+    visitPsiElement(o);
+  }
+
+  public void visitCallingParameterItem(@NotNull HackCallingParameterItem o) {
     visitPsiElement(o);
   }
 
@@ -67,24 +107,20 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitCastExpr(@NotNull HackCastExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitCastOperator(@NotNull HackCastOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitClassConstant(@NotNull HackClassConstant o) {
     visitPsiElement(o);
   }
 
-  public void visitClassConstantDeclaration(@NotNull HackClassConstantDeclaration o) {
-    visitPsiElement(o);
-  }
-
-  public void visitClassDeclName(@NotNull HackClassDeclName o) {
-    visitPsiElement(o);
-  }
-
   public void visitClassDeclarationStatement(@NotNull HackClassDeclarationStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitClassEntryType(@NotNull HackClassEntryType o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitClassMethodCall(@NotNull HackClassMethodCall o) {
@@ -100,7 +136,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitClassStatement(@NotNull HackClassStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitClassStatementList(@NotNull HackClassStatementList o) {
@@ -111,23 +147,31 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitClosureExpression(@NotNull HackClosureExpression o) {
+  public void visitClassVariableDeclarations(@NotNull HackClassVariableDeclarations o) {
     visitPsiElement(o);
   }
 
-  public void visitCollectionInit(@NotNull HackCollectionInit o) {
-    visitPsiElement(o);
+  public void visitCloneExpr(@NotNull HackCloneExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitClosureExpr(@NotNull HackClosureExpr o) {
+    visitExpr(o);
   }
 
   public void visitCollectionLiteral(@NotNull HackCollectionLiteral o) {
     visitPsiElement(o);
   }
 
-  public void visitCommonScalar(@NotNull HackCommonScalar o) {
-    visitPsiElement(o);
+  public void visitCollectionLiteralExpr(@NotNull HackCollectionLiteralExpr o) {
+    visitExpr(o);
   }
 
-  public void visitCommonScalarAe(@NotNull HackCommonScalarAe o) {
+  public void visitComparativeExpr(@NotNull HackComparativeExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitComparativeOperator(@NotNull HackComparativeOperator o) {
     visitPsiElement(o);
   }
 
@@ -144,11 +188,11 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitConstantDeclarationStatement(@NotNull HackConstantDeclarationStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitContinueStatement(@NotNull HackContinueStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitCtorArguments(@NotNull HackCtorArguments o) {
@@ -163,8 +207,12 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitDeclareNewStatement(@NotNull HackDeclareNewStatement o) {
+    visitStatement(o);
+  }
+
   public void visitDeclareStatement(@NotNull HackDeclareStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitDeclareStatementBody(@NotNull HackDeclareStatementBody o) {
@@ -176,26 +224,10 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitDimExpr(@NotNull HackDimExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitDimExprBase(@NotNull HackDimExprBase o) {
-    visitPsiElement(o);
-  }
-
-  public void visitDimOffset(@NotNull HackDimOffset o) {
-    visitPsiElement(o);
-  }
-
-  public void visitDimmableVariable(@NotNull HackDimmableVariable o) {
-    visitPsiElement(o);
-  }
-
-  public void visitDimmableVariableAccess(@NotNull HackDimmableVariableAccess o) {
-    visitPsiElement(o);
-  }
-
-  public void visitDimmableVariableNoCalls(@NotNull HackDimmableVariableNoCalls o) {
     visitPsiElement(o);
   }
 
@@ -204,11 +236,11 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitDoWhileStatement(@NotNull HackDoWhileStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitEchoStatement(@NotNull HackEchoStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitElseSingle(@NotNull HackElseSingle o) {
@@ -240,11 +272,11 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitEnumDeclarationStatement(@NotNull HackEnumDeclarationStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitEnumStatement(@NotNull HackEnumStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitEnumStatementList(@NotNull HackEnumStatementList o) {
@@ -252,7 +284,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitExitExpr(@NotNull HackExitExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitExpr(@NotNull HackExpr o) {
@@ -263,16 +295,8 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitExprNoVariable(@NotNull HackExprNoVariable o) {
-    visitPsiElement(o);
-  }
-
   public void visitExprStatement(@NotNull HackExprStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitExprWithParens(@NotNull HackExprWithParens o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitExtendsFrom(@NotNull HackExtendsFrom o) {
@@ -283,16 +307,24 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitForExpr(@NotNull HackForExpr o) {
-    visitPsiElement(o);
+  public void visitForNewStatement(@NotNull HackForNewStatement o) {
+    visitStatement(o);
   }
 
   public void visitForStatement(@NotNull HackForStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitForStatementBody(@NotNull HackForStatementBody o) {
     visitPsiElement(o);
+  }
+
+  public void visitForeachListAssignment(@NotNull HackForeachListAssignment o) {
+    visitPsiElement(o);
+  }
+
+  public void visitForeachNewStatement(@NotNull HackForeachNewStatement o) {
+    visitStatement(o);
   }
 
   public void visitForeachOptionalArg(@NotNull HackForeachOptionalArg o) {
@@ -300,7 +332,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitForeachStatement(@NotNull HackForeachStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitForeachStatementBody(@NotNull HackForeachStatementBody o) {
@@ -328,15 +360,11 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitFunctionDeclarationStatement(@NotNull HackFunctionDeclarationStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitFunctionLoc(@NotNull HackFunctionLoc o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitGlobalStatement(@NotNull HackGlobalStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitGlobalVar(@NotNull HackGlobalVar o) {
@@ -348,7 +376,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitGotoStatement(@NotNull HackGotoStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitGroupClause(@NotNull HackGroupClause o) {
@@ -356,10 +384,14 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitHaltCompilerStatement(@NotNull HackHaltCompilerStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitHhFuncTypeList(@NotNull HackHhFuncTypeList o) {
+    visitPsiElement(o);
+  }
+
+  public void visitHhFunctionType(@NotNull HackHhFunctionType o) {
     visitPsiElement(o);
   }
 
@@ -367,31 +399,11 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitHhNameWithTypevar(@NotNull HackHhNameWithTypevar o) {
-    visitPsiElement(o);
-  }
-
-  public void visitHhNonEmptyShapeMemberList(@NotNull HackHhNonEmptyShapeMemberList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitHhNonEmptyTypeList(@NotNull HackHhNonEmptyTypeList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitHhNullType(@NotNull HackHhNullType o) {
-    visitPsiElement(o);
-  }
-
-  public void visitHhOptConstraint(@NotNull HackHhOptConstraint o) {
+  public void visitHhNullableType(@NotNull HackHhNullableType o) {
     visitPsiElement(o);
   }
 
   public void visitHhOptReturnType(@NotNull HackHhOptReturnType o) {
-    visitPsiElement(o);
-  }
-
-  public void visitHhPossibleComma(@NotNull HackHhPossibleComma o) {
     visitPsiElement(o);
   }
 
@@ -407,23 +419,31 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitHhType(@NotNull HackHhType o) {
+  public void visitHhSoftType(@NotNull HackHhSoftType o) {
+    visitPsiElement(o);
+  }
+
+  public void visitHhTupleType(@NotNull HackHhTupleType o) {
     visitPsiElement(o);
   }
 
   public void visitHhTypeAliasStatement(@NotNull HackHhTypeAliasStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitHhTypeList(@NotNull HackHhTypeList o) {
     visitPsiElement(o);
   }
 
-  public void visitHhTypeOpt(@NotNull HackHhTypeOpt o) {
+  public void visitHhTypeargsOpt(@NotNull HackHhTypeargsOpt o) {
     visitPsiElement(o);
   }
 
-  public void visitHhTypeargsOpt(@NotNull HackHhTypeargsOpt o) {
+  public void visitHhTypevar(@NotNull HackHhTypevar o) {
+    visitPsiElement(o);
+  }
+
+  public void visitHhTypevarItem(@NotNull HackHhTypevarItem o) {
     visitPsiElement(o);
   }
 
@@ -435,23 +455,27 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitHtmlStatement(@NotNull HackHtmlStatement o) {
+  public void visitHhXhpType(@NotNull HackHhXhpType o) {
     visitPsiElement(o);
+  }
+
+  public void visitHtmlStatement(@NotNull HackHtmlStatement o) {
+    visitStatement(o);
   }
 
   public void visitIdent(@NotNull HackIdent o) {
     visitPsiElement(o);
   }
 
-  public void visitIfStatement(@NotNull HackIfStatement o) {
+  public void visitIdentType(@NotNull HackIdentType o) {
     visitPsiElement(o);
+  }
+
+  public void visitIfStatement(@NotNull HackIfStatement o) {
+    visitStatement(o);
   }
 
   public void visitImplementsList(@NotNull HackImplementsList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitInnerStatement(@NotNull HackInnerStatement o) {
     visitPsiElement(o);
   }
 
@@ -459,8 +483,12 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitInterfaceDeclName(@NotNull HackInterfaceDeclName o) {
-    visitPsiElement(o);
+  public void visitInstanceofExpr(@NotNull HackInstanceofExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitInterfaceDeclarationStatement(@NotNull HackInterfaceDeclarationStatement o) {
+    visitStatement(o);
   }
 
   public void visitInterfaceExtendsList(@NotNull HackInterfaceExtendsList o) {
@@ -471,12 +499,28 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitInternalFunctions(@NotNull HackInternalFunctions o) {
-    visitPsiElement(o);
+  public void visitInternalEmptyExpr(@NotNull HackInternalEmptyExpr o) {
+    visitExpr(o);
   }
 
-  public void visitIsReference(@NotNull HackIsReference o) {
-    visitPsiElement(o);
+  public void visitInternalEvalExpr(@NotNull HackInternalEvalExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitInternalIncludeExpr(@NotNull HackInternalIncludeExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitInternalIssetExpr(@NotNull HackInternalIssetExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitInternalRequireExpr(@NotNull HackInternalRequireExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitInternalTupleExpr(@NotNull HackInternalTupleExpr o) {
+    visitExpr(o);
   }
 
   public void visitJoinClause(@NotNull HackJoinClause o) {
@@ -488,15 +532,15 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitLabelStatement(@NotNull HackLabelStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitLambdaBody(@NotNull HackLambdaBody o) {
     visitPsiElement(o);
   }
 
-  public void visitLambdaExpression(@NotNull HackLambdaExpression o) {
-    visitPsiElement(o);
+  public void visitLambdaExpr(@NotNull HackLambdaExpr o) {
+    visitExpr(o);
   }
 
   public void visitLambdaUseVars(@NotNull HackLambdaUseVars o) {
@@ -511,23 +555,43 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitMapArrayInit(@NotNull HackMapArrayInit o) {
+  public void visitListAssignmentExpr(@NotNull HackListAssignmentExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitLiteralExpr(@NotNull HackLiteralExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitLiteralScalarAe(@NotNull HackLiteralScalarAe o) {
     visitPsiElement(o);
   }
 
-  public void visitMapArrayLiteral(@NotNull HackMapArrayLiteral o) {
+  public void visitLogicalExpr(@NotNull HackLogicalExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitLogicalOperator(@NotNull HackLogicalOperator o) {
     visitPsiElement(o);
   }
 
-  public void visitMemberModifier(@NotNull HackMemberModifier o) {
-    visitPsiElement(o);
+  public void visitMapArrayLiteralExpr(@NotNull HackMapArrayLiteralExpr o) {
+    visitExpr(o);
   }
 
-  public void visitMethodBody(@NotNull HackMethodBody o) {
-    visitPsiElement(o);
+  public void visitMethodFunctionDeclaration(@NotNull HackMethodFunctionDeclaration o) {
+    visitFunctionDeclarationStatement(o);
   }
 
   public void visitMethodModifiers(@NotNull HackMethodModifiers o) {
+    visitPsiElement(o);
+  }
+
+  public void visitMultiplicativeExpr(@NotNull HackMultiplicativeExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitMultiplicativeOperator(@NotNull HackMultiplicativeOperator o) {
     visitPsiElement(o);
   }
 
@@ -536,14 +600,10 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitNamespaceStatement(@NotNull HackNamespaceStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitNamespaceString(@NotNull HackNamespaceString o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNamespaceStringBase(@NotNull HackNamespaceStringBase o) {
     visitPsiElement(o);
   }
 
@@ -563,72 +623,8 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitNonEmptyArrayPairList(@NotNull HackNonEmptyArrayPairList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyCollectionInit(@NotNull HackNonEmptyCollectionInit o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyFcallParameterList(@NotNull HackNonEmptyFcallParameterList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyMapArrayInit(@NotNull HackNonEmptyMapArrayInit o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyMemberModifiers(@NotNull HackNonEmptyMemberModifiers o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyShapePairList(@NotNull HackNonEmptyShapePairList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticArrayPairList(@NotNull HackNonEmptyStaticArrayPairList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticArrayPairListAe(@NotNull HackNonEmptyStaticArrayPairListAe o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticCollectionInit(@NotNull HackNonEmptyStaticCollectionInit o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticMapArrayInit(@NotNull HackNonEmptyStaticMapArrayInit o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticScalarListAe(@NotNull HackNonEmptyStaticScalarListAe o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticShapePairList(@NotNull HackNonEmptyStaticShapePairList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticShapePairListAe(@NotNull HackNonEmptyStaticShapePairListAe o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyStaticVarrayInit(@NotNull HackNonEmptyStaticVarrayInit o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyUserAttributeList(@NotNull HackNonEmptyUserAttributeList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyUserAttributes(@NotNull HackNonEmptyUserAttributes o) {
-    visitPsiElement(o);
-  }
-
-  public void visitNonEmptyVarrayInit(@NotNull HackNonEmptyVarrayInit o) {
-    visitPsiElement(o);
+  public void visitNewExpr(@NotNull HackNewExpr o) {
+    visitExpr(o);
   }
 
   public void visitObjectMethodCall(@NotNull HackObjectMethodCall o) {
@@ -636,10 +632,6 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitOptionalFinally(@NotNull HackOptionalFinally o) {
-    visitPsiElement(o);
-  }
-
-  public void visitOptionalUserAttributes(@NotNull HackOptionalUserAttributes o) {
     visitPsiElement(o);
   }
 
@@ -671,28 +663,28 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitParameterModifiers(@NotNull HackParameterModifiers o) {
+  public void visitParenthesizedExpr(@NotNull HackParenthesizedExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitPrefixExpr(@NotNull HackPrefixExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitPrefixOperator(@NotNull HackPrefixOperator o) {
     visitPsiElement(o);
   }
 
-  public void visitParenthesisExpr(@NotNull HackParenthesisExpr o) {
-    visitPsiElement(o);
-  }
-
-  public void visitPossibleComma(@NotNull HackPossibleComma o) {
-    visitPsiElement(o);
+  public void visitPrintExpr(@NotNull HackPrintExpr o) {
+    visitExpr(o);
   }
 
   public void visitPropertyAccess(@NotNull HackPropertyAccess o) {
     visitPsiElement(o);
   }
 
-  public void visitPropertyAccessWithoutVariables(@NotNull HackPropertyAccessWithoutVariables o) {
-    visitPsiElement(o);
-  }
-
   public void visitQueryAssignExpr(@NotNull HackQueryAssignExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitQueryBody(@NotNull HackQueryBody o) {
@@ -712,7 +704,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitQueryExpr(@NotNull HackQueryExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitQueryHead(@NotNull HackQueryHead o) {
@@ -724,11 +716,11 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitReturnStatement(@NotNull HackReturnStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
-  public void visitScalar(@NotNull HackScalar o) {
-    visitPsiElement(o);
+  public void visitScalarExpr(@NotNull HackScalarExpr o) {
+    visitExpr(o);
   }
 
   public void visitSelectClause(@NotNull HackSelectClause o) {
@@ -743,7 +735,11 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitShapeLiteral(@NotNull HackShapeLiteral o) {
+  public void visitShapeLiteralExpr(@NotNull HackShapeLiteralExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitShapePair(@NotNull HackShapePair o) {
     visitPsiElement(o);
   }
 
@@ -751,15 +747,35 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitShapePairStatic(@NotNull HackShapePairStatic o) {
+    visitPsiElement(o);
+  }
+
+  public void visitShiftExpr(@NotNull HackShiftExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitShiftOperator(@NotNull HackShiftOperator o) {
+    visitPsiElement(o);
+  }
+
   public void visitSimpleFunctionCall(@NotNull HackSimpleFunctionCall o) {
     visitPsiElement(o);
   }
 
-  public void visitSimpleIndirectReference(@NotNull HackSimpleIndirectReference o) {
+  public void visitStaticAdditiveOrConcatenationExpr(@NotNull HackStaticAdditiveOrConcatenationExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitStaticArrayExpr(@NotNull HackStaticArrayExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitStaticArrayItem(@NotNull HackStaticArrayItem o) {
     visitPsiElement(o);
   }
 
-  public void visitStatement(@NotNull HackStatement o) {
+  public void visitStaticArrayItemAe(@NotNull HackStaticArrayItemAe o) {
     visitPsiElement(o);
   }
 
@@ -771,6 +787,14 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitStaticAssignment(@NotNull HackStaticAssignment o) {
+    visitPsiElement(o);
+  }
+
+  public void visitStaticBitwiseExpr(@NotNull HackStaticBitwiseExpr o) {
+    visitExpr(o);
+  }
+
   public void visitStaticClassConstant(@NotNull HackStaticClassConstant o) {
     visitPsiElement(o);
   }
@@ -779,27 +803,43 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitStaticCollectionInit(@NotNull HackStaticCollectionInit o) {
-    visitPsiElement(o);
-  }
-
   public void visitStaticCollectionLiteral(@NotNull HackStaticCollectionLiteral o) {
     visitPsiElement(o);
   }
 
-  public void visitStaticExpr(@NotNull HackStaticExpr o) {
-    visitPsiElement(o);
+  public void visitStaticComparativeExpr(@NotNull HackStaticComparativeExpr o) {
+    visitExpr(o);
   }
 
-  public void visitStaticMapArrayInit(@NotNull HackStaticMapArrayInit o) {
-    visitPsiElement(o);
+  public void visitStaticExpr(@NotNull HackStaticExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitStaticLogicalExpr(@NotNull HackStaticLogicalExpr o) {
+    visitExpr(o);
   }
 
   public void visitStaticMapArrayLiteral(@NotNull HackStaticMapArrayLiteral o) {
     visitPsiElement(o);
   }
 
+  public void visitStaticMultiplicativeExpr(@NotNull HackStaticMultiplicativeExpr o) {
+    visitExpr(o);
+  }
+
   public void visitStaticNumericScalarAe(@NotNull HackStaticNumericScalarAe o) {
+    visitPsiElement(o);
+  }
+
+  public void visitStaticParenthesizedExpr(@NotNull HackStaticParenthesizedExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitStaticPrefixExpr(@NotNull HackStaticPrefixExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitStaticPrefixOperator(@NotNull HackStaticPrefixOperator o) {
     visitPsiElement(o);
   }
 
@@ -811,6 +851,14 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitStaticShapeExpr(@NotNull HackStaticShapeExpr o) {
+    visitExpr(o);
+  }
+
+  public void visitStaticShapePairItem(@NotNull HackStaticShapePairItem o) {
+    visitPsiElement(o);
+  }
+
   public void visitStaticShapePairList(@NotNull HackStaticShapePairList o) {
     visitPsiElement(o);
   }
@@ -819,15 +867,19 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitStaticShiftExpr(@NotNull HackStaticShiftExpr o) {
+    visitExpr(o);
+  }
+
   public void visitStaticStatement(@NotNull HackStaticStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
+  }
+
+  public void visitStaticTernaryExpr(@NotNull HackStaticTernaryExpr o) {
+    visitExpr(o);
   }
 
   public void visitStaticVarList(@NotNull HackStaticVarList o) {
-    visitPsiElement(o);
-  }
-
-  public void visitStaticVarrayInit(@NotNull HackStaticVarrayInit o) {
     visitPsiElement(o);
   }
 
@@ -839,16 +891,20 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitSwitchNewStatement(@NotNull HackSwitchNewStatement o) {
+    visitStatement(o);
+  }
+
   public void visitSwitchStatement(@NotNull HackSwitchStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
+  }
+
+  public void visitTernaryExpr(@NotNull HackTernaryExpr o) {
+    visitExpr(o);
   }
 
   public void visitThrowStatement(@NotNull HackThrowStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitTopStatementList(@NotNull HackTopStatementList o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitTraitAliasRule(@NotNull HackTraitAliasRule o) {
@@ -859,12 +915,8 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitTraitDeclName(@NotNull HackTraitDeclName o) {
-    visitPsiElement(o);
-  }
-
   public void visitTraitDeclarationStatement(@NotNull HackTraitDeclarationStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitTraitList(@NotNull HackTraitList o) {
@@ -875,7 +927,15 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
+  public void visitTraitRequireDeclaration(@NotNull HackTraitRequireDeclaration o) {
+    visitPsiElement(o);
+  }
+
   public void visitTraitRules(@NotNull HackTraitRules o) {
+    visitPsiElement(o);
+  }
+
+  public void visitTraitUseDeclaration(@NotNull HackTraitUseDeclaration o) {
     visitPsiElement(o);
   }
 
@@ -888,7 +948,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitTryStatement(@NotNull HackTryStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitTryStatementList(@NotNull HackTryStatementList o) {
@@ -896,15 +956,7 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitUnsetStatement(@NotNull HackUnsetStatement o) {
-    visitPsiElement(o);
-  }
-
-  public void visitUseConstDeclaration(@NotNull HackUseConstDeclaration o) {
-    visitPsiElement(o);
-  }
-
-  public void visitUseConstDeclarations(@NotNull HackUseConstDeclarations o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitUseDeclaration(@NotNull HackUseDeclaration o) {
@@ -915,19 +967,19 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitUseFnDeclaration(@NotNull HackUseFnDeclaration o) {
-    visitPsiElement(o);
-  }
-
-  public void visitUseFnDeclarations(@NotNull HackUseFnDeclarations o) {
-    visitPsiElement(o);
-  }
-
   public void visitUseStatement(@NotNull HackUseStatement o) {
+    visitStatement(o);
+  }
+
+  public void visitUserAttribute(@NotNull HackUserAttribute o) {
     visitPsiElement(o);
   }
 
   public void visitUserAttributeList(@NotNull HackUserAttributeList o) {
+    visitPsiElement(o);
+  }
+
+  public void visitUserAttributes(@NotNull HackUserAttributes o) {
     visitPsiElement(o);
   }
 
@@ -951,23 +1003,27 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitVarrayInit(@NotNull HackVarrayInit o) {
-    visitPsiElement(o);
-  }
-
-  public void visitVarrayLiteral(@NotNull HackVarrayLiteral o) {
-    visitPsiElement(o);
+  public void visitVarrayLiteralExpr(@NotNull HackVarrayLiteralExpr o) {
+    visitExpr(o);
   }
 
   public void visitWhereClause(@NotNull HackWhereClause o) {
     visitPsiElement(o);
   }
 
+  public void visitWhileNewStatement(@NotNull HackWhileNewStatement o) {
+    visitStatement(o);
+  }
+
   public void visitWhileStatement(@NotNull HackWhileStatement o) {
-    visitPsiElement(o);
+    visitStatement(o);
   }
 
   public void visitWhileStatementBody(@NotNull HackWhileStatementBody o) {
+    visitPsiElement(o);
+  }
+
+  public void visitXhpAttribute(@NotNull HackXhpAttribute o) {
     visitPsiElement(o);
   }
 
@@ -976,6 +1032,10 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitXhpAttributeDeclType(@NotNull HackXhpAttributeDeclType o) {
+    visitPsiElement(o);
+  }
+
+  public void visitXhpAttributeDeclaration(@NotNull HackXhpAttributeDeclaration o) {
     visitPsiElement(o);
   }
 
@@ -1011,7 +1071,7 @@ public class HackVisitor extends PsiElementVisitor {
     visitPsiElement(o);
   }
 
-  public void visitXhpCategoryDecl(@NotNull HackXhpCategoryDecl o) {
+  public void visitXhpCategoryDeclaration(@NotNull HackXhpCategoryDeclaration o) {
     visitPsiElement(o);
   }
 
@@ -1028,19 +1088,27 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitXhpChildrenDeclExpr(@NotNull HackXhpChildrenDeclExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitXhpChildrenDeclTag(@NotNull HackXhpChildrenDeclTag o) {
     visitPsiElement(o);
   }
 
-  public void visitXhpChildrenParenExpr(@NotNull HackXhpChildrenParenExpr o) {
+  public void visitXhpChildrenDeclaration(@NotNull HackXhpChildrenDeclaration o) {
     visitPsiElement(o);
+  }
+
+  public void visitXhpChildrenParenExpr(@NotNull HackXhpChildrenParenExpr o) {
+    visitExpr(o);
   }
 
   public void visitXhpChildrenStmt(@NotNull HackXhpChildrenStmt o) {
     visitPsiElement(o);
+  }
+
+  public void visitXhpExpr(@NotNull HackXhpExpr o) {
+    visitExpr(o);
   }
 
   public void visitXhpLabelWs(@NotNull HackXhpLabelWs o) {
@@ -1060,18 +1128,22 @@ public class HackVisitor extends PsiElementVisitor {
   }
 
   public void visitYieldAssignExpr(@NotNull HackYieldAssignExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitYieldExpr(@NotNull HackYieldExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitYieldListAssignExpr(@NotNull HackYieldListAssignExpr o) {
-    visitPsiElement(o);
+    visitExpr(o);
   }
 
   public void visitYieldStatement(@NotNull HackYieldStatement o) {
+    visitStatement(o);
+  }
+
+  public void visitStatement(@NotNull HackStatement o) {
     visitPsiElement(o);
   }
 

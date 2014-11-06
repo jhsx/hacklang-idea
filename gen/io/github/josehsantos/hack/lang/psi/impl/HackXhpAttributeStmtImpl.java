@@ -24,14 +24,8 @@ public class HackXhpAttributeStmtImpl extends ASTWrapperPsiElement implements Ha
 
   @Override
   @NotNull
-  public HackXhpAttributeDecl getXhpAttributeDecl() {
-    return findNotNullChildByClass(HackXhpAttributeDecl.class);
-  }
-
-  @Override
-  @Nullable
-  public HackXhpAttributeStmt getXhpAttributeStmt() {
-    return findChildByClass(HackXhpAttributeStmt.class);
+  public List<HackXhpAttributeDecl> getXhpAttributeDeclList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackXhpAttributeDecl.class);
   }
 
 }

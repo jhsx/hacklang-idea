@@ -22,10 +22,4 @@ public class HackMethodModifiersImpl extends ASTWrapperPsiElement implements Hac
     else super.accept(visitor);
   }
 
-  @Override
-  @NotNull
-  public HackNonEmptyMemberModifiers getNonEmptyMemberModifiers() {
-    return findNotNullChildByClass(HackNonEmptyMemberModifiers.class);
-  }
-
 }

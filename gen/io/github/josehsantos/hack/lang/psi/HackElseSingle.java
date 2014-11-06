@@ -7,7 +7,4 @@ import com.intellij.psi.PsiElement;
 
 public interface HackElseSingle extends PsiElement {
 
-  @NotNull
-  HackStatement getStatement();
-
 }

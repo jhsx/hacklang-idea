@@ -23,21 +23,21 @@ public class HackCaseBlockImpl extends ASTWrapperPsiElement implements HackCaseB
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackCaseSeparator getCaseSeparator() {
-    return findNotNullChildByClass(HackCaseSeparator.class);
+    return findChildByClass(HackCaseSeparator.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackExpr getExpr() {
-    return findNotNullChildByClass(HackExpr.class);
+    return findChildByClass(HackExpr.class);
   }
 
   @Override
-  @NotNull
+  @Nullable
   public HackInnerStatementList getInnerStatementList() {
-    return findNotNullChildByClass(HackInnerStatementList.class);
+    return findChildByClass(HackInnerStatementList.class);
   }
 
 }
