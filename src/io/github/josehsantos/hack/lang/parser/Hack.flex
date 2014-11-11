@@ -598,6 +598,8 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 <ST_IN_SCRIPTING>"__FILE__"             { return T_FILE; }
 <ST_IN_SCRIPTING>"__DIR__"              { return T_DIR; }
 <ST_IN_SCRIPTING>"__NAMESPACE__"        { return T_NS_C; }
+<ST_IN_SCRIPTING>"true"                 { return T_TRUE; }
+<ST_IN_SCRIPTING>"false"                { return T_FALSE; }
 
 <YYINITIAL> "#!"[^\n]*"\n" {
         yybegin(ST_IN_SCRIPTING);
