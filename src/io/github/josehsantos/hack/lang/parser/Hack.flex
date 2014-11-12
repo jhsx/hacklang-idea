@@ -750,24 +750,24 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_IN_SCRIPTING>"?>"{NEWLINE}? {
-        if (isHHFile()) {
-          return T_HH_ERROR;
-        }
+//        if (isHHFile()) {
+//          return T_HH_ERROR;
+//        }
         pushState(ST_IN_HTML);
-        if (zzAtEOF) {
+//        if (zzAtEOF) {
           return T_CLOSE_TAG;
-        } else {
-          return T_SEMICOLON;
-        }
+//        } else {
+//          return T_SEMICOLON;
+//        }
 }
 
 <ST_IN_SCRIPTING>"</script"{WHITESPACE}*">"{NEWLINE}? {
         pushState(ST_IN_HTML);
-        if (zzAtEOF) {
+//        if (zzAtEOF) {
           return T_CLOSE_TAG;
-        } else {
-          return T_SEMICOLON;
-        }
+//        } else {
+//          return T_SEMICOLON;
+//        }
 }
 
 

@@ -18,7 +18,7 @@ public class HackAnnotator implements Annotator {
             annotationHolder.createInfoAnnotation(psiElement.getLastChild(),null).setTextAttributes(HackSyntaxHighlighter.HACK_USER_ATTRIBUTES[0]);
 
             for (HackUserAttribute hackUserAttribute : ((HackUserAttributes) psiElement).getUserAttributeList().getUserAttributeList()) {
-                annotationHolder.createInfoAnnotation(hackUserAttribute.getIdent(),null).setTextAttributes(HackSyntaxHighlighter.HACK_USER_ATTRIBUTES[0]);
+                annotationHolder.createInfoAnnotation(hackUserAttribute.getIdentifier(),null).setTextAttributes(HackSyntaxHighlighter.HACK_USER_ATTRIBUTES[0]);
             }
 
         }

@@ -2,591 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f25de469-3c5b-4e02-b347-513a28b0bd99" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/io/github/josehsantos/hack/HackBaseLexerTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tests/io/github/josehsantos/hack/lexer/UnresolvedTokensTest.java" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/HackParser.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAdditionalCatches.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAdditiveOrConcatenationExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAdditiveOrConcatenationOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackArrayAccess.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackArrayLiteralExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackArrayPairItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackArrayPairList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackArrayType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAssignmentExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAssignmentList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAttributeStaticScalarList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAwaitAssignExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAwaitExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackAwaitListAssignExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackBackticksExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackBitwiseExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackBitwiseOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackBlockStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackBreakStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCallableType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCallableVariable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCallingParameterItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCaseBlock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCaseList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCaseSeparator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCastExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCastOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassConstant.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassDeclarationStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassMethodCall.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassNameReference.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassNamespaceStringTypeargs.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassStatementList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassVariableDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClassVariableDeclarations.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCloneExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClosureExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackClosureExpression.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCollectionLiteral.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCollectionLiteralExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackComparativeExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackComparativeOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCompoundVariable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackConstantAssignment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackConstantDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackConstantDeclarationStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackContinueStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCtorArguments.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDeclareAssignment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDeclareList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDeclareNewStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDeclareStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDeclareStatementBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDefaultCaseBlock.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDimExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDimExprBase.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDimmableVariableNoCallsAccess.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDoWhileStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEchoStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackElseSingle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackElseifBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackElseifList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEncapsList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEncapsVar.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEncapsVarOffset.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEnumConstantDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEnumDeclarationStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEnumStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackEnumStatementList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackExitExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackExprList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackExprStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackExtendsFrom.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackFinallyStatementList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForNewStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForStatementBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForeachListAssignment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForeachNewStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForeachOptionalArg.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForeachStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForeachStatementBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackForeachVariable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackFromClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackFullyQualifiedClassName.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackFunctionBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackFunctionCallParameterList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackFunctionDeclarationStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackGlobalStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackGlobalVar.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackGlobalVarList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackGotoStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackGroupClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHaltCompilerStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhFuncTypeList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhFunctionType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhNameWithType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhNullableType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhOptReturnType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhShapeMemberList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhShapeMemberType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhShapeType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhSoftType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTupleType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypeAliasStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypeList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypeargsOpt.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypevar.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypevarItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypevarList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypevarVariance.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhXhpType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHtmlStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackIdent.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackIdentType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackIfStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackImplementsList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInnerStatementList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInstanceofExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInterfaceDeclarationStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInterfaceExtendsList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInterfaceList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInternalEmptyExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInternalEvalExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInternalIncludeExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInternalIssetExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInternalRequireExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackInternalTupleExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackJoinClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackJoinIntoClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLabelStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLambdaBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLambdaExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLambdaExpression.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLambdaUseVars.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLetClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLexicalVarList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackListAssignmentExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLiteralExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLiteralScalarAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLogicalExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackLogicalOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackMapArrayLiteralExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackMethodFunctionDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackMethodModifiers.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackMultiplicativeExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackMultiplicativeOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNamespaceName.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNamespaceStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNamespaceString.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNamespaceStringTypeargs.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNewElseSingle.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNewElseifBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNewElseifList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackNewExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackObjectMethodCall.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackOptionalFinally.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackOrderbyClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackOrdering.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackOrderingDirection.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackOrderings.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackParameterItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackParameterList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackParameterModifier.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackParenthesizedExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackPrefixExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackPrefixOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackPrintExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackPropertyAccess.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryAssignExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryBodyClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryBodyClauses.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryContinuation.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackQueryHead.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackReferenceVariable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackReturnStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackScalarExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSelectClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSelectOrGroupClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShapeKeyname.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShapeLiteralExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShapePair.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShapePairList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShapePairStatic.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShiftExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackShiftOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSimpleFunctionCall.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticAdditiveOrConcatenationExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticArrayExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticArrayItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticArrayItemAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticArrayPairList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticArrayPairListAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticAssignment.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticBitwiseExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticClassConstant.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticClassName.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticCollectionLiteral.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticComparativeExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticLogicalExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticMapArrayLiteral.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticMultiplicativeExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticNumericScalarAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticParenthesizedExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticPrefixExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticPrefixOperator.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticScalarAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticScalarListAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticShapeExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticShapePairItem.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticShapePairList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticShapePairListAe.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticShiftExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticTernaryExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticVarList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticVarrayLiteral.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSwitchCaseList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSwitchNewStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSwitchStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTernaryExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackThrowStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitAliasRule.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitAliasRuleMethod.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitDeclarationStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitPrecedenceRule.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitRequireDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitRules.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTraitUseDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTryCatch.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTryFinally.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTryStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTryStatementList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackTypes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUnsetStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUseDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUseDeclarations.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUseStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUserAttribute.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUserAttributeList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackUserAttributes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVariable.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVariableList.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVariableModifiers.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVariableNoCalls.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVariableWithoutObjects.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVarrayLiteralExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackVisitor.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackWhereClause.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackWhileNewStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackWhileStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackWhileStatementBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttribute.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeDecl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeDeclType.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeDefault.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeEnum.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeIsRequired.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeName.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeStmt.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributeValue.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpAttributes.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpBareword.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpCategoryDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpCategoryStmt.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChild.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChildren.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChildrenDeclExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChildrenDeclTag.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChildrenDeclaration.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChildrenParenExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpChildrenStmt.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpLabelWs.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpOptEndLabel.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpTag.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackXhpTagBody.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackYieldAssignExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackYieldExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackYieldListAssignExpr.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackYieldStatement.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAdditionalCatchesImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAdditiveOrConcatenationExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAdditiveOrConcatenationOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackArrayAccessImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackArrayLiteralExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackArrayPairItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackArrayPairListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackArrayTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAssignmentExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAssignmentListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAttributeStaticScalarListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAwaitAssignExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAwaitExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackAwaitListAssignExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackBackticksExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackBitwiseExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackBitwiseOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackBlockStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackBreakStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCallableTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCallableVariableImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCallingParameterItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCaseBlockImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCaseListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCaseSeparatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCastExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCastOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassConstantImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassDeclarationStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassMethodCallImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassNameReferenceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassNamespaceStringTypeargsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassStatementListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassVariableDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClassVariableDeclarationsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCloneExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClosureExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackClosureExpressionImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCollectionLiteralExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCollectionLiteralImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackComparativeExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackComparativeOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCompoundVariableImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackConstantAssignmentImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackConstantDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackConstantDeclarationStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackContinueStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCtorArgumentsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDeclareAssignmentImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDeclareListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDeclareNewStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDeclareStatementBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDeclareStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDefaultCaseBlockImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDimExprBaseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDimExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDimmableVariableNoCallsAccessImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDoWhileStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEchoStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackElseSingleImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackElseifBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackElseifListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEncapsListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEncapsVarImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEncapsVarOffsetImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEnumConstantDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEnumDeclarationStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEnumStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackEnumStatementListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackExitExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackExprListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackExprStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackExtendsFromImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackFinallyStatementListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForNewStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForStatementBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForeachListAssignmentImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForeachNewStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForeachOptionalArgImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForeachStatementBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForeachStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackForeachVariableImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackFromClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackFullyQualifiedClassNameImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackFunctionBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackFunctionCallParameterListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackFunctionDeclarationStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackGlobalStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackGlobalVarImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackGlobalVarListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackGotoStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackGroupClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHaltCompilerStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhFuncTypeListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhFunctionTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhNameWithTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhNullableTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhOptReturnTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhShapeMemberListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhShapeMemberTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhShapeTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhSoftTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTupleTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypeAliasStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypeListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypeargsOptImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypevarImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypevarItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypevarListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypevarVarianceImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhXhpTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHtmlStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackIdentImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackIdentTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackIfStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackImplementsListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInnerStatementListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInstanceofExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInterfaceDeclarationStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInterfaceExtendsListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInterfaceListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInternalEmptyExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInternalEvalExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInternalIncludeExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInternalIssetExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInternalRequireExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackInternalTupleExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackJoinClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackJoinIntoClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLabelStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLambdaBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLambdaExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLambdaExpressionImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLambdaUseVarsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLetClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLexicalVarListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackListAssignmentExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLiteralExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLiteralScalarAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLogicalExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackLogicalOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackMapArrayLiteralExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackMethodFunctionDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackMethodModifiersImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackMultiplicativeExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackMultiplicativeOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNamespaceNameImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNamespaceStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNamespaceStringImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNamespaceStringTypeargsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNewElseSingleImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNewElseifBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNewElseifListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackNewExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackObjectMethodCallImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackOptionalFinallyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackOrderbyClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackOrderingDirectionImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackOrderingImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackOrderingsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackParameterItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackParameterListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackParameterModifierImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackParenthesizedExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackPrefixExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackPrefixOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackPrintExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackPropertyAccessImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryAssignExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryBodyClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryBodyClausesImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryContinuationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackQueryHeadImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackReferenceVariableImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackReturnStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackScalarExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSelectClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSelectOrGroupClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShapeKeynameImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShapeLiteralExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShapePairImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShapePairListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShapePairStaticImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShiftExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackShiftOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSimpleFunctionCallImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticAdditiveOrConcatenationExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticArrayExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticArrayItemAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticArrayItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticArrayPairListAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticArrayPairListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticAssignmentImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticBitwiseExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticClassConstantImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticClassNameImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticCollectionLiteralImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticComparativeExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticLogicalExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticMapArrayLiteralImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticMultiplicativeExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticNumericScalarAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticParenthesizedExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticPrefixExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticPrefixOperatorImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticScalarAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticScalarListAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticShapeExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticShapePairItemImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticShapePairListAeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticShapePairListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticShiftExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticTernaryExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticVarListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticVarrayLiteralImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSwitchCaseListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSwitchNewStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSwitchStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTernaryExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackThrowStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitAliasRuleImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitAliasRuleMethodImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitDeclarationStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitPrecedenceRuleImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitRequireDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitRulesImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTraitUseDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTryCatchImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTryFinallyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTryStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackTryStatementListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUnsetStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUseDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUseDeclarationsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUseStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUserAttributeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUserAttributeListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackUserAttributesImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackVariableImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackVariableListImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackVariableModifiersImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackVariableNoCallsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackVariableWithoutObjectsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackVarrayLiteralExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackWhereClauseImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackWhileNewStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackWhileStatementBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackWhileStatementImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeDeclImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeDeclTypeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeDefaultImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeEnumImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeIsRequiredImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeNameImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeStmtImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributeValueImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpAttributesImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpBarewordImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpCategoryDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpCategoryStmtImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildrenDeclExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildrenDeclTagImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildrenDeclarationImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildrenImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildrenParenExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpChildrenStmtImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpLabelWsImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpOptEndLabelImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpTagBodyImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackXhpTagImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackYieldAssignExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackYieldExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackYieldListAssignExprImpl.java" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackYieldStatementImpl.java" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/tests/io/github/josehsantos/hack/parser/FunctionsTest.java" afterPath="$PROJECT_DIR$/tests/io/github/josehsantos/hack/parser/FunctionsTest.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackArrayOffsetAccess.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackCallableFunctionCall.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackDimmableVariableAccess.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhNewTypeStatement.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackHhTypeStatement.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackMemberModifier.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackObjectMethodCallBaseExpr.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackStaticClassVariable.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/HackSwitchStatementList.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackArrayOffsetAccessImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackCallableFunctionCallImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackDimmableVariableAccessImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhNewTypeStatementImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackHhTypeStatementImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackMemberModifierImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackObjectMethodCallBaseExprImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackStaticClassVariableImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/psi/impl/HackSwitchStatementListImpl.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/hacklang-idea/io/github/josehsantos/hack/lang/parser/Hack.bnf" afterPath="$PROJECT_DIR$/out/production/hacklang-idea/io/github/josehsantos/hack/lang/parser/Hack.bnf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.bnf" afterPath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.bnf" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.flex" afterPath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.flex" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/HackLexer.java" afterPath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/HackLexer.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackAnnotator.java" afterPath="$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackAnnotator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackTypes.java" afterPath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackTypes.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/_HackLexer.java" afterPath="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/_HackLexer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/hacklang-idea.iml" afterPath="$PROJECT_DIR$/hacklang-idea.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="hacklang-idea.iws" />
@@ -611,20 +49,7 @@
     <favorites_list name="hacklang-idea" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
-      <file leaf-file-name="Hack.bnf" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.bnf">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.47494033" vertical-offset="6266" max-vertical-offset="13665">
-              <caret line="431" column="36" selection-start-line="431" selection-start-column="36" selection-end-line="431" selection-end-column="36" />
-              <folding>
-                <element signature="e#0#1238#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <leaf />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -649,22 +74,23 @@
         <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackLexer.java" />
         <option value="/Hack.bnf.preview" />
         <option value="$PROJECT_DIR$/META-INF/plugin.xml" />
-        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackAnnotator.java" />
         <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/highlighter/HackSyntaxHighlighter.java" />
         <option value="$PROJECT_DIR$/README.md" />
-        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.flex" />
         <option value="$PROJECT_DIR$/tests/io/github/josehsantos/hack/HackBaseParserTest.java" />
         <option value="$PROJECT_DIR$/testData/lexer/lambda/complex.hh" />
         <option value="$PROJECT_DIR$/tests/io/github/josehsantos/hack/HackBaseLexerTest.java" />
         <option value="$PROJECT_DIR$/tests/io/github/josehsantos/hack/lexer/LambdaTest.java" />
         <option value="/Plain text Fragment (UnresolvedTokensTest.java:254).txt" />
-        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackTypes.java" />
         <option value="$PROJECT_DIR$/tests/io/github/josehsantos/hack/lexer/UnresolvedTokensTest.java" />
         <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/HackLexer.java" />
         <option value="$PROJECT_DIR$/tests/io/github/josehsantos/hack/parser/FunctionsTest.java" />
         <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/test.bnf" />
         <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackParserDefinition.java" />
         <option value="$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/HackParser.java" />
+        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/_HackLexer.java" />
+        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.flex" />
+        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackTypes.java" />
+        <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackAnnotator.java" />
         <option value="$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.bnf" />
       </list>
     </option>
@@ -697,7 +123,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -850,6 +275,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="lang" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="parser" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hacklang-idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hacklang-idea" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="hack" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="ide" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -881,14 +332,11 @@
               <option name="myItemId" value="gen" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lang" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
           </PATH>
         </subPane>
       </pane>
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -1334,22 +782,22 @@
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32796487" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32599118" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32503662" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.471384" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32796487" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32892805" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32452276" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19547658" sideWeight="0.50073206" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.29159936" sideWeight="0.49926794" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32452276" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Go" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.471384" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32452276" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32452276" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1368,12 +816,12 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.329429" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.19547658" sideWeight="0.50073206" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19547658" sideWeight="0.49926794" order="4" side_tool="false" content_ui="combo" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.329429" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32956383" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -1413,10 +861,21 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackParserDefinition.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.bnf">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="135" max-vertical-offset="735">
-          <caret line="28" column="96" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="13800">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#1238#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/test.bnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="5441" max-vertical-offset="7275">
+          <caret line="580" column="0" selection-start-line="580" selection-start-column="0" selection-end-line="580" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1449,7 +908,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="1741" max-vertical-offset="3360">
           <caret line="125" column="37" selection-start-line="125" selection-start-column="37" selection-end-line="125" selection-end-column="47" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1503,7 +961,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="2915" max-vertical-offset="3360">
           <caret line="215" column="50" selection-start-line="215" selection-start-column="50" selection-end-line="215" selection-end-column="50" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1547,7 +1004,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="2895">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1623,13 +1079,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackAnnotator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
-          <caret line="18" column="0" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/highlighter/HackSyntaxHighlighter.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="575" max-vertical-offset="1095">
@@ -1651,13 +1100,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3307888" vertical-offset="350" max-vertical-offset="1470">
           <caret line="43" column="24" selection-start-line="43" selection-start-column="24" selection-end-line="43" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.flex">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="5511" max-vertical-offset="16380">
-          <caret line="403" column="23" selection-start-line="403" selection-start-column="23" selection-end-line="403" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1719,14 +1161,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/_HackLexer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37209302" vertical-offset="935" max-vertical-offset="290175">
-          <caret line="80" column="0" selection-start-line="80" selection-start-column="0" selection-end-line="80" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/idea.jar!/com/intellij/testFramework/LexerTestCase.class">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="255" max-vertical-offset="1545">
@@ -1752,23 +1186,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.23208722" vertical-offset="2161" max-vertical-offset="4875">
           <caret line="164" column="39" selection-start-line="164" selection-start-column="39" selection-end-line="164" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/test.bnf">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7802198" vertical-offset="4613" max-vertical-offset="7275">
-          <caret line="457" column="0" selection-start-line="457" selection-start-column="0" selection-end-line="457" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackTypes.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.33333334" vertical-offset="38" max-vertical-offset="3780">
-          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1776,28 +1193,52 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.7647059" vertical-offset="608" max-vertical-offset="795">
           <caret line="57" column="0" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
-          <folding>
-            <element signature="e#1422#1423#0" expanded="true" />
-            <element signature="e#1490#1491#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/gen/io/github/josehsantos/hack/lang/HackParser.java">
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/_HackLexer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.29116946" vertical-offset="58" max-vertical-offset="148065">
-          <caret line="20" column="30" selection-start-line="20" selection-start-column="30" selection-end-line="20" selection-end-column="30" />
-          <folding />
+        <state vertical-scroll-proportion="0.5541872" vertical-offset="284340" max-vertical-offset="290190">
+          <caret line="19004" column="28" selection-start-line="19004" selection-start-column="17" selection-end-line="19004" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.flex">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3611111" vertical-offset="11154" max-vertical-offset="16305">
+          <caret line="786" column="3" selection-start-line="786" selection-start-column="3" selection-end-line="786" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/HackTypes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.24305555" vertical-offset="0" max-vertical-offset="3720">
+          <caret line="8" column="70" selection-start-line="8" selection-start-column="70" selection-end-line="8" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/ide/HackAnnotator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.328125" vertical-offset="0" max-vertical-offset="640">
+          <caret line="19" column="103" selection-start-line="19" selection-start-column="103" selection-end-line="19" selection-end-column="103" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/Hack.bnf">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.47494033" vertical-offset="6266" max-vertical-offset="13665">
-          <caret line="431" column="36" selection-start-line="431" selection-start-column="36" selection-end-line="431" selection-end-column="36" />
+        <state vertical-scroll-proportion="0.334375" vertical-offset="11996" max-vertical-offset="13800">
+          <caret line="814" column="22" selection-start-line="814" selection-start-column="22" selection-end-line="814" selection-end-column="22" />
           <folding>
             <element signature="e#0#1238#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/io/github/josehsantos/hack/lang/parser/test.bnf">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.8109375" vertical-offset="5441" max-vertical-offset="7275">
+          <caret line="580" column="0" selection-start-line="580" selection-start-column="0" selection-end-line="580" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
