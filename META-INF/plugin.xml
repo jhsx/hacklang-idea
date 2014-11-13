@@ -35,7 +35,15 @@
 
         <lang.commenter language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackCommenter"/>
 
+        <lang.braceMatcher language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackBraceMatcher"/>
+        <lang.foldingBuilder language="Hack" implementationClass="io.github.josehsantos.hack.ide.folding.HackFoldingBuilder"/>
+        <languageInjector implementation="io.github.josehsantos.hack.lang.HackLanguageInjector"/>
+
+        <quoteHandler fileType="Hack" className="io.github.josehsantos.hack.ide.editor.HackQuoteHandler"/>
+        <lang.psiStructureViewFactory language="Hack" implementationClass="io.github.josehsantos.hack.ide.structure.HackStructureViewFactory"/>
+
         <annotator language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackAnnotator"/>
+
     </extensions>
 
     <application-components>
