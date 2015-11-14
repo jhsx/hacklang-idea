@@ -28,9 +28,21 @@ public class HackStaticAdditiveOrConcatenationExpressionImpl extends HackExpress
   }
 
   @Override
+  @Nullable
+  public HackStaticAdditiveOrConcatenationExpression getStaticAdditiveOrConcatenationExpression() {
+    return findChildByClass(HackStaticAdditiveOrConcatenationExpression.class);
+  }
+
+  @Override
   @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  public List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticMultiplicativeExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticPrefixExpression> getStaticPrefixExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticPrefixExpression.class);
   }
 
 }

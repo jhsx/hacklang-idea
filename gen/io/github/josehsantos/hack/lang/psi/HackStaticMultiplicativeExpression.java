@@ -8,9 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticMultiplicativeExpression extends HackExpression {
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  HackMultiplicativeOperator getMultiplicativeOperator();
+
+  @Nullable
+  HackStaticMultiplicativeExpression getStaticMultiplicativeExpression();
 
   @NotNull
-  HackMultiplicativeOperator getMultiplicativeOperator();
+  List<HackStaticPrefixExpression> getStaticPrefixExpressionList();
 
 }

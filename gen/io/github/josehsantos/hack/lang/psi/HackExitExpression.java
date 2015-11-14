@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackExitExpression extends HackExpression {
 
   @Nullable
-  HackExpression getExpression();
+  HackParenthesizedExpression getParenthesizedExpression();
 
 }

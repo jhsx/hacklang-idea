@@ -7,4 +7,28 @@ import com.intellij.psi.PsiElement;
 
 public interface HackStaticExpression extends HackExpression {
 
+  @Nullable
+  HackStaticAdditiveOrConcatenationExpression getStaticAdditiveOrConcatenationExpression();
+
+  @Nullable
+  HackStaticBitwiseExpression getStaticBitwiseExpression();
+
+  @Nullable
+  HackStaticComparativeExpression getStaticComparativeExpression();
+
+  @Nullable
+  HackStaticLogicalExpression getStaticLogicalExpression();
+
+  @Nullable
+  HackStaticMultiplicativeExpression getStaticMultiplicativeExpression();
+
+  @Nullable
+  HackStaticPrefixExpression getStaticPrefixExpression();
+
+  @Nullable
+  HackStaticShiftExpression getStaticShiftExpression();
+
+  @Nullable
+  HackStaticTernaryExpression getStaticTernaryExpression();
+
 }

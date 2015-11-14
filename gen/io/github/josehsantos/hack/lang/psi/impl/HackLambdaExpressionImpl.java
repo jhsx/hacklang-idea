@@ -22,21 +22,9 @@ public class HackLambdaExpressionImpl extends HackExpressionImpl implements Hack
   }
 
   @Override
-  @Nullable
-  public HackHhOptReturnType getHhOptReturnType() {
-    return findChildByClass(HackHhOptReturnType.class);
-  }
-
-  @Override
   @NotNull
-  public HackLambdaBody getLambdaBody() {
-    return findNotNullChildByClass(HackLambdaBody.class);
-  }
-
-  @Override
-  @Nullable
-  public HackParameterList getParameterList() {
-    return findChildByClass(HackParameterList.class);
+  public HackLambdaFunction getLambdaFunction() {
+    return findNotNullChildByClass(HackLambdaFunction.class);
   }
 
 }

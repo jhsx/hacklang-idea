@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticParenthesizedExpression extends HackExpression {
 
   @Nullable
-  HackExpression getExpression();
+  HackStaticExpression getStaticExpression();
 
 }

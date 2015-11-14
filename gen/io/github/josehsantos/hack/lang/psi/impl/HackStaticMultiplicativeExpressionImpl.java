@@ -23,14 +23,20 @@ public class HackStaticMultiplicativeExpressionImpl extends HackExpressionImpl i
 
   @Override
   @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  public HackMultiplicativeOperator getMultiplicativeOperator() {
+    return findNotNullChildByClass(HackMultiplicativeOperator.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticMultiplicativeExpression getStaticMultiplicativeExpression() {
+    return findChildByClass(HackStaticMultiplicativeExpression.class);
   }
 
   @Override
   @NotNull
-  public HackMultiplicativeOperator getMultiplicativeOperator() {
-    return findNotNullChildByClass(HackMultiplicativeOperator.class);
+  public List<HackStaticPrefixExpression> getStaticPrefixExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticPrefixExpression.class);
   }
 
 }

@@ -22,9 +22,69 @@ public class HackQueryAssignExpressionImpl extends HackExpressionImpl implements
   }
 
   @Override
+  @Nullable
+  public HackCallableFunctionCallExpression getCallableFunctionCallExpression() {
+    return findChildByClass(HackCallableFunctionCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackClassMethodCallExpression getClassMethodCallExpression() {
+    return findChildByClass(HackClassMethodCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackDimmableVariableAccessExpression getDimmableVariableAccessExpression() {
+    return findChildByClass(HackDimmableVariableAccessExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackEspecialParenthesisedExpression getEspecialParenthesisedExpression() {
+    return findChildByClass(HackEspecialParenthesisedExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackMemberVariableExpression getMemberVariableExpression() {
+    return findChildByClass(HackMemberVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackMethodCallExpression getMethodCallExpression() {
+    return findChildByClass(HackMethodCallExpression.class);
+  }
+
+  @Override
   @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  public HackQueryExpression getQueryExpression() {
+    return findNotNullChildByClass(HackQueryExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackSimpleFunctionCallExpression getSimpleFunctionCallExpression() {
+    return findChildByClass(HackSimpleFunctionCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticClassVariableExpression getStaticClassVariableExpression() {
+    return findChildByClass(HackStaticClassVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackVariableExpression getVariableExpression() {
+    return findChildByClass(HackVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackVariableNameHolder getVariableNameHolder() {
+    return findChildByClass(HackVariableNameHolder.class);
   }
 
 }

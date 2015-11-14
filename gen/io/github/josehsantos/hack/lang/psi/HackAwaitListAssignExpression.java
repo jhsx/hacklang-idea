@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackAwaitListAssignExpression extends HackExpression {
 
-  @Nullable
-  HackAssignmentList getAssignmentList();
+  @NotNull
+  HackAwaitExpression getAwaitExpression();
 
-  @Nullable
-  HackExpression getExpression();
+  @NotNull
+  HackListAssignmentVariables getListAssignmentVariables();
 
 }

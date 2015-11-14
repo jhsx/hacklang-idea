@@ -23,8 +23,8 @@ public class HackExitExpressionImpl extends HackExpressionImpl implements HackEx
 
   @Override
   @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
+  public HackParenthesizedExpression getParenthesizedExpression() {
+    return findChildByClass(HackParenthesizedExpression.class);
   }
 
 }

@@ -23,14 +23,32 @@ public class HackStaticShiftExpressionImpl extends HackExpressionImpl implements
 
   @Override
   @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  public HackShiftOperator getShiftOperator() {
+    return findNotNullChildByClass(HackShiftOperator.class);
   }
 
   @Override
   @NotNull
-  public HackShiftOperator getShiftOperator() {
-    return findNotNullChildByClass(HackShiftOperator.class);
+  public List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticAdditiveOrConcatenationExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticMultiplicativeExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticPrefixExpression> getStaticPrefixExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticPrefixExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticShiftExpression getStaticShiftExpression() {
+    return findChildByClass(HackStaticShiftExpression.class);
   }
 
 }

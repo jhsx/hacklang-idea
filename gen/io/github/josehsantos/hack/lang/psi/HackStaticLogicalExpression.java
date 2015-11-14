@@ -8,9 +8,27 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticLogicalExpression extends HackExpression {
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  HackLogicalOperator getLogicalOperator();
 
   @NotNull
-  HackLogicalOperator getLogicalOperator();
+  List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList();
+
+  @NotNull
+  List<HackStaticBitwiseExpression> getStaticBitwiseExpressionList();
+
+  @NotNull
+  List<HackStaticComparativeExpression> getStaticComparativeExpressionList();
+
+  @Nullable
+  HackStaticLogicalExpression getStaticLogicalExpression();
+
+  @NotNull
+  List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList();
+
+  @NotNull
+  List<HackStaticPrefixExpression> getStaticPrefixExpressionList();
+
+  @NotNull
+  List<HackStaticShiftExpression> getStaticShiftExpressionList();
 
 }

@@ -7,19 +7,22 @@ import com.intellij.psi.PsiElement;
 
 public interface HackClassMethodCallExpression extends HackExpression {
 
-  @Nullable
-  HackExpression getExpression();
-
   @NotNull
   HackFunctionCallParameterList getFunctionCallParameterList();
-
-  @Nullable
-  HackHhTypeargsOpt getHhTypeargsOpt();
 
   @Nullable
   HackIdentifier getIdentifier();
 
   @NotNull
   HackStaticClassName getStaticClassName();
+
+  @Nullable
+  HackTypeargs getTypeargs();
+
+  @Nullable
+  HackVariableExpression getVariableExpression();
+
+  @Nullable
+  HackVariableExpressionVariable getVariableExpressionVariable();
 
 }

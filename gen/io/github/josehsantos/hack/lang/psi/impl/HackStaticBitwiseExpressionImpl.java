@@ -29,8 +29,32 @@ public class HackStaticBitwiseExpressionImpl extends HackExpressionImpl implemen
 
   @Override
   @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  public List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticAdditiveOrConcatenationExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticBitwiseExpression getStaticBitwiseExpression() {
+    return findChildByClass(HackStaticBitwiseExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticMultiplicativeExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticPrefixExpression> getStaticPrefixExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticPrefixExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticShiftExpression> getStaticShiftExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticShiftExpression.class);
   }
 
 }

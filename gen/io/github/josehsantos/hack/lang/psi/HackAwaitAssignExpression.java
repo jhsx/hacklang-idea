@@ -8,6 +8,36 @@ import com.intellij.psi.PsiElement;
 public interface HackAwaitAssignExpression extends HackExpression {
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  HackAwaitExpression getAwaitExpression();
+
+  @Nullable
+  HackCallableFunctionCallExpression getCallableFunctionCallExpression();
+
+  @Nullable
+  HackClassMethodCallExpression getClassMethodCallExpression();
+
+  @Nullable
+  HackDimmableVariableAccessExpression getDimmableVariableAccessExpression();
+
+  @Nullable
+  HackEspecialParenthesisedExpression getEspecialParenthesisedExpression();
+
+  @Nullable
+  HackMemberVariableExpression getMemberVariableExpression();
+
+  @Nullable
+  HackMethodCallExpression getMethodCallExpression();
+
+  @Nullable
+  HackSimpleFunctionCallExpression getSimpleFunctionCallExpression();
+
+  @Nullable
+  HackStaticClassVariableExpression getStaticClassVariableExpression();
+
+  @Nullable
+  HackVariableExpression getVariableExpression();
+
+  @Nullable
+  HackVariableNameHolder getVariableNameHolder();
 
 }

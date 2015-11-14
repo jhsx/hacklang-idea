@@ -5,6 +5,7 @@ import com.intellij.navigation.ItemPresentation;
 import com.intellij.navigation.NavigationItem;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.util.PsiTreeUtil;
+import com.intellij.util.IncorrectOperationException;
 import io.github.josehsantos.hack.lang.psi.HackIdentifier;
 import io.github.josehsantos.hack.lang.psi.HackPsiNamedElement;
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,12 @@ public abstract class HackPsiNamedElementImpl extends HackPsiElementImpl impleme
     @Override
     public String getName() {
         return getIdentifier().getText();
+    }
+
+    @Override
+    public PsiElement setName(@NotNull String s) throws IncorrectOperationException {
+        //TODO: implements
+        return null;
     }
 
 

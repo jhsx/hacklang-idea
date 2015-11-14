@@ -22,15 +22,15 @@ public class HackYieldListAssignExpressionImpl extends HackExpressionImpl implem
   }
 
   @Override
-  @Nullable
-  public HackAssignmentList getAssignmentList() {
-    return findChildByClass(HackAssignmentList.class);
+  @NotNull
+  public HackListAssignmentVariables getListAssignmentVariables() {
+    return findNotNullChildByClass(HackListAssignmentVariables.class);
   }
 
   @Override
-  @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
+  @NotNull
+  public HackYieldExpression getYieldExpression() {
+    return findNotNullChildByClass(HackYieldExpression.class);
   }
 
 }

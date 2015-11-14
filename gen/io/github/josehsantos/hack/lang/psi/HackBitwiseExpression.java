@@ -8,9 +8,123 @@ import com.intellij.psi.PsiElement;
 public interface HackBitwiseExpression extends HackExpression {
 
   @NotNull
+  List<HackAdditiveOrConcatenationExpression> getAdditiveOrConcatenationExpressionList();
+
+  @NotNull
+  List<HackArrayLiteralExpression> getArrayLiteralExpressionList();
+
+  @NotNull
+  List<HackBackticksExpression> getBackticksExpressionList();
+
+  @Nullable
+  HackBitwiseExpression getBitwiseExpression();
+
+  @NotNull
   HackBitwiseOperator getBitwiseOperator();
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  List<HackCallableFunctionCallExpression> getCallableFunctionCallExpressionList();
+
+  @NotNull
+  List<HackCastExpression> getCastExpressionList();
+
+  @NotNull
+  List<HackClassMethodCallExpression> getClassMethodCallExpressionList();
+
+  @NotNull
+  List<HackCloneExpression> getCloneExpressionList();
+
+  @NotNull
+  List<HackClosureExpression> getClosureExpressionList();
+
+  @NotNull
+  List<HackCollectionLiteralExpression> getCollectionLiteralExpressionList();
+
+  @NotNull
+  List<HackDimExpression> getDimExpressionList();
+
+  @NotNull
+  List<HackDimmableVariableAccessExpression> getDimmableVariableAccessExpressionList();
+
+  @NotNull
+  List<HackEmptyExpression> getEmptyExpressionList();
+
+  @NotNull
+  List<HackEspecialParenthesisedExpression> getEspecialParenthesisedExpressionList();
+
+  @NotNull
+  List<HackEvalExpression> getEvalExpressionList();
+
+  @NotNull
+  List<HackExitExpression> getExitExpressionList();
+
+  @NotNull
+  List<HackIncludeExpression> getIncludeExpressionList();
+
+  @NotNull
+  List<HackInstanceofExpression> getInstanceofExpressionList();
+
+  @NotNull
+  List<HackIssetExpression> getIssetExpressionList();
+
+  @NotNull
+  List<HackLambdaExpression> getLambdaExpressionList();
+
+  @NotNull
+  List<HackMapArrayLiteralExpression> getMapArrayLiteralExpressionList();
+
+  @NotNull
+  List<HackMemberVariableExpression> getMemberVariableExpressionList();
+
+  @NotNull
+  List<HackMethodCallExpression> getMethodCallExpressionList();
+
+  @NotNull
+  List<HackMultiplicativeExpression> getMultiplicativeExpressionList();
+
+  @NotNull
+  List<HackNewExpression> getNewExpressionList();
+
+  @NotNull
+  List<HackParenthesizedExpression> getParenthesizedExpressionList();
+
+  @NotNull
+  List<HackPrefixOperator> getPrefixOperatorList();
+
+  @NotNull
+  List<HackPrintExpression> getPrintExpressionList();
+
+  @NotNull
+  List<HackRequireExpression> getRequireExpressionList();
+
+  @NotNull
+  List<HackScalarExpression> getScalarExpressionList();
+
+  @NotNull
+  List<HackShapeLiteralExpression> getShapeLiteralExpressionList();
+
+  @NotNull
+  List<HackShiftExpression> getShiftExpressionList();
+
+  @NotNull
+  List<HackSimpleFunctionCallExpression> getSimpleFunctionCallExpressionList();
+
+  @NotNull
+  List<HackStaticClassVariableExpression> getStaticClassVariableExpressionList();
+
+  @NotNull
+  List<HackSuffixOperator> getSuffixOperatorList();
+
+  @NotNull
+  List<HackTupleExpression> getTupleExpressionList();
+
+  @NotNull
+  List<HackVariableExpression> getVariableExpressionList();
+
+  @NotNull
+  List<HackVarrayLiteralExpression> getVarrayLiteralExpressionList();
+
+  @NotNull
+  List<HackXhpExpression> getXhpExpressionList();
 
 }

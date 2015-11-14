@@ -22,9 +22,33 @@ public class HackEspecialParenthesisedExpressionImpl extends HackExpressionImpl 
   }
 
   @Override
-  @NotNull
-  public HackExpression getExpression() {
-    return findNotNullChildByClass(HackExpression.class);
+  @Nullable
+  public HackCloneExpression getCloneExpression() {
+    return findChildByClass(HackCloneExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackCollectionLiteralExpression getCollectionLiteralExpression() {
+    return findChildByClass(HackCollectionLiteralExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackEspecialParenthesisedExpression getEspecialParenthesisedExpression() {
+    return findChildByClass(HackEspecialParenthesisedExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackNewExpression getNewExpression() {
+    return findChildByClass(HackNewExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackXhpExpression getXhpExpression() {
+    return findChildByClass(HackXhpExpression.class);
   }
 
 }

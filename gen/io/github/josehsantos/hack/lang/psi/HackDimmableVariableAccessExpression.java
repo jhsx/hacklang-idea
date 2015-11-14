@@ -10,4 +10,19 @@ public interface HackDimmableVariableAccessExpression extends HackExpression {
   @NotNull
   List<HackArrayAccess> getArrayAccessList();
 
+  @Nullable
+  HackCloneExpression getCloneExpression();
+
+  @Nullable
+  HackCollectionLiteralExpression getCollectionLiteralExpression();
+
+  @Nullable
+  HackEspecialParenthesisedExpression getEspecialParenthesisedExpression();
+
+  @Nullable
+  HackNewExpression getNewExpression();
+
+  @Nullable
+  HackXhpExpression getXhpExpression();
+
 }

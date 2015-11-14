@@ -22,33 +22,9 @@ public class HackClosureExpressionImpl extends HackExpressionImpl implements Hac
   }
 
   @Override
-  @Nullable
-  public HackHhOptReturnType getHhOptReturnType() {
-    return findChildByClass(HackHhOptReturnType.class);
-  }
-
-  @Override
   @NotNull
-  public HackInnerStatementList getInnerStatementList() {
-    return findNotNullChildByClass(HackInnerStatementList.class);
-  }
-
-  @Override
-  @Nullable
-  public HackLambdaUseVars getLambdaUseVars() {
-    return findChildByClass(HackLambdaUseVars.class);
-  }
-
-  @Override
-  @NotNull
-  public List<HackMemberModifier> getMemberModifierList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackMemberModifier.class);
-  }
-
-  @Override
-  @NotNull
-  public HackParameterList getParameterList() {
-    return findNotNullChildByClass(HackParameterList.class);
+  public HackClosureFunction getClosureFunction() {
+    return findNotNullChildByClass(HackClosureFunction.class);
   }
 
 }

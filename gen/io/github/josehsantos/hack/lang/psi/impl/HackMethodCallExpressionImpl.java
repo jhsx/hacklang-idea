@@ -22,9 +22,27 @@ public class HackMethodCallExpressionImpl extends HackExpressionImpl implements 
   }
 
   @Override
-  @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  @Nullable
+  public HackCallableFunctionCallExpression getCallableFunctionCallExpression() {
+    return findChildByClass(HackCallableFunctionCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackClassMethodCallExpression getClassMethodCallExpression() {
+    return findChildByClass(HackClassMethodCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackDimmableVariableAccessExpression getDimmableVariableAccessExpression() {
+    return findChildByClass(HackDimmableVariableAccessExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackEspecialParenthesisedExpression getEspecialParenthesisedExpression() {
+    return findChildByClass(HackEspecialParenthesisedExpression.class);
   }
 
   @Override
@@ -35,14 +53,50 @@ public class HackMethodCallExpressionImpl extends HackExpressionImpl implements 
 
   @Override
   @Nullable
-  public HackHhTypeargsOpt getHhTypeargsOpt() {
-    return findChildByClass(HackHhTypeargsOpt.class);
+  public HackIdentifier getIdentifier() {
+    return findChildByClass(HackIdentifier.class);
   }
 
   @Override
   @Nullable
-  public HackIdentifier getIdentifier() {
-    return findChildByClass(HackIdentifier.class);
+  public HackMemberVariableExpression getMemberVariableExpression() {
+    return findChildByClass(HackMemberVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackMethodCallExpression getMethodCallExpression() {
+    return findChildByClass(HackMethodCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackSimpleFunctionCallExpression getSimpleFunctionCallExpression() {
+    return findChildByClass(HackSimpleFunctionCallExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticClassVariableExpression getStaticClassVariableExpression() {
+    return findChildByClass(HackStaticClassVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackTypeargs getTypeargs() {
+    return findChildByClass(HackTypeargs.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackVariableExpression> getVariableExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackVariableExpressionVariable getVariableExpressionVariable() {
+    return findChildByClass(HackVariableExpressionVariable.class);
   }
 
 }

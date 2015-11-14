@@ -23,14 +23,50 @@ public class HackStaticLogicalExpressionImpl extends HackExpressionImpl implemen
 
   @Override
   @NotNull
-  public List<HackExpression> getExpressionList() {
-    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackExpression.class);
+  public HackLogicalOperator getLogicalOperator() {
+    return findNotNullChildByClass(HackLogicalOperator.class);
   }
 
   @Override
   @NotNull
-  public HackLogicalOperator getLogicalOperator() {
-    return findNotNullChildByClass(HackLogicalOperator.class);
+  public List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticAdditiveOrConcatenationExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticBitwiseExpression> getStaticBitwiseExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticBitwiseExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticComparativeExpression> getStaticComparativeExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticComparativeExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticLogicalExpression getStaticLogicalExpression() {
+    return findChildByClass(HackStaticLogicalExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticMultiplicativeExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticPrefixExpression> getStaticPrefixExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticPrefixExpression.class);
+  }
+
+  @Override
+  @NotNull
+  public List<HackStaticShiftExpression> getStaticShiftExpressionList() {
+    return PsiTreeUtil.getChildrenOfTypeAsList(this, HackStaticShiftExpression.class);
   }
 
 }

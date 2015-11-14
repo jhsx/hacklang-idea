@@ -11,9 +11,18 @@ public interface HackScalarExpression extends HackExpression {
   HackClassConstant getClassConstant();
 
   @Nullable
-  HackEncapsList getEncapsList();
+  HackDoubleQuotesString getDoubleQuotesString();
+
+  @Nullable
+  HackHereDocString getHereDocString();
+
+  @Nullable
+  HackLiteralExpression getLiteralExpression();
 
   @Nullable
   HackNamespaceString getNamespaceString();
+
+  @Nullable
+  HackSingleQuotesString getSingleQuotesString();
 
 }

@@ -23,14 +23,20 @@ public class HackStaticPrefixExpressionImpl extends HackExpressionImpl implement
 
   @Override
   @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
+  public HackLiteralExpression getLiteralExpression() {
+    return findChildByClass(HackLiteralExpression.class);
   }
 
   @Override
   @Nullable
   public HackNamespaceString getNamespaceString() {
     return findChildByClass(HackNamespaceString.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticArrayExpression getStaticArrayExpression() {
+    return findChildByClass(HackStaticArrayExpression.class);
   }
 
   @Override
@@ -53,8 +59,26 @@ public class HackStaticPrefixExpressionImpl extends HackExpressionImpl implement
 
   @Override
   @Nullable
+  public HackStaticParenthesizedExpression getStaticParenthesizedExpression() {
+    return findChildByClass(HackStaticParenthesizedExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticPrefixExpression getStaticPrefixExpression() {
+    return findChildByClass(HackStaticPrefixExpression.class);
+  }
+
+  @Override
+  @Nullable
   public HackStaticPrefixOperator getStaticPrefixOperator() {
     return findChildByClass(HackStaticPrefixOperator.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticShapeExpression getStaticShapeExpression() {
+    return findChildByClass(HackStaticShapeExpression.class);
   }
 
   @Override

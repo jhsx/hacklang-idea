@@ -8,9 +8,12 @@ import com.intellij.psi.PsiElement;
 public interface HackDimExpressionBase extends HackPsiElement {
 
   @Nullable
+  HackArrayLiteralExpression getArrayLiteralExpression();
+
+  @Nullable
   HackClassConstant getClassConstant();
 
   @Nullable
-  HackExpression getExpression();
+  HackParenthesizedExpression getParenthesizedExpression();
 
 }

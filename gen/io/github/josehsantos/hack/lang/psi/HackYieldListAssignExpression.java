@@ -7,10 +7,10 @@ import com.intellij.psi.PsiElement;
 
 public interface HackYieldListAssignExpression extends HackExpression {
 
-  @Nullable
-  HackAssignmentList getAssignmentList();
+  @NotNull
+  HackListAssignmentVariables getListAssignmentVariables();
 
-  @Nullable
-  HackExpression getExpression();
+  @NotNull
+  HackYieldExpression getYieldExpression();
 
 }

@@ -21,4 +21,52 @@ public class HackStaticExpressionImpl extends HackExpressionImpl implements Hack
     else super.accept(visitor);
   }
 
+  @Override
+  @Nullable
+  public HackStaticAdditiveOrConcatenationExpression getStaticAdditiveOrConcatenationExpression() {
+    return findChildByClass(HackStaticAdditiveOrConcatenationExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticBitwiseExpression getStaticBitwiseExpression() {
+    return findChildByClass(HackStaticBitwiseExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticComparativeExpression getStaticComparativeExpression() {
+    return findChildByClass(HackStaticComparativeExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticLogicalExpression getStaticLogicalExpression() {
+    return findChildByClass(HackStaticLogicalExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticMultiplicativeExpression getStaticMultiplicativeExpression() {
+    return findChildByClass(HackStaticMultiplicativeExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticPrefixExpression getStaticPrefixExpression() {
+    return findChildByClass(HackStaticPrefixExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticShiftExpression getStaticShiftExpression() {
+    return findChildByClass(HackStaticShiftExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackStaticTernaryExpression getStaticTernaryExpression() {
+    return findChildByClass(HackStaticTernaryExpression.class);
+  }
+
 }

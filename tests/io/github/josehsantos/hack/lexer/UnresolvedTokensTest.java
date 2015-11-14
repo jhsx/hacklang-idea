@@ -13,12 +13,12 @@ public class UnresolvedTokensTest extends HackBaseLexerTest {
                 " use Traits<T>;\n" +
                 " function myNameWith<T>(Typepara<T> $p):typess<T> {\n" +
                 " \treturn new MyNewType<T>();\n" +
-                " }function test(){\n" +
+                " }\n" +
+                " function test(){\n" +
                 "    $this->myNameWith();\n" +
                 "    justAnFunctionTypeList();\n" +
-                " }}\n" +
-                "\n", "HackTokenType.T_OPEN_TAG ('<?hh\\n')\n" +
-                "HackTokenType.T_WHITESPACE ('\\n')\n" +
+                " }\n" +
+                "}", "HackTokenType.T_OPEN_TAG ('<?hh\\n')\n" +
                 "HackTokenType.T_CLASS ('class')\n" +
                 "HackTokenType.T_WHITESPACE (' ')\n" +
                 "HackTokenType.T_STRING ('myTypeList')\n" +
@@ -48,7 +48,7 @@ public class UnresolvedTokensTest extends HackBaseLexerTest {
                 "HackTokenType.T_STRING ('T')\n" +
                 "HackTokenType.T_TYPELIST_GT ('>')\n" +
                 "HackTokenType.; (';')\n" +
-                "HackTokenType.T_WHITESPACE ('\\n \\n ')\n" +
+                "HackTokenType.T_WHITESPACE ('\\n ')\n" +
                 "HackTokenType.T_FUNCTION ('function')\n" +
                 "HackTokenType.T_WHITESPACE (' ')\n" +
                 "HackTokenType.T_STRING ('myNameWith')\n" +
@@ -84,9 +84,29 @@ public class UnresolvedTokensTest extends HackBaseLexerTest {
                 "HackTokenType.; (';')\n" +
                 "HackTokenType.T_WHITESPACE ('\\n ')\n" +
                 "HackTokenType.} ('}')\n" +
-                "HackTokenType.T_WHITESPACE ('\\n')\n" +
+                "HackTokenType.T_WHITESPACE ('\\n ')\n" +
+                "HackTokenType.T_FUNCTION ('function')\n" +
+                "HackTokenType.T_WHITESPACE (' ')\n" +
+                "HackTokenType.T_STRING ('test')\n" +
+                "HackTokenType.( ('(')\n" +
+                "HackTokenType.) (')')\n" +
+                "HackTokenType.{ ('{')\n" +
+                "HackTokenType.T_WHITESPACE ('\\n    ')\n" +
+                "HackTokenType.T_VARIABLE ('$this')\n" +
+                "HackTokenType.T_OBJECT_OPERATOR ('->')\n" +
+                "HackTokenType.T_STRING ('myNameWith')\n" +
+                "HackTokenType.( ('(')\n" +
+                "HackTokenType.) (')')\n" +
+                "HackTokenType.; (';')\n" +
+                "HackTokenType.T_WHITESPACE ('\\n    ')\n" +
+                "HackTokenType.T_STRING ('justAnFunctionTypeList')\n" +
+                "HackTokenType.( ('(')\n" +
+                "HackTokenType.) (')')\n" +
+                "HackTokenType.; (';')\n" +
+                "HackTokenType.T_WHITESPACE ('\\n ')\n" +
                 "HackTokenType.} ('}')\n" +
-                "HackTokenType.T_WHITESPACE ('\\n')");
+                "HackTokenType.T_WHITESPACE ('\\n')\n" +
+                "HackTokenType.} ('}')");
     }
 
     public void testLambda() {

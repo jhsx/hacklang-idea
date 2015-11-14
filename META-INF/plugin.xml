@@ -33,16 +33,26 @@
         <lang.syntaxHighlighterFactory key="Hack"
                                        implementationClass="io.github.josehsantos.hack.ide.highlighter.HackSyntaxHighlighterFactory"/>
 
-        <lang.commenter language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackCommenter"/>
+        <lang.commenter language="Hack" implementationClass="io.github.josehsantos.hack.ide.editor.HackCommenter"/>
 
-        <lang.braceMatcher language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackBraceMatcher"/>
+        <lang.braceMatcher language="Hack" implementationClass="io.github.josehsantos.hack.ide.editor.HackBraceMatcher"/>
         <lang.foldingBuilder language="Hack" implementationClass="io.github.josehsantos.hack.ide.folding.HackFoldingBuilder"/>
         <languageInjector implementation="io.github.josehsantos.hack.lang.HackLanguageInjector"/>
 
         <quoteHandler fileType="Hack" className="io.github.josehsantos.hack.ide.editor.HackQuoteHandler"/>
         <lang.psiStructureViewFactory language="Hack" implementationClass="io.github.josehsantos.hack.ide.structure.HackStructureViewFactory"/>
 
-        <annotator language="Hack" implementationClass="io.github.josehsantos.hack.ide.HackAnnotator"/>
+        <annotator language="Hack" implementationClass="io.github.josehsantos.hack.ide.editor.HackAnnotator"/>
+
+        <lang.refactoringSupport language="Hack" implementationClass="io.github.josehsantos.hack.ide.refactory.HackRefactoringSupportProvider"/>
+
+        <!--<renamePsiElementProcessor implementation="io.github.josehsantos.hack.ide.refactory.HackRenamePsiElementProcessor"/>-->
+
+        <lang.findUsagesProvider language="Hack"
+                                 implementationClass="io.github.josehsantos.hack.ide.findUsages.HackFindUsagesProvider"/>
+
+        <lang.namesValidator language="Hack" implementationClass="io.github.josehsantos.hack.ide.refactory.HackNamesValidator"/>
+        <gotoSymbolContributor implementation="io.github.josehsantos.hack.ide.HackSymbolContributor"/>
 
     </extensions>
 

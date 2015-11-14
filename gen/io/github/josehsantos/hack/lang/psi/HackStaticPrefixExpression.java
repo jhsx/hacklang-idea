@@ -8,10 +8,13 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticPrefixExpression extends HackExpression {
 
   @Nullable
-  HackExpression getExpression();
+  HackLiteralExpression getLiteralExpression();
 
   @Nullable
   HackNamespaceString getNamespaceString();
+
+  @Nullable
+  HackStaticArrayExpression getStaticArrayExpression();
 
   @Nullable
   HackStaticClassConstant getStaticClassConstant();
@@ -23,7 +26,16 @@ public interface HackStaticPrefixExpression extends HackExpression {
   HackStaticMapArrayLiteral getStaticMapArrayLiteral();
 
   @Nullable
+  HackStaticParenthesizedExpression getStaticParenthesizedExpression();
+
+  @Nullable
+  HackStaticPrefixExpression getStaticPrefixExpression();
+
+  @Nullable
   HackStaticPrefixOperator getStaticPrefixOperator();
+
+  @Nullable
+  HackStaticShapeExpression getStaticShapeExpression();
 
   @Nullable
   HackStaticVarrayLiteral getStaticVarrayLiteral();

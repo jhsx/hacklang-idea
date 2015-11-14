@@ -7,11 +7,13 @@ package io.github.josehsantos.hack.ide.highlighter;
 import com.intellij.lexer.FlexAdapter;
 import com.intellij.lexer.Lexer;
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors;
+import com.intellij.openapi.editor.HighlighterColors;
 import com.intellij.openapi.editor.colors.TextAttributesKey;
 import com.intellij.openapi.editor.markup.TextAttributes;
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase;
 import com.intellij.psi.TokenType;
 import com.intellij.psi.tree.IElementType;
+import com.intellij.ui.JBColor;
 import io.github.josehsantos.hack.lang.HackTypes;
 import io.github.josehsantos.hack.lang.parser.HackLexer;
 import org.jetbrains.annotations.NotNull;
@@ -30,14 +32,13 @@ public class HackSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey DOC_COMMENT = createTextAttributesKey("HACK_DOC_COMMENT", DefaultLanguageHighlighterColors.DOC_COMMENT);
     public static final TextAttributesKey USER_ATTRIBUTE = createTextAttributesKey("HACK_USER_ATTRIBUTE", DefaultLanguageHighlighterColors.METADATA);
     public static final TextAttributesKey STRING = createTextAttributesKey("HACK_STRING", DefaultLanguageHighlighterColors.STRING);
-    public static final TextAttributesKey VARIABLE = createTextAttributesKey("HACK_VARIABLE", DefaultLanguageHighlighterColors.LOCAL_VARIABLE);
+    //
+    public static final TextAttributesKey VARIABLE = createTextAttributesKey("HACK_VARIABLE", DefaultLanguageHighlighterColors.STATIC_FIELD);
     public static final TextAttributesKey NUMBER = createTextAttributesKey("HACK_NUMBERS", DefaultLanguageHighlighterColors.NUMBER);
     public static final TextAttributesKey HACK_XHP = createTextAttributesKey("HACK_XML", DefaultLanguageHighlighterColors.STRING);
 
-    static final TextAttributesKey BAD_CHARACTER = createTextAttributesKey("HACK_BAD_CHARACTER",
-            new TextAttributes(Color.RED, null, null, null, Font.BOLD));
 
-    public static final TextAttributesKey[] BAD_CHAR_KEYS = new TextAttributesKey[]{BAD_CHARACTER};
+
     public static final TextAttributesKey[] HACK_KEYWORDS = new TextAttributesKey[]{KEYWORD};
 
     public static final TextAttributesKey[] HACK_COMMENT = new TextAttributesKey[]{COMMENT};
@@ -50,6 +51,7 @@ public class HackSyntaxHighlighter extends SyntaxHighlighterBase {
     public static final TextAttributesKey[] EMPTY_KEYS = new TextAttributesKey[0];
     public static final TextAttributesKey[] HACK_VARIABLE = new TextAttributesKey[]{VARIABLE};
     public static final TextAttributesKey[] HACK_NUMBERS = new TextAttributesKey[]{NUMBER};
+
 
     @NotNull
     @Override
@@ -74,8 +76,6 @@ public class HackSyntaxHighlighter extends SyntaxHighlighterBase {
             return HACK_LINE_COMMENT;
         } else if (tokenType.equals(HackTypes.T_DOC_COMMENT)) {
             return HACK_DOC_COMMENT;
-        } else if (tokenType.equals(TokenType.BAD_CHARACTER)) {
-            return BAD_CHAR_KEYS;
         } else if (HackTypes.tsXHPTokens.contains(tokenType)) {
             return new TextAttributesKey[]{HACK_XHP};
         } else {

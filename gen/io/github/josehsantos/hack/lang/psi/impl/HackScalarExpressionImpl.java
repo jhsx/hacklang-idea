@@ -29,14 +29,32 @@ public class HackScalarExpressionImpl extends HackExpressionImpl implements Hack
 
   @Override
   @Nullable
-  public HackEncapsList getEncapsList() {
-    return findChildByClass(HackEncapsList.class);
+  public HackDoubleQuotesString getDoubleQuotesString() {
+    return findChildByClass(HackDoubleQuotesString.class);
+  }
+
+  @Override
+  @Nullable
+  public HackHereDocString getHereDocString() {
+    return findChildByClass(HackHereDocString.class);
+  }
+
+  @Override
+  @Nullable
+  public HackLiteralExpression getLiteralExpression() {
+    return findChildByClass(HackLiteralExpression.class);
   }
 
   @Override
   @Nullable
   public HackNamespaceString getNamespaceString() {
     return findChildByClass(HackNamespaceString.class);
+  }
+
+  @Override
+  @Nullable
+  public HackSingleQuotesString getSingleQuotesString() {
+    return findChildByClass(HackSingleQuotesString.class);
   }
 
 }

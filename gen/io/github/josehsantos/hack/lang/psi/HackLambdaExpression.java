@@ -7,13 +7,7 @@ import com.intellij.psi.PsiElement;
 
 public interface HackLambdaExpression extends HackExpression {
 
-  @Nullable
-  HackHhOptReturnType getHhOptReturnType();
-
   @NotNull
-  HackLambdaBody getLambdaBody();
-
-  @Nullable
-  HackParameterList getParameterList();
+  HackLambdaFunction getLambdaFunction();
 
 }

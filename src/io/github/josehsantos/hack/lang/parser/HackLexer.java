@@ -36,10 +36,6 @@ public class HackLexer extends _HackLexer {
         super(in);
     }
 
-    public HackLexer(InputStream in) {
-        super(in);
-    }
-
     public IElementType advance_layer1() throws IOException {
 
         LexerState saved;

@@ -29,8 +29,8 @@ public class HackStaticClassVariableExpressionImpl extends HackExpressionImpl im
 
   @Override
   @NotNull
-  public HackVariableWithoutObjectsExpression getVariableWithoutObjectsExpression() {
-    return findNotNullChildByClass(HackVariableWithoutObjectsExpression.class);
+  public HackVariableExpression getVariableExpression() {
+    return findNotNullChildByClass(HackVariableExpression.class);
   }
 
 }

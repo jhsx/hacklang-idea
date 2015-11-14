@@ -7,7 +7,37 @@ import com.intellij.psi.PsiElement;
 
 public interface HackQueryAssignExpression extends HackExpression {
 
+  @Nullable
+  HackCallableFunctionCallExpression getCallableFunctionCallExpression();
+
+  @Nullable
+  HackClassMethodCallExpression getClassMethodCallExpression();
+
+  @Nullable
+  HackDimmableVariableAccessExpression getDimmableVariableAccessExpression();
+
+  @Nullable
+  HackEspecialParenthesisedExpression getEspecialParenthesisedExpression();
+
+  @Nullable
+  HackMemberVariableExpression getMemberVariableExpression();
+
+  @Nullable
+  HackMethodCallExpression getMethodCallExpression();
+
   @NotNull
-  List<HackExpression> getExpressionList();
+  HackQueryExpression getQueryExpression();
+
+  @Nullable
+  HackSimpleFunctionCallExpression getSimpleFunctionCallExpression();
+
+  @Nullable
+  HackStaticClassVariableExpression getStaticClassVariableExpression();
+
+  @Nullable
+  HackVariableExpression getVariableExpression();
+
+  @Nullable
+  HackVariableNameHolder getVariableNameHolder();
 
 }

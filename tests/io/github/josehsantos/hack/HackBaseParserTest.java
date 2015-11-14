@@ -16,7 +16,7 @@ abstract public class HackBaseParserTest extends ParsingTestCase {
     @Override
     protected String getTestDataPath() {
         String name = getClass().getSimpleName();
-        return "./testData/parser/" + name.substring(0, name.length() - 4).toLowerCase();
+        return "./testData/parser/" + name.substring(0, name.length() - 4);
     }
 
 }

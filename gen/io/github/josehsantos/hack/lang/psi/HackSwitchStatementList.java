@@ -5,7 +5,7 @@ import java.util.List;
 import org.jetbrains.annotations.*;
 import com.intellij.psi.PsiElement;
 
-public interface HackSwitchStatementList extends HackPsiElement {
+public interface HackSwitchStatementList extends HackStatementList {
 
   @Nullable
   HackCaseList getCaseList();

@@ -23,8 +23,8 @@ public class HackXhpChildrenParenExpressionImpl extends HackExpressionImpl imple
 
   @Override
   @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
+  public HackXhpChildrenDeclExpression getXhpChildrenDeclExpression() {
+    return findChildByClass(HackXhpChildrenDeclExpression.class);
   }
 
 }

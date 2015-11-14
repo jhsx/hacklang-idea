@@ -233,6 +233,11 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
         return T_OBJECT_OPERATOR;
 }
 
+<ST_IN_SCRIPTING>"?->" {
+        pushState(ST_LOOKING_FOR_PROPERTY);
+        return T_OBJECT_OPERATOR;
+}
+
 //<ST_LOOKING_FOR_PROPERTY>"->" {
 //        return T_OBJECT_OPERATOR;
 //}

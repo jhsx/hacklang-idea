@@ -7,7 +7,19 @@ import com.intellij.psi.PsiElement;
 
 public interface HackEspecialParenthesisedExpression extends HackExpression {
 
-  @NotNull
-  HackExpression getExpression();
+  @Nullable
+  HackCloneExpression getCloneExpression();
+
+  @Nullable
+  HackCollectionLiteralExpression getCollectionLiteralExpression();
+
+  @Nullable
+  HackEspecialParenthesisedExpression getEspecialParenthesisedExpression();
+
+  @Nullable
+  HackNewExpression getNewExpression();
+
+  @Nullable
+  HackXhpExpression getXhpExpression();
 
 }

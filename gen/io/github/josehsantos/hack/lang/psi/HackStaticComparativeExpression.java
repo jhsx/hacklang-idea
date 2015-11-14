@@ -11,6 +11,21 @@ public interface HackStaticComparativeExpression extends HackExpression {
   HackComparativeOperator getComparativeOperator();
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList();
+
+  @NotNull
+  List<HackStaticBitwiseExpression> getStaticBitwiseExpressionList();
+
+  @Nullable
+  HackStaticComparativeExpression getStaticComparativeExpression();
+
+  @NotNull
+  List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList();
+
+  @NotNull
+  List<HackStaticPrefixExpression> getStaticPrefixExpressionList();
+
+  @NotNull
+  List<HackStaticShiftExpression> getStaticShiftExpressionList();
 
 }

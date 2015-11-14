@@ -22,21 +22,9 @@ public class HackClassMethodCallExpressionImpl extends HackExpressionImpl implem
   }
 
   @Override
-  @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
-  }
-
-  @Override
   @NotNull
   public HackFunctionCallParameterList getFunctionCallParameterList() {
     return findNotNullChildByClass(HackFunctionCallParameterList.class);
-  }
-
-  @Override
-  @Nullable
-  public HackHhTypeargsOpt getHhTypeargsOpt() {
-    return findChildByClass(HackHhTypeargsOpt.class);
   }
 
   @Override
@@ -49,6 +37,24 @@ public class HackClassMethodCallExpressionImpl extends HackExpressionImpl implem
   @NotNull
   public HackStaticClassName getStaticClassName() {
     return findNotNullChildByClass(HackStaticClassName.class);
+  }
+
+  @Override
+  @Nullable
+  public HackTypeargs getTypeargs() {
+    return findChildByClass(HackTypeargs.class);
+  }
+
+  @Override
+  @Nullable
+  public HackVariableExpression getVariableExpression() {
+    return findChildByClass(HackVariableExpression.class);
+  }
+
+  @Override
+  @Nullable
+  public HackVariableExpressionVariable getVariableExpressionVariable() {
+    return findChildByClass(HackVariableExpressionVariable.class);
   }
 
 }

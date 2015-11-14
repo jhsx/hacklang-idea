@@ -10,7 +10,7 @@ import com.intellij.psi.util.PsiTreeUtil;
 import static io.github.josehsantos.hack.lang.psi.HackTypes.*;
 import io.github.josehsantos.hack.lang.psi.*;
 
-public class HackSwitchStatementListImpl extends HackPsiElementImpl implements HackSwitchStatementList {
+public class HackSwitchStatementListImpl extends HackStatementListImpl implements HackSwitchStatementList {
 
   public HackSwitchStatementListImpl(ASTNode node) {
     super(node);

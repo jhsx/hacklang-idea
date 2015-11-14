@@ -10,7 +10,7 @@ import java.io.Reader;
 /**
  * Created by josesantos on 08/11/14.
  */
-public class HackBaseLexerTest extends LexerTestCase {
+public abstract class HackBaseLexerTest extends LexerTestCase {
 
 
     @Override

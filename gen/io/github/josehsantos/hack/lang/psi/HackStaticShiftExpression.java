@@ -8,9 +8,18 @@ import com.intellij.psi.PsiElement;
 public interface HackStaticShiftExpression extends HackExpression {
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  HackShiftOperator getShiftOperator();
 
   @NotNull
-  HackShiftOperator getShiftOperator();
+  List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList();
+
+  @NotNull
+  List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList();
+
+  @NotNull
+  List<HackStaticPrefixExpression> getStaticPrefixExpressionList();
+
+  @Nullable
+  HackStaticShiftExpression getStaticShiftExpression();
 
 }

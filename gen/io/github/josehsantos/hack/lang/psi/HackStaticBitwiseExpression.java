@@ -11,6 +11,18 @@ public interface HackStaticBitwiseExpression extends HackExpression {
   HackBitwiseOperator getBitwiseOperator();
 
   @NotNull
-  List<HackExpression> getExpressionList();
+  List<HackStaticAdditiveOrConcatenationExpression> getStaticAdditiveOrConcatenationExpressionList();
+
+  @Nullable
+  HackStaticBitwiseExpression getStaticBitwiseExpression();
+
+  @NotNull
+  List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList();
+
+  @NotNull
+  List<HackStaticPrefixExpression> getStaticPrefixExpressionList();
+
+  @NotNull
+  List<HackStaticShiftExpression> getStaticShiftExpressionList();
 
 }

@@ -139,7 +139,8 @@ public interface HackTypes extends io.github.josehsantos.hack.lang.psi.HackTypes
                     T_DIR,
                     T_NS_C,
                     T_TRUE,
-                    T_FALSE
+                    T_FALSE,
+                    T_NEW
             );
 
     TokenSet tsStrings = TokenSet.create(T_ENCAPSED_AND_WHITESPACE, T_CONSTANT_ENCAPSED_STRING, T_DOUBLE_QUOTE);

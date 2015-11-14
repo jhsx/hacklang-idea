@@ -10,7 +10,13 @@ public interface HackStaticAdditiveOrConcatenationExpression extends HackExpress
   @NotNull
   HackAdditiveOrConcatenationOperator getAdditiveOrConcatenationOperator();
 
+  @Nullable
+  HackStaticAdditiveOrConcatenationExpression getStaticAdditiveOrConcatenationExpression();
+
   @NotNull
-  List<HackExpression> getExpressionList();
+  List<HackStaticMultiplicativeExpression> getStaticMultiplicativeExpressionList();
+
+  @NotNull
+  List<HackStaticPrefixExpression> getStaticPrefixExpressionList();
 
 }

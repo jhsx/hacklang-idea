@@ -23,8 +23,8 @@ public class HackStaticParenthesizedExpressionImpl extends HackExpressionImpl im
 
   @Override
   @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
+  public HackStaticExpression getStaticExpression() {
+    return findChildByClass(HackStaticExpression.class);
   }
 
 }

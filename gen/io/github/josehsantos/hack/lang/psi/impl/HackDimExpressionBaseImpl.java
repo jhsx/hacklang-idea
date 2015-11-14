@@ -23,14 +23,20 @@ public class HackDimExpressionBaseImpl extends HackPsiElementImpl implements Hac
 
   @Override
   @Nullable
+  public HackArrayLiteralExpression getArrayLiteralExpression() {
+    return findChildByClass(HackArrayLiteralExpression.class);
+  }
+
+  @Override
+  @Nullable
   public HackClassConstant getClassConstant() {
     return findChildByClass(HackClassConstant.class);
   }
 
   @Override
   @Nullable
-  public HackExpression getExpression() {
-    return findChildByClass(HackExpression.class);
+  public HackParenthesizedExpression getParenthesizedExpression() {
+    return findChildByClass(HackParenthesizedExpression.class);
   }
 
 }

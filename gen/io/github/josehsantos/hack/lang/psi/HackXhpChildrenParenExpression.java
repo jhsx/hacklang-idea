@@ -8,6 +8,6 @@ import com.intellij.psi.PsiElement;
 public interface HackXhpChildrenParenExpression extends HackExpression {
 
   @Nullable
-  HackExpression getExpression();
+  HackXhpChildrenDeclExpression getXhpChildrenDeclExpression();
 
 }

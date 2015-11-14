@@ -11,6 +11,6 @@ public interface HackStaticClassVariableExpression extends HackExpression {
   HackStaticClassName getStaticClassName();
 
   @NotNull
-  HackVariableWithoutObjectsExpression getVariableWithoutObjectsExpression();
+  HackVariableExpression getVariableExpression();
 
 }
