@@ -49,26 +49,7 @@ import io.github.josehsantos.hack.lang.parser.managers.*;
        return st;
    }
 
-   private boolean isHHSyntaxEnabled(){
-        return true;
-   }
-
-   private boolean isXHPSyntaxEnabled(){
-        return true;
-   }
-
-   private boolean shortTags(){
-        return true;
-   }
-
-   private boolean isHHFile(){
-        return true;
-   }
-
-    /*
-        TODO: STRING, HEREDOC
-     */
-   	//	private StatesManager sManager = new StatesManager(this);
+    //	private StatesManager sManager = new StatesManager(this);
     //	private HeredocManager hdManager = new HeredocManager(this, sManager);
    	private LineCommentManager lcManager = new LineCommentManager(this);
 
@@ -408,8 +389,7 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 
 <ST_IN_SCRIPTING>"?"/":"[a-zA-Z_\x7f-\xff] {
   int ntt = getNextTokenType(lastToken);
-  if (!isXHPSyntaxEnabled() ||
-      (((ntt & NextTokenType.XhpClassName) > 0) && lastToken != T_RBRACE)) {
+  if (((ntt & NextTokenType.XhpClassName) > 0) && lastToken != T_RBRACE) {
     return T_QUEST;
   }
 
@@ -441,7 +421,7 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
     yybegin(ST_LT_CHECK);
     break;
   }
-  if (isHHSyntaxEnabled() && ((ntt & NextTokenType.TypeListMaybe) > 0)) {
+  if ((ntt & NextTokenType.TypeListMaybe) > 0) {
     // Return T_UNRESOLVED_LT; the scanner will inspect subseqent tokens
     // to resolve this.
     return T_UNRESOLVED_LT;
@@ -450,15 +430,13 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_IN_SCRIPTING>"<" {
-  if (isHHSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.TypeListMaybe) > 0) {
       // Return T_UNRESOLVED_LT; the scanner will inspect subseqent tokens
       // to resolve this.
       return T_UNRESOLVED_LT;
     }
-  }
-  return T_LESS;
+    return T_LESS;
 }
 
 <ST_LT_CHECK>"<"{XHPLABEL}(">"|"/>"|{WHITESPACE_AND_COMMENTS}(">"|"/>"|[a-zA-Z_\x7f-\xff])) {
@@ -474,35 +452,29 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 
 <ST_IN_SCRIPTING>":"{XHPLABEL}  {
-  if (isXHPSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.XhpClassName) > 0) {
-      return T_XHP_LABEL;
+        return T_XHP_LABEL;
     }
-  }
-  yypushback(yylength()-1);
-  return T_COLON;
+    yypushback(yylength()-1);
+    return T_COLON;
 }
 
 <ST_IN_SCRIPTING>"%"{XHPLABEL}  {
-  if (isXHPSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.XhpCategoryName) > 0) {
       return T_XHP_CATEGORY_LABEL;
     }
-  }
-  yypushback(yylength()-1);
-  return T_MOD;
+    yypushback(yylength()-1);
+    return T_MOD;
 }
 
 <ST_IN_SCRIPTING>"("            {
-  if (isHHSyntaxEnabled()) {
     int ntt = getNextTokenType(lastToken);
     if ((ntt & NextTokenType.LambdaMaybe) > 0) {
       return T_UNRESOLVED_OP;
     }
-  }
-  return T_LPAREN;
+    return T_LPAREN;
 }
 
 //TOKENS = [;:,.\[\])|^&+\-*/=%!~$<>?@]
@@ -624,7 +596,7 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 }
 //
 <YYINITIAL,ST_IN_HTML,ST_AFTER_HASHBANG>"<?"|("<?php"([ \t]|{NEWLINE}))|"<script"{WHITESPACE}+"language"{WHITESPACE}*"="{WHITESPACE}*("php"|"\"php\""|"\'php\'"){WHITESPACE}*">" {
-        if (shortTags() ||yylength() > 2) {
+        if (yylength() > 2) {
           
           if (yystate() == YYINITIAL) {
             yybegin(ST_IN_SCRIPTING);
@@ -666,14 +638,14 @@ BACKQUOTE_CHARS  =   ("{"*([^$`\\{]|("\\"{ANY_CHAR}))|{BACKQUOTE_LITERAL_DOLLAR}
 
 
 <YYINITIAL,ST_IN_HTML,ST_AFTER_HASHBANG>"<?hh"([ \t]|{NEWLINE}) {
-        if (yystate() == YYINITIAL) {
+        if (yystate() == YYINITIAL || yystate() == ST_IN_HTML) {
           yybegin(ST_IN_SCRIPTING);
         } else if (yystate() == ST_AFTER_HASHBANG) {
           popState();
-        } else {
+        }else { //TODO: ??
           return T_HH_ERROR;
         }
-        
+
         return T_OPEN_TAG;
 }
 

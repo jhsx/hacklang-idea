@@ -5,15 +5,11 @@ import com.intellij.openapi.util.TextRange;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.PsiReference;
 import com.intellij.psi.ResolveState;
-import com.intellij.psi.search.LocalSearchScope;
-import com.intellij.psi.search.SearchScope;
 import com.intellij.psi.util.PsiTreeUtil;
 import com.intellij.util.IncorrectOperationException;
 import io.github.josehsantos.hack.lang.psi.HackVariableNameHolder;
-import io.github.josehsantos.hack.lang.psi.HackVariableIdentifier;
 import io.github.josehsantos.hack.lang.psi.HackVariableReference;
 import io.github.josehsantos.hack.lang.resolve.HackVariableNameScopeProcessor;
-import io.github.josehsantos.hack.utils.HackElementGenerator;
 import org.jetbrains.annotations.NonNls;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -94,10 +90,10 @@ public class HackVariableReferenceImpl extends HackPsiElementImpl implements Hac
     @Override
     public PsiElement setName(@NonNls @NotNull String s) throws IncorrectOperationException {
 
-        HackVariableIdentifier newIdentifier = HackElementGenerator.createIdentifierVariableFromText(getProject(), s);
-        if (newIdentifier != null) {
-            getNode().replaceChild(getNode().getFirstChildNode(), newIdentifier.getNode().getFirstChildNode());
-        }
+//        HackVariableIdentifier newIdentifier = HackElementGenerator.createIdentifierVariableFromText(getProject(), s);
+//        if (newIdentifier != null) {
+//            getNode().replaceChild(getNode().getFirstChildNode(), newIdentifier.getNode().getFirstChildNode());
+//        }
         return this;
     }
 

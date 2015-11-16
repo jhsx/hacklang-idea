@@ -2,8 +2,6 @@ package io.github.josehsantos.hack.ide.refactory;
 
 import com.intellij.lang.refactoring.RefactoringSupportProvider;
 import com.intellij.psi.PsiElement;
-import io.github.josehsantos.hack.lang.psi.HackVariableNameHolder;
-import io.github.josehsantos.hack.lang.psi.HackSimpleVariableName;
 import io.github.josehsantos.hack.lang.psi.HackVariableIdentifier;
 
 /**

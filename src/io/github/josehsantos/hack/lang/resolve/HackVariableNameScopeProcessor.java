@@ -4,8 +4,8 @@ import com.intellij.openapi.util.Key;
 import com.intellij.psi.PsiElement;
 import com.intellij.psi.ResolveState;
 import com.intellij.psi.scope.PsiScopeProcessor;
+import io.github.josehsantos.hack.lang.psi.HackFunction;
 import io.github.josehsantos.hack.lang.psi.HackVariableNameHolder;
-import io.github.josehsantos.hack.lang.psi.HackParameterItem;
 import io.github.josehsantos.hack.lang.psi.impl.HackVariableReferenceImpl;
 import org.jetbrains.annotations.Nullable;
 
@@ -34,7 +34,7 @@ public class HackVariableNameScopeProcessor implements PsiScopeProcessor {
                 && psiElement instanceof HackVariableNameHolder
                 && psiElement.getText().equals(myVariableName)) {
             result = (HackVariableNameHolder) psiElement;
-            if (result.getParent() instanceof HackParameterItem)
+            if (result.getParent() instanceof HackFunction)
                 return false;
         }
         return true;

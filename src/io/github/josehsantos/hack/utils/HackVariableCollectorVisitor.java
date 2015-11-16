@@ -1,7 +1,8 @@
 package io.github.josehsantos.hack.utils;
 
 import com.intellij.psi.PsiElement;
-import io.github.josehsantos.hack.lang.psi.*;
+import io.github.josehsantos.hack.lang.psi.HackExpression;
+import io.github.josehsantos.hack.lang.psi.HackFunction;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Vector;
@@ -25,11 +26,9 @@ public class HackVariableCollectorVisitor extends HackVisitor {
     @Override
     public void visitElement(PsiElement element) {
         if (
-                        element instanceof HackParameterList ||
-                        element instanceof HackParameterItem ||
+                element instanceof HackParameter ||
                         element instanceof HackIfStatement ||
-                        element instanceof HackInnerStatementList ||
-                        element instanceof HackBaseStatement ||
+                        element instanceof HackStatement ||
                         element instanceof HackListAssignmentVariables ||
                         element instanceof HackFunction
             ) {

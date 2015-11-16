@@ -26,7 +26,7 @@ public class HackFoldingBuilder implements FoldingBuilder {
     }
 
     private static void buildFolding(ASTNode node, List<FoldingDescriptor> list) {
-        boolean isBlock = node.getElementType() == HackTypes.BLOCK_STATEMENT || node.getElementType() == HackTypes.CLASS_STATEMENT_BLOCK;
+        boolean isBlock = node.getElementType() == HackTypes.BLOCK_STATEMENT || node.getElementType() == HackTypes.CLASS_BLOCK;
         if (isBlock && !node.getTextRange().isEmpty()) {
             final TextRange range = node.getTextRange();
             if (range.getLength() > 1) {
